@@ -1,8 +1,21 @@
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+
 class MatrixTest{
 
     //Matrix(double[][] A){}
 
     //Matrix(double[][] A, int m, int n){}
+    @Test
+    void baseCtorSameLength(){
+	double[][] array = {
+		{1,2,3},
+		{4,5,6},
+		{7,8,9}
+	}
+	Matrix M = new Matrix(array, 3, 3);
+    }
 
     //Matrix(double[] vals, int m){}
 
