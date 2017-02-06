@@ -3,31 +3,32 @@ import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 
 
-class MatrixTest{
+public class MatrixTest{
     //Matrix(double[][] A){}
 
     //Matrix(double[][] A, int m, int n){}
     @Test
-    void baseCtorSameLength(){
+    public void baseCtorSameLength(){
 	double[][] array = {
 		{1,2,3},
 		{4,5,6},
 		{7,8,9}
-	}
+	};
 	Matrix m = new Matrix(array, 3, 3);
-	array2 = m.getArray();
-        assertEquals(array, array2)
+	double[][] array2 = m.getArray();
+        assertEquals(array, array2);
+
     }
     @Test
-    void baseCtorNotSameObj(){
+    public void baseCtorNotSameObj(){
 	double[][] array = {
 		{1,2,3},
 		{4,5,6},
 		{7,8,9}
-	}
+	};
 	Matrix m = new Matrix(array, 3, 3);
-	array2 = m.getArray();
-        assertNotSame(array, array2)
+	double[][] array2 = m.getArray();
+        assertNotSame(array, array2);
     }
     //Matrix(double[] vals, int m){}
 
