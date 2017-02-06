@@ -1,9 +1,9 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 
 
 class MatrixTest{
-
     //Matrix(double[][] A){}
 
     //Matrix(double[][] A, int m, int n){}
@@ -14,9 +14,21 @@ class MatrixTest{
 		{4,5,6},
 		{7,8,9}
 	}
-	Matrix M = new Matrix(array, 3, 3);
+	Matrix m = new Matrix(array, 3, 3);
+	array2 = m.getArray();
+        assertEquals(array, array2)
     }
-
+    @Test
+    void baseCtorNotSameObj(){
+	double[][] array = {
+		{1,2,3},
+		{4,5,6},
+		{7,8,9}
+	}
+	Matrix m = new Matrix(array, 3, 3);
+	array2 = m.getArray();
+        assertNotSame(array, array2)
+    }
     //Matrix(double[] vals, int m){}
 
     //Matrix(int m, int n){}
@@ -44,6 +56,7 @@ class MatrixTest{
     //double get(int i, int j){return 0;}
 
     //double[][] getArray(){return null;}
+     
 
     //double[][] getArrayCopy(){return null;}
 
