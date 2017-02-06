@@ -41,7 +41,7 @@ class Matrix
     {
         return null;
     }
-    java.lang.Object clone()
+    protected java.lang.Object clone()
     {
         return null;
     }
@@ -55,7 +55,7 @@ class Matrix
     }
     double get(int i, int j)
     {
-        return null;
+        return 0;
     }
     double[][] getArray()
     {
@@ -67,7 +67,7 @@ class Matrix
     }
     int getColumnDimension()
     {
-        return null;
+        return 0;
     }
     double[] getColumnPackedCopy()
     {
@@ -91,7 +91,7 @@ class Matrix
     }
     int getRowDimension()
     {
-        return null;
+        return 0;
     }
     double[] getRowPackedCopy()
     {
@@ -111,15 +111,15 @@ class Matrix
     }
     double norm1()
     {
-        return null;
+        return 0;
     }
     double normF()
     {
-        return null;
+        return 0;
     }
     double normInf()
     {
-        return null;
+        return 0;
     }
     Matrix plus(Matrix B)
     {
@@ -131,19 +131,15 @@ class Matrix
     }
     void print(int w, int d)
     {
-        return null;
     }
     void print(java.text.NumberFormat format, int width)
     {
-        return null;
     }
     void print(java.io.PrintWriter output, int w, int d)
     {
-        return null;
     }
     void print(java.io.PrintWriter output, java.text.NumberFormat format, int width)
     {
-        return null;
     }
     static Matrix random(int m, int n)
     {
@@ -155,23 +151,18 @@ class Matrix
     }
     void set(int i, int j, double s)
     {
-        return null;
     }
     void setMatrix(int[] r, int[] c, Matrix X)
     {
-        return null;
     }
     void setMatrix(int[] r, int j0, int j1, Matrix X)
     {
-        return null;
     }
     void setMatrix(int i0, int i1, int[] c, Matrix X)
     {
-        return null;
     }
     void setMatrix(int i0, int i1, int j0, int j1, Matrix X)
     {
-        return null;
     }
     Matrix times(double s)
     {
@@ -187,7 +178,7 @@ class Matrix
     }
     double trace()
     {
-        return null;
+        return 0;
     }
     Matrix transpose()
     {
