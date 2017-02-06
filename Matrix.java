@@ -1,20 +1,30 @@
 class Matrix
 {
-
+    final double[][] a;
+    
     Matrix(double[][] A)
     {
+	this(A,0,0);
     }
     Matrix(double[][] A, int m, int n)
     {
+	a = new double[m][];
+	for(int i=0; i<m; i++){
+	    a[i] = new double[n];
+	    System.arraycopy(a[i],0,A[i],0,n);
+	}
     }
     Matrix(double[] vals, int m)
     {
+	    this(new double[0][],0,0);
     }
     Matrix(int m, int n)
     {
+	    this(new double[0][],0,0);
     }
     Matrix(int m, int n, double s)
     {
+	    this(new double[0][],0,0);
     }
 
     Matrix arrayLeftDivide(Matrix B)
@@ -59,7 +69,7 @@ class Matrix
     }
     double[][] getArray()
     {
-        return null;
+        return a;
     }
     double[][] getArrayCopy()
     {
