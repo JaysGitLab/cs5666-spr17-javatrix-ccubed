@@ -8,11 +8,18 @@ class Matrix
     }
     Matrix(double[][] A, int m, int n)
     {
-	a = new double[m][];
-	for(int i=0; i<m; i++){
-	    a[i] = new double[n];
-	    System.arraycopy(a[i],0,A[i],0,n);
-	}
+        int rows = A.length;
+        m = rows < m ? rows : m;
+        a = new double[m][];
+        for(int i=0; i<m; i++){
+            double[] row = A[i];
+            int rowLen = row.length;
+            rowLen = rowLen < n ? rowLen : n;
+            a[i] = new double[n];
+            for(int j=0; j<rowLen; j++){
+                a[i][j] = A[i][j];
+            }
+        }
     }
     Matrix(double[] vals, int m)
     {
