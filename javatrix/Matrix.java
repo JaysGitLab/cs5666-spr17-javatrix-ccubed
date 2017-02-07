@@ -18,23 +18,23 @@ public class Matrix
         this(matrixA, 0, 0);
     }
     /**
-     * [Matrix description].
-     * @param  matrixA             double[][] [description]
-     * @param  m             int        [description]
-     * @param  n             int        [description]
+     * Construct a matrix quickly without checking arguments.
+     * @param  matrixA                  Two-dimensional array of doubles. 
+     * @param  m                        Number of rows
+     * @param  n                        Number of columns
      */
     public Matrix(double[][] matrixA, int m, int n)
     {
-        int rows = matrixA.length;
-        m = rows < m ? rows : m;
         a = new double[m][];
-        for (int i = 0; i < m; i++)
+        int rowCt = matrixA.length;
+        rowCt = rowCt < m ? rowCt : m;
+        for (int i = 0; i < rowCt; i++)
         {
             double[] row = matrixA[i];
-            int rowLen = row.length;
-            rowLen = rowLen < n ? rowLen : n;
+            int colCt = row.length;
+            colCt = colCt < n ? colCt : n;
             a[i] = new double[n];
-            for (int j = 0; j < rowLen; j++)
+            for (int j = 0; j < colCt; j++)
             {
                 a[i][j] = matrixA[i][j];
             }
