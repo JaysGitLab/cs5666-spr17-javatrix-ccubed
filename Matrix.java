@@ -2,11 +2,11 @@ public class Matrix
 {
     final double[][] a;
     
-    Matrix(double[][] A)
+    public Matrix(double[][] A)
     {
-	this(A,0,0);
+	    this(A,0,0);
     }
-    Matrix(double[][] A, int m, int n)
+    public Matrix(double[][] A, int m, int n)
     {
         int rows = A.length;
         m = rows < m ? rows : m;
@@ -21,132 +21,132 @@ public class Matrix
             }
         }
     }
-    Matrix(double[] vals, int m)
+    public Matrix(double[] vals, int m)
     {
 	    this(new double[0][],0,0);
     }
-    Matrix(int m, int n)
+    public Matrix(int m, int n)
     {
 	    this(new double[0][],0,0);
     }
-    Matrix(int m, int n, double s)
+    public Matrix(int m, int n, double s)
     {
 	    this(new double[0][],0,0);
     }
 
-    Matrix arrayLeftDivide(Matrix B)
+    public Matrix arrayLeftDivide(Matrix B)
     {
         return null;
     }
-    Matrix arrayLeftDivideEquals(Matrix B)
+    public Matrix arrayLeftDivideEquals(Matrix B)
     {
         return null;
     }
-    Matrix arrayRightDivide(Matrix B)
+    public Matrix arrayRightDivide(Matrix B)
     {
         return null;
     }
-    Matrix arrayRightDivideEquaqals(Matrix B)
+    public Matrix arrayRightDivideEquaqals(Matrix B)
     {
         return null;
     }
-    Matrix arrayTimes(Matrix B)
+    public Matrix arrayTimes(Matrix B)
     {
         return null;
     }
-    Matrix arrayTimesEquals(Matrix B)
+    public Matrix arrayTimesEquals(Matrix B)
     {
         return null;
     }
-    protected java.lang.Object clone()
+    public java.lang.Object clone()
     {
         return null;
     }
-    static Matrix constructWithCopy(double[][] A)
+    public static Matrix constructWithCopy(double[][] A)
     {
         return null;
     }
-    Matrix copy()
+    public Matrix copy()
     {
         return null;
     }
-    double get(int i, int j)
+    public double get(int i, int j)
     {
         return 0;
     }
-    double[][] getArray()
+    public double[][] getArray()
     {
         return a;
     }
-    double[][] getArrayCopy()
+    public double[][] getArrayCopy()
     {
         return null;
     }
-    int getColumnDimension()
+    public int getColumnDimension()
     {
         return 0;
     }
-    double[] getColumnPackedCopy()
+    public double[] getColumnPackedCopy()
     {
         return null;
     }
-    Matrix getMatrix(int[] r, int[] c)
+    public Matrix getMatrix(int[] r, int[] c)
     {
         return null;
     }
-    Matrix getMatrix(int[] r, int j0, int j1)
+    public Matrix getMatrix(int[] r, int j0, int j1)
     {
         return null;
     }
-    Matrix getMatrix(int i0, int i1, int[] c)
+    public Matrix getMatrix(int i0, int i1, int[] c)
     {
         return null;
     }
-    Matrix getMatrix(int i0, int i1, int j0, int j1)
+    public Matrix getMatrix(int i0, int i1, int j0, int j1)
     {
         return null;
     }
-    int getRowDimension()
+    public int getRowDimension()
     {
         return 0;
     }
-    double[] getRowPackedCopy()
+    public double[] getRowPackedCopy()
     {
         return null;
     }
-    static Matrix identity(int m, int n)
+    public static Matrix identity(int m, int n)
     {
         return null;
     }
-    Matrix minus(Matrix B)
+    public Matrix minus(Matrix B)
     {
         return null;
     }
-    Matrix minusEquals(Matrix B)
+    public Matrix minusEquals(Matrix B)
     {
         return null;
     }
-    double norm1()
+    public double norm1()
     {
         return 0;
     }
-    double normF()
+    public double normF()
     {
         return 0;
     }
-    double normInf()
+    public double normInf()
     {
         return 0;
     }
-    Matrix plus(Matrix B)
+    public Matrix plus(Matrix B)
     {
         return null;
     }
-    Matrix plusEquals(Matrix B)
+    public Matrix plusEquals(Matrix B)
     {
         return null;
     }
-    void print(int w, int d)
+    public void print(int w, int d)
     {
     }
     void print(java.text.NumberFormat format, int width)
@@ -158,50 +158,50 @@ public class Matrix
     void print(java.io.PrintWriter output, java.text.NumberFormat format, int width)
     {
     }
-    static Matrix random(int m, int n)
+    public static Matrix random(int m, int n)
     {
         return null;
     }
-    static Matrix read(java.io.BufferedReader input)
+    public static Matrix read(java.io.BufferedReader input)
     {
         return null;
     }
-    void set(int i, int j, double s)
+    public void set(int i, int j, double s)
     {
     }
-    void setMatrix(int[] r, int[] c, Matrix X)
+    public void setMatrix(int[] r, int[] c, Matrix X)
     {
     }
-    void setMatrix(int[] r, int j0, int j1, Matrix X)
+    public void setMatrix(int[] r, int j0, int j1, Matrix X)
     {
     }
-    void setMatrix(int i0, int i1, int[] c, Matrix X)
+    public void setMatrix(int i0, int i1, int[] c, Matrix X)
     {
     }
-    void setMatrix(int i0, int i1, int j0, int j1, Matrix X)
+    public void setMatrix(int i0, int i1, int j0, int j1, Matrix X)
     {
     }
-    Matrix times(double s)
-    {
-        return null;
-    }
-    Matrix times(Matrix B)
+    public Matrix times(double s)
     {
         return null;
     }
-    Matrix timesEquals(double s)
+    public Matrix times(Matrix B)
     {
         return null;
     }
-    double trace()
+    public Matrix timesEquals(double s)
+    {
+        return null;
+    }
+    public double trace()
     {
         return 0;
     }
-    Matrix transpose()
+    public Matrix transpose()
     {
         return null;
     }
-    Matrix uminus()
+    public Matrix uminus()
     {
         return null;
     }
