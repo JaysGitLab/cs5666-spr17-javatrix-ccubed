@@ -1,3 +1,4 @@
+package javatrix;
 /**
  * @author Chris Campell
  * @author Chris Waldon
