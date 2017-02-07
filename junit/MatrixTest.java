@@ -69,8 +69,21 @@ public class MatrixTest{
         assertEquals(array2, m.getArray());
     }
     //Matrix(double[] vals, int m){}
-
-    //Matrix(int m, int n){}
+    
+    /**
+     * testMatrixConstructor3 -Tests the third matrix constructor as specified in issue #7.
+    **/
+    @Test
+    public void testMatrixConstructor3() {
+        //initialize m (num rows).
+        int m = 5;
+        //initialize n (num cols).
+        int n = 6;
+        int[][] correctMatrix = {{0,0,0,0,0,0},{0,0,0,0,0,0},
+            {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
+        Matrix matrix = new Matrix(m,n);
+        assertEquals(matrix, correctMatrix);
+    }
 
     //Matrix(int m, int n, double s){}
 
