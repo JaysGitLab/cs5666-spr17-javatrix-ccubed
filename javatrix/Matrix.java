@@ -56,12 +56,17 @@ public class Matrix
      * Matrix -Constructor for objects of type Matrix.
      * @param m -The number of desired rows for the matrix. 
      * @param n -The number of desired columns for the matrix.
+     * @throws IllegalArgumentException -If m or n is 0 or negative.
      * @return void -Upon completion; a matrix with the specified dimensions will be
      *  initialized and filled with zeros.
      */
-    public Matrix(int m, int n)
+    public Matrix(int m, int n) throws IllegalArgumentException
     {
-        this.a = new double[m][n]; 
+        if (m <= 0 || n <= 0) {
+            throw new IllegalArgumentException();
+        } else {
+            this.a = new double[m][n]; 
+        }
     }
     /**
      * [Matrix description].
