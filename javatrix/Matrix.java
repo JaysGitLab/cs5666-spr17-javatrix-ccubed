@@ -2,7 +2,9 @@ package javatrix;
 /**
  * Matrix.java
  * Implementation of methods specified in the Matrix API.
- * @author Chris Campell, Chris Waldon, Clint Hall
+ * @author Chris Campell
+ * @author Chris Waldon
+ * @author Clint Hall
  * @version 2/7/2017
 **/
 public class Matrix
@@ -10,33 +12,31 @@ public class Matrix
     final double[][] a;
 
     /**
-     * [Matrix description].
-     * @param  matrixA             double[][] [description]
-     * @return            [description]
+     * Matrix -Constructs a matrix from the provided 2dArray.
+     * @param matrixA -The provided 2d array.
      */
     public Matrix(double[][] matrixA)
     {
-	    this(matrixA,0,0);
+	    this(matrixA, 0, 0);
     }
     /**
      * [Matrix description].
      * @param  matrixA             double[][] [description]
      * @param  m             int        [description]
      * @param  n             int        [description]
-     * @return            [description]
      */
     public Matrix(double[][] matrixA, int m, int n)
     {
         int rows = matrixA.length;
         m = rows < m ? rows : m;
         a = new double[m][];
-        for(int i=0; i<m; i++)
-	{
+        for (int i = 0; i < m; i++)
+        {
             double[] row = matrixA[i];
             int rowLen = row.length;
             rowLen = rowLen < n ? rowLen : n;
             a[i] = new double[n];
-            for(int j=0; j<rowLen; j++)
+            for (int j = 0; j < rowLen; j++)
 	    {
                 a[i][j] = matrixA[i][j];
             }
@@ -46,25 +46,25 @@ public class Matrix
      * [Matrix description].
      * @param  vals          double[] [description]
      * @param  m             int      [description]
-     * @return          [description]
      */
     public Matrix(double[] vals, int m)
     {
-	    this(new double[0][],0,0);
+	    this(new double[0][], 0, 0);
     }
     /**
      * Matrix -Constructor for objects of type Matrix.
      * @param m -The number of desired rows for the matrix. 
      * @param n -The number of desired columns for the matrix.
      * @throws IllegalArgumentException -If m or n is 0 or negative.
-     * @return void -Upon completion; a matrix with the specified dimensions will be
-     *  initialized and filled with zeros.
      */
     public Matrix(int m, int n) throws IllegalArgumentException
     {
-        if (m <= 0 || n <= 0) {
+        if (m <= 0 || n <= 0) 
+        {
             throw new IllegalArgumentException();
-        } else {
+        } 
+        else 
+        {
             this.a = new double[m][n]; 
         }
     }
@@ -73,11 +73,10 @@ public class Matrix
      * @param  m             int    [description]
      * @param  n             int    [description]
      * @param  s             double [description]
-     * @return        [description]
      */
     public Matrix(int m, int n, double s)
     {
-	    this(new double[0][],0,0);
+	    this(new double[0][], 0, 0);
     }
     /**
      * [arrayLeftDivide description].
@@ -169,12 +168,18 @@ public class Matrix
         return 0;
     }
     /**
+     * getArray -Getter method returns the "Matrix".
+     * @return a -The Matrix representation.
      *
      */
     public double[][] getArray()
     {
         return a;
     }
+    /**
+     * getArrayCopy -TODO: methdod descriptor.
+     * @return null -TODO: return type descriptor.
+     */
     public double[][] getArrayCopy()
     {
         return null;
@@ -188,7 +193,8 @@ public class Matrix
         return 0;
     }
     /**
-     *
+     * getColumnPackedCopy -TODO: method descriptor.
+     * @return null -TODO: return type descriptor.
      */
     public double[] getColumnPackedCopy()
     {
@@ -247,7 +253,8 @@ public class Matrix
         return 0;
     }
     /**
-     *
+     * getRowPackedCopy -TODO: Method descriptor.
+     * @return -TODO: Return type descriptor.
      */
     public double[] getRowPackedCopy()
     {
@@ -354,7 +361,8 @@ public class Matrix
      * @param format java.text.NumberFormat [description]
      * @param width  int                    [description]
      */
-    void print(java.io.PrintWriter output, java.text.NumberFormat format, int width)
+    void print(java.io.PrintWriter output, 
+        java.text.NumberFormat format, int width)
     {
     }
     /**
