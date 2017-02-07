@@ -23,12 +23,14 @@ public class Matrix
         int rows = A.length;
         m = rows < m ? rows : m;
         a = new double[m][];
-        for(int i=0; i<m; i++){
+        for(int i = 0; i < m; i++)
+        {
             double[] row = A[i];
             int rowLen = row.length;
             rowLen = rowLen < n ? rowLen : n;
             a[i] = new double[n];
-            for(int j=0; j<rowLen; j++){
+            for(int j = 0; j < rowLen; j++)
+            {
                 a[i][j] = A[i][j];
             }
         }
