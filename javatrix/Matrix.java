@@ -1,10 +1,4 @@
 package javatrix;
-/**
- * Matrix.java
- * Implementation of the methods from the Matrix API. 
- * @author Chris Campell, Clint Hall, Chris Waldon
- * @version 2/7/2017
-**/
 public class Matrix
 {
     final double[][] a;
@@ -30,12 +24,14 @@ public class Matrix
         int rows = A.length;
         m = rows < m ? rows : m;
         a = new double[m][];
-        for(int i=0; i<m; i++){
+        for(int i = 0; i < m; i++)
+        {
             double[] row = A[i];
             int rowLen = row.length;
             rowLen = rowLen < n ? rowLen : n;
             a[i] = new double[n];
-            for(int j=0; j<rowLen; j++){
+            for(int j = 0; j < rowLen; j++)
+            {
                 a[i][j] = A[i][j];
             }
         }
