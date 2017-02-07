@@ -38,7 +38,7 @@ clean:
 	rm -f Matrix.class
 	rm -f MatrixTest.class
 
-test:  Matrix.class MatrixTest.class
+test:  Matrix.class MatrixTest.class $(JUNIT_JAR) $(HAMCREST_JAR)
 	java -cp .:$(JUNIT_JAR):$(HAMCREST_JAR) org.junit.runner.JUnitCore MatrixTest
 
 # Add makefile targets that download the jars automatically if they
