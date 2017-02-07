@@ -12,24 +12,38 @@
 # #
 #
 
-JUNIT_JAR = /usr/share/java/junit-4.10.jar
-HAMCREST_JAR = /usr/share/java/hamcrest/core-1.1.jar
+# Set up locations for the jar files and URIs to fetch them from.
+JUNIT_JAR = junit-4.12.jar
+JUNIT_URI = https://github.com/junit-team/junit4/releases/download/r4.12/$(JUNIT_JAR)
+HAMCREST_JAR = hamcrest-core-1.3.jar
+HAMCREST_URI = http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/$(HAMCREST_JAR)
+CLASSPATH = -cp .:$(JUNIT_JAR)
+CC = javac $(CLASSPATH)
+
+# Teach make how to use javac to convert between .java and .class
+.SUFFIXES: .java .class
+.java.class:
+	$(CC) $<
 
 default:
 	@echo "usage: make target"
 	@echo "available targets: compile, test, clean"
 
-compile: Matrix.java MatrixTest.java
-	javac -cp .:$(JUNIT_JAR) MatrixTest.java
-	javac Matrix.java
+compile: Matrix.class MatrixTest.class
+	@echo "compiled"
+	
+MatrixTest.class: $(JUNIT_JAR)
 
 clean:
 	rm -f Matrix.class
 	rm -f MatrixTest.class
 
-test:  Matrix.class MatrixTest.class
+test:  Matrix.class MatrixTest.class $(JUNIT_JAR) $(HAMCREST_JAR)
 	java -cp .:$(JUNIT_JAR):$(HAMCREST_JAR) org.junit.runner.JUnitCore MatrixTest
 
-
-
-
+# Add makefile targets that download the jars automatically if they
+# are not present locally.
+$(JUNIT_JAR):
+	curl $(JUNIT_URI) -o $(JUNIT_JAR) --silent --location
+$(HAMCREST_JAR):
+	curl $(HAMCREST_URI) -o $(HAMCREST_JAR) --silent --location
