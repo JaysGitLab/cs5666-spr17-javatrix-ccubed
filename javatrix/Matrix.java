@@ -4,42 +4,42 @@ public class Matrix
     final double[][] a;
 
     /**
-     * [Matrix description]
-     * @param  double[][] A             [description]
+     * [Matrix description].
+     * @param  matrixA             double[][] [description]
      * @return            [description]
      */
-    public Matrix(double[][] A)
+    public Matrix(double[][] matrixA)
     {
-	    this(A,0,0);
+	    this(matrixA,0,0);
     }
     /**
-     * [Matrix description]
-     * @param  double[][] A             [description]
-     * @param  int        m             [description]
-     * @param  int        n             [description]
+     * [Matrix description].
+     * @param  matrixA             double[][] [description]
+     * @param  m             int        [description]
+     * @param  n             int        [description]
      * @return            [description]
      */
-    public Matrix(double[][] A, int m, int n)
+    public Matrix(double[][] matrixA, int m, int n)
     {
-        int rows = A.length;
+        int rows = matrixA.length;
         m = rows < m ? rows : m;
         a = new double[m][];
-        for(int i = 0; i < m; i++)
-        {
-            double[] row = A[i];
+        for(int i=0; i<m; i++)
+	{
+            double[] row = matrixA[i];
             int rowLen = row.length;
             rowLen = rowLen < n ? rowLen : n;
             a[i] = new double[n];
-            for(int j = 0; j < rowLen; j++)
-            {
-                a[i][j] = A[i][j];
+            for(int j=0; j<rowLen; j++)
+	    {
+                a[i][j] = matrixA[i][j];
             }
         }
     }
     /**
-     * [Matrix description]
-     * @param  double[] vals          [description]
-     * @param  int      m             [description]
+     * [Matrix description].
+     * @param  vals          double[] [description]
+     * @param  m             int      [description]
      * @return          [description]
      */
     public Matrix(double[] vals, int m)
@@ -47,9 +47,9 @@ public class Matrix
 	    this(new double[0][],0,0);
     }
     /**
-     * [Matrix description]
-     * @param  int m             [description]
-     * @param  int n             [description]
+     * [Matrix description].
+     * @param  m             int [description]
+     * @param  n             int [description]
      * @return     [description]
      */
     public Matrix(int m, int n)
@@ -57,10 +57,10 @@ public class Matrix
 	    this(new double[0][],0,0);
     }
     /**
-     * [Matrix description]
-     * @param  int    m             [description]
-     * @param  int    n             [description]
-     * @param  double s             [description]
+     * [Matrix description].
+     * @param  m             int    [description]
+     * @param  n             int    [description]
+     * @param  s             double [description]
      * @return        [description]
      */
     public Matrix(int m, int n, double s)
@@ -68,61 +68,61 @@ public class Matrix
 	    this(new double[0][],0,0);
     }
     /**
-     * [arrayLeftDivide description]
-     * @param  Matrix B             [description]
+     * [arrayLeftDivide description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix arrayLeftDivide(Matrix B)
+    public Matrix arrayLeftDivide(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [arrayLeftDivideEquals description]
-     * @param  Matrix B             [description]
+     * [arrayLeftDivideEquals description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix arrayLeftDivideEquals(Matrix B)
+    public Matrix arrayLeftDivideEquals(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [arrayRightDivide description]
-     * @param  Matrix B             [description]
+     * [arrayRightDivide description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix arrayRightDivide(Matrix B)
+    public Matrix arrayRightDivide(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [arrayRightDivideEquaqals description]
-     * @param  Matrix B             [description]
+     * [arrayRightDivideEquaqals description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix arrayRightDivideEquaqals(Matrix B)
+    public Matrix arrayRightDivideEquaqals(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [arrayTimes description]
-     * @param  Matrix B             [description]
+     * [arrayTimes description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix arrayTimes(Matrix B)
+    public Matrix arrayTimes(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [arrayTimesEquals description]
-     * @param  Matrix B             [description]
+     * [arrayTimesEquals description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix arrayTimesEquals(Matrix B)
+    public Matrix arrayTimesEquals(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [clone description]
+     * [clone description].
      * @return [description]
      */
     public java.lang.Object clone()
@@ -130,16 +130,16 @@ public class Matrix
         return null;
     }
     /**
-     * [constructWithCopy description]
-     * @param  double[][] A             [description]
+     * [constructWithCopy description].
+     * @param  matrixA             double[][] [description]
      * @return            [description]
      */
-    public static Matrix constructWithCopy(double[][] A)
+    public static Matrix constructWithCopy(double[][] matrixA)
     {
         return null;
     }
     /**
-     * [copy description]
+     * [copy description].
      * @return [description]
      */
     public Matrix copy()
@@ -147,9 +147,9 @@ public class Matrix
         return null;
     }
     /**
-     * [get description]
-     * @param  int i             [description]
-     * @param  int j             [description]
+     * [get description].
+     * @param  i             int [description]
+     * @param  j             int [description]
      * @return     [description]
      */
     public double get(int i, int j)
@@ -168,7 +168,7 @@ public class Matrix
         return null;
     }
     /**
-     * [getColumnDimension description]
+     * [getColumnDimension description].
      * @return [description]
      */
     public int getColumnDimension()
@@ -183,9 +183,9 @@ public class Matrix
         return null;
     }
     /**
-     * [getMatrix description]
-     * @param  int[] r             [description]
-     * @param  int[] c             [description]
+     * [getMatrix description].
+     * @param  r             int[] [description]
+     * @param  c             int[] [description]
      * @return       [description]
      */
     public Matrix getMatrix(int[] r, int[] c)
@@ -193,10 +193,10 @@ public class Matrix
         return null;
     }
     /**
-     * [getMatrix description]
-     * @param  int[] r             [description]
-     * @param  int   j0            [description]
-     * @param  int   j1            [description]
+     * [getMatrix description].
+     * @param  r             int[] [description]
+     * @param  j0            int   [description]
+     * @param  j1            int   [description]
      * @return       [description]
      */
     public Matrix getMatrix(int[] r, int j0, int j1)
@@ -204,10 +204,10 @@ public class Matrix
         return null;
     }
     /**
-     * [getMatrix description]
-     * @param  int   i0            [description]
-     * @param  int   i1            [description]
-     * @param  int[] c             [description]
+     * [getMatrix description].
+     * @param  i0            int   [description]
+     * @param  i1            int   [description]
+     * @param  c             int[] [description]
      * @return       [description]
      */
     public Matrix getMatrix(int i0, int i1, int[] c)
@@ -215,11 +215,11 @@ public class Matrix
         return null;
     }
     /**
-     * [getMatrix description]
-     * @param  int i0            [description]
-     * @param  int i1            [description]
-     * @param  int j0            [description]
-     * @param  int j1            [description]
+     * [getMatrix description].
+     * @param  i0            int [description]
+     * @param  i1            int [description]
+     * @param  j0            int [description]
+     * @param  j1            int [description]
      * @return     [description]
      */
     public Matrix getMatrix(int i0, int i1, int j0, int j1)
@@ -227,7 +227,7 @@ public class Matrix
         return null;
     }
     /**
-     * [getRowDimension description]
+     * [getRowDimension description].
      * @return [description]
      */
     public int getRowDimension()
@@ -242,9 +242,9 @@ public class Matrix
         return null;
     }
     /**
-     * [identity description]
-     * @param  int m             [description]
-     * @param  int n             [description]
+     * [identity description].
+     * @param  m             int [description]
+     * @param  n             int [description]
      * @return     [description]
      */
     public static Matrix identity(int m, int n)
@@ -252,25 +252,25 @@ public class Matrix
         return null;
     }
     /**
-     * [minus description]
-     * @param  Matrix B             [description]
+     * [minus description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix minus(Matrix B)
+    public Matrix minus(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [minusEquals description]
-     * @param  Matrix B             [description]
+     * [minusEquals description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix minusEquals(Matrix B)
+    public Matrix minusEquals(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [norm1 description]
+     * [norm1 description].
      * @return [description]
      */
     public double norm1()
@@ -278,7 +278,7 @@ public class Matrix
         return 0;
     }
     /**
-     * [normF description]
+     * [normF description].
      * @return [description]
      */
     public double normF()
@@ -286,7 +286,7 @@ public class Matrix
         return 0;
     }
     /**
-     * [normInf description]
+     * [normInf description].
      * @return [description]
      */
     public double normInf()
@@ -294,61 +294,61 @@ public class Matrix
         return 0;
     }
     /**
-     * [plus description]
-     * @param  Matrix B             [description]
+     * [plus description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix plus(Matrix B)
+    public Matrix plus(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [plusEquals description]
-     * @param  Matrix B             [description]
+     * [plusEquals description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix plusEquals(Matrix B)
+    public Matrix plusEquals(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [print description]
-     * @param int w [description]
-     * @param int d [description]
+     * [print description].
+     * @param w int [description]
+     * @param d int [description]
      */
     public void print(int w, int d)
     {
     }
     /**
-     * [print description]
-     * @param java.text.NumberFormat format [description]
-     * @param int                    width  [description]
+     * [print description].
+     * @param format java.text.NumberFormat [description]
+     * @param width  int                    [description]
      */
     void print(java.text.NumberFormat format, int width)
     {
     }
     /**
-     * [print description]
-     * @param java.io.PrintWriter output [description]
-     * @param int                 w      [description]
-     * @param int                 d      [description]
+     * [print description].
+     * @param output java.io.PrintWriter [description]
+     * @param w      int                 [description]
+     * @param d      int                 [description]
      */
     void print(java.io.PrintWriter output, int w, int d)
     {
     }
     /**
-     * [print description]
-     * @param java.io.PrintWriter    output [description]
-     * @param java.text.NumberFormat format [description]
-     * @param int                    width  [description]
+     * [print description].
+     * @param output java.io.PrintWriter    [description]
+     * @param format java.text.NumberFormat [description]
+     * @param width  int                    [description]
      */
     void print(java.io.PrintWriter output, java.text.NumberFormat format, int width)
     {
     }
     /**
-     * [random description]
-     * @param  int m             [description]
-     * @param  int n             [description]
+     * [random description].
+     * @param  m             int [description]
+     * @param  n             int [description]
      * @return     [description]
      */
     public static Matrix random(int m, int n)
@@ -356,8 +356,8 @@ public class Matrix
         return null;
     }
     /**
-     * [read description]
-     * @param  java.io.BufferedReader input         [description]
+     * [read description].
+     * @param  input         java.io.BufferedReader [description]
      * @return                        [description]
      */
     public static Matrix read(java.io.BufferedReader input)
@@ -365,57 +365,57 @@ public class Matrix
         return null;
     }
     /**
-     * [set description]
-     * @param int    i [description]
-     * @param int    j [description]
-     * @param double s [description]
+     * [set description].
+     * @param i int    [description]
+     * @param j int    [description]
+     * @param s double [description]
      */
     public void set(int i, int j, double s)
     {
     }
     /**
-     * [setMatrix description]
-     * @param int[]  r [description]
-     * @param int[]  c [description]
-     * @param Matrix X [description]
+     * [setMatrix description].
+     * @param r int[]  [description]
+     * @param c int[]  [description]
+     * @param matrixX Matrix [description]
      */
-    public void setMatrix(int[] r, int[] c, Matrix X)
+    public void setMatrix(int[] r, int[] c, Matrix matrixX)
     {
     }
     /**
-     * [setMatrix description]
-     * @param int[]  r  [description]
-     * @param int    j0 [description]
-     * @param int    j1 [description]
-     * @param Matrix X  [description]
+     * [setMatrix description].
+     * @param r  int[]  [description]
+     * @param j0 int    [description]
+     * @param j1 int    [description]
+     * @param matrixX  Matrix [description]
      */
-    public void setMatrix(int[] r, int j0, int j1, Matrix X)
+    public void setMatrix(int[] r, int j0, int j1, Matrix matrixX)
     {
     }
     /**
-     * [setMatrix description]
-     * @param int    i0 [description]
-     * @param int    i1 [description]
-     * @param int[]  c  [description]
-     * @param Matrix X  [description]
+     * [setMatrix description].
+     * @param i0 int    [description]
+     * @param i1 int    [description]
+     * @param c  int[]  [description]
+     * @param matrixX  Matrix [description]
      */
-    public void setMatrix(int i0, int i1, int[] c, Matrix X)
+    public void setMatrix(int i0, int i1, int[] c, Matrix matrixX)
     {
     }
     /**
-     * [setMatrix description]
-     * @param int    i0 [description]
-     * @param int    i1 [description]
-     * @param int    j0 [description]
-     * @param int    j1 [description]
-     * @param Matrix X  [description]
+     * [setMatrix description].
+     * @param i0 int    [description]
+     * @param i1 int    [description]
+     * @param j0 int    [description]
+     * @param j1 int    [description]
+     * @param matrixX  Matrix [description]
      */
-    public void setMatrix(int i0, int i1, int j0, int j1, Matrix X)
+    public void setMatrix(int i0, int i1, int j0, int j1, Matrix matrixX)
     {
     }
     /**
-     * [times description]
-     * @param  double s             [description]
+     * [times description].
+     * @param  s             double [description]
      * @return        [description]
      */
     public Matrix times(double s)
@@ -423,17 +423,17 @@ public class Matrix
         return null;
     }
     /**
-     * [times description]
-     * @param  Matrix B             [description]
+     * [times description].
+     * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix times(Matrix B)
+    public Matrix times(Matrix matrixB)
     {
         return null;
     }
     /**
-     * [timesEquals description]
-     * @param  double s             [description]
+     * [timesEquals description].
+     * @param  s             double [description]
      * @return        [description]
      */
     public Matrix timesEquals(double s)
@@ -441,7 +441,7 @@ public class Matrix
         return null;
     }
     /**
-     * [trace description]
+     * [trace description].
      * @return [description]
      */
     public double trace()
@@ -449,7 +449,7 @@ public class Matrix
         return 0;
     }
     /**
-     * [transpose description]
+     * [transpose description].
      * @return [description]
      */
     public Matrix transpose()
@@ -457,7 +457,7 @@ public class Matrix
         return null;
     }
     /**
-     * [uminus description]
+     * [uminus description].
      * @return [description]
      */
     public Matrix uminus()
