@@ -1,4 +1,10 @@
 package javatrix;
+/**
+ * Matrix.java
+ * Implementation of methods specified in the Matrix API.
+ * @author Chris Campell, Chris Waldon, Clint Hall
+ * @version 2/7/2017
+**/
 public class Matrix
 {
     final double[][] a;
@@ -54,7 +60,8 @@ public class Matrix
      */
     public Matrix(int m, int n)
     {
-	    this(new double[0][],0,0);
+        double[][] matrix = new double[m][n]; 
+        this.a = matrix; 
     }
     /**
      * [Matrix description].

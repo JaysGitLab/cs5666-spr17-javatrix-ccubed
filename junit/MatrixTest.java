@@ -79,10 +79,10 @@ public class MatrixTest{
         int m = 5;
         //initialize n (num cols).
         int n = 6;
-        int[][] correctMatrix = {{0,0,0,0,0,0},{0,0,0,0,0,0},
-            {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
+        double[][] correctMatrix = {{0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0},
+            {0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0}};
         Matrix matrix = new Matrix(m,n);
-        assertEquals(matrix, correctMatrix);
+        assertEquals(matrix.getArray(), correctMatrix);
     }
 
     //Matrix(int m, int n, double s){}
