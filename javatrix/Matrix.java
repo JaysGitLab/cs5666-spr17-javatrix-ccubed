@@ -53,15 +53,15 @@ public class Matrix
 	    this(new double[0][],0,0);
     }
     /**
-     * [Matrix description].
-     * @param  m             int [description]
-     * @param  n             int [description]
-     * @return     [description]
+     * Matrix -Constructor for objects of type Matrix.
+     * @param m -The number of desired rows for the matrix. 
+     * @param n -The number of desired columns for the matrix.
+     * @return void -Upon completion; a matrix with the specified dimensions will be
+     *  initialized and filled with zeros.
      */
     public Matrix(int m, int n)
     {
-        double[][] matrix = new double[m][n]; 
-        this.a = matrix; 
+        this.a = new double[m][n]; 
     }
     /**
      * [Matrix description].

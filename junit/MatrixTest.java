@@ -75,6 +75,7 @@ public class MatrixTest{
     **/
     @Test
     public void testMatrixConstructor3() {
+        //TODO: Test matrix initalization with negative numbers and zero.
         //initialize m (num rows).
         int m = 5;
         //initialize n (num cols).
