@@ -7,6 +7,8 @@ public class MatrixTest{
     //Matrix(double[][] A){}
 
     //Matrix(double[][] A, int m, int n){}
+    // when constructor is passed an m x n matrix, 
+    // getArray should return an array equal to it.
     @Test
     public void baseCtorSameLength(){
 	double[][] array = {
@@ -19,6 +21,7 @@ public class MatrixTest{
         assertEquals(array, array2);
 
     }
+    // Underlying array should not be same object as array past to constructor
     @Test
     public void baseCtorNotSameObj(){
 	double[][] array = {
@@ -30,6 +33,7 @@ public class MatrixTest{
 	double[][] array2 = m.getArray();
         assertNotSame(array, array2);
     }
+    // constructor should make m x n  array even if some rows are longer
     @Test
     public void tooLong(){
         double[][] array = {
@@ -46,6 +50,7 @@ public class MatrixTest{
         };
         assertEquals(array2, m.getArray());
     }
+    // rows less than n long should be padded with 0 on right
     @Test
     public void tooShort(){
         double[][] array = {
@@ -55,7 +60,6 @@ public class MatrixTest{
         };
         Matrix m = new Matrix(array, 3, 3);
         
-        //TODO is this what we want to happen when a row is too short?
         double[][] array2 = {
             {1,2,3},
             {4,5,0},
