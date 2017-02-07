@@ -1,3 +1,9 @@
+/**
+ * @author Chris Campell
+ * @author Chris Waldon
+ * @author Clint Hall
+ * @version 0.1
+ */
 public class Matrix
 {
     final double[][] a;
@@ -5,32 +11,30 @@ public class Matrix
     /**
      * [Matrix description].
      * @param  matrixA             double[][] [description]
-     * @return            [description]
      */
     public Matrix(double[][] matrixA)
     {
-	    this(matrixA,0,0);
+        this(matrixA, 0, 0);
     }
     /**
      * [Matrix description].
      * @param  matrixA             double[][] [description]
      * @param  m             int        [description]
      * @param  n             int        [description]
-     * @return            [description]
      */
     public Matrix(double[][] matrixA, int m, int n)
     {
         int rows = matrixA.length;
         m = rows < m ? rows : m;
         a = new double[m][];
-        for(int i=0; i<m; i++)
-	{
+        for (int i = 0; i < m; i++)
+        {
             double[] row = matrixA[i];
             int rowLen = row.length;
             rowLen = rowLen < n ? rowLen : n;
             a[i] = new double[n];
-            for(int j=0; j<rowLen; j++)
-	    {
+            for (int j = 0; j < rowLen; j++)
+            {
                 a[i][j] = matrixA[i][j];
             }
         }
@@ -39,32 +43,29 @@ public class Matrix
      * [Matrix description].
      * @param  vals          double[] [description]
      * @param  m             int      [description]
-     * @return          [description]
      */
     public Matrix(double[] vals, int m)
     {
-	    this(new double[0][],0,0);
+        this(new double[0][], 0, 0);
     }
     /**
      * [Matrix description].
      * @param  m             int [description]
      * @param  n             int [description]
-     * @return     [description]
      */
     public Matrix(int m, int n)
     {
-	    this(new double[0][],0,0);
+        this(new double[0][], 0, 0);
     }
     /**
      * [Matrix description].
      * @param  m             int    [description]
      * @param  n             int    [description]
      * @param  s             double [description]
-     * @return        [description]
      */
     public Matrix(int m, int n, double s)
     {
-	    this(new double[0][],0,0);
+        this(new double[0][], 0, 0);
     }
     /**
      * [arrayLeftDivide description].
@@ -156,12 +157,15 @@ public class Matrix
         return 0;
     }
     /**
-     *
+     * @return    [description]
      */
     public double[][] getArray()
     {
         return a;
     }
+    /**
+     * @return    [description]
+     */
     public double[][] getArrayCopy()
     {
         return null;
@@ -175,7 +179,7 @@ public class Matrix
         return 0;
     }
     /**
-     *
+     * @return [description]
      */
     public double[] getColumnPackedCopy()
     {
@@ -234,7 +238,7 @@ public class Matrix
         return 0;
     }
     /**
-     *
+     * @return description
      */
     public double[] getRowPackedCopy()
     {
@@ -341,7 +345,8 @@ public class Matrix
      * @param format java.text.NumberFormat [description]
      * @param width  int                    [description]
      */
-    void print(java.io.PrintWriter output, java.text.NumberFormat format, int width)
+    void print(java.io.PrintWriter output, 
+            java.text.NumberFormat format, int width)
     {
     }
     /**
