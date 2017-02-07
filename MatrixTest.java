@@ -30,6 +30,39 @@ public class MatrixTest{
 	double[][] array2 = m.getArray();
         assertNotSame(array, array2);
     }
+    @Test
+    public void tooLong(){
+        double[][] array = {
+            {1,2,3},
+            {4,5,6, 6.5},
+            {7,8,9}
+        };
+        Matrix m = new Matrix(array, 3, 3);
+
+        double[][] array2 = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+        assertEquals(array2, m.getArray());
+    }
+    @Test
+    public void tooShort(){
+        double[][] array = {
+            {1,2,3},
+            {4,5,},
+            {7,8,9}
+        };
+        Matrix m = new Matrix(array, 3, 3);
+        
+        //TODO is this what we want to happen when a row is too short?
+        double[][] array2 = {
+            {1,2,3},
+            {4,5,0},
+            {7,8,9}
+        };
+        assertEquals(array2, m.getArray());
+    }
     //Matrix(double[] vals, int m){}
 
     //Matrix(int m, int n){}
