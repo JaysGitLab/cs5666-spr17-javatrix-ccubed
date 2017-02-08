@@ -35,7 +35,7 @@ default:
 compile: javatrix/Matrix.class junit/MatrixTest.class
 	@echo "compiled"
 	
-MatrixTest.class: $(JUNIT_LOCAL)
+junit/MatrixTest.class: $(JUNIT_LOCAL)
 
 style:
 	checkstyle -c $(STYLE_XML) junit/MatrixTest.java javatrix/Matrix.java
@@ -47,9 +47,11 @@ clean:
 test:  javatrix/Matrix.class junit/MatrixTest.class $(JUNIT_LOCAL) $(HAMCREST_LOCAL)
 	java -cp .:$(JUNIT_LOCAL):$(HAMCREST_LOCAL) org.junit.runner.JUnitCore junit.MatrixTest
 
+jars:
+	mkdir jars
 # Add makefile targets that download the jars automatically if they
 # are not present locally.
-$(JUNIT_LOCAL):
+$(JUNIT_LOCAL): jars
 	curl $(JUNIT_URI) -o $(JUNIT_LOCAL) --silent --location
-$(HAMCREST_LOCAL):
+$(HAMCREST_LOCAL): jars
 	curl $(HAMCREST_URI) -o $(HAMCREST_LOCAL) --silent --location
