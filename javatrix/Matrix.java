@@ -1,12 +1,10 @@
 package javatrix;
 /**
- * Matrix.java
- * Implementation of methods specified in the Matrix API.
  * @author Chris Campell
  * @author Chris Waldon
  * @author Clint Hall
- * @version 2/7/2017
-**/
+ * @version 0.1
+ */
 public class Matrix
 {
     final double[][] a;
@@ -22,22 +20,30 @@ public class Matrix
     /**
      * [Matrix description].
      * @param  matrixA             double[][] [description]
-     * @param  m             int        [description]
-     * @param  n             int        [description]
+     */
+    public Matrix(double[][] matrixA)
+    {
+        this(matrixA, 0, 0);
+    }
+    /**
+     * Construct a matrix quickly without checking arguments.
+     * @param  matrixA                  Two-dimensional array of doubles. 
+     * @param  m                        Number of rows
+     * @param  n                        Number of columns
      */
     public Matrix(double[][] matrixA, int m, int n)
     {
-        int rows = matrixA.length;
-        m = rows < m ? rows : m;
         a = new double[m][];
-        for (int i = 0; i < m; i++)
+        int rowCt = matrixA.length;
+        rowCt = rowCt < m ? rowCt : m;
+        for (int i = 0; i < rowCt; i++)
         {
             double[] row = matrixA[i];
-            int rowLen = row.length;
-            rowLen = rowLen < n ? rowLen : n;
+            int colCt = row.length;
+            colCt = colCt < n ? colCt : n;
             a[i] = new double[n];
-            for (int j = 0; j < rowLen; j++)
-	    {
+            for (int j = 0; j < colCt; j++)
+            {
                 a[i][j] = matrixA[i][j];
             }
         }
@@ -76,7 +82,7 @@ public class Matrix
      */
     public Matrix(int m, int n, double s)
     {
-	    this(new double[0][], 0, 0);
+        this(new double[0][], 0, 0);
     }
     /**
      * [arrayLeftDivide description].
@@ -168,9 +174,8 @@ public class Matrix
         return 0;
     }
     /**
-     * getArray -Getter method returns the "Matrix".
-     * @return a -The Matrix representation.
-     *
+     * Access the internal two-dimensional array.
+     * @return   Pointer to the two-dimensional array of matrix elements. 
      */
     public double[][] getArray()
     {
@@ -362,7 +367,7 @@ public class Matrix
      * @param width  int                    [description]
      */
     void print(java.io.PrintWriter output, 
-        java.text.NumberFormat format, int width)
+            java.text.NumberFormat format, int width)
     {
     }
     /**
