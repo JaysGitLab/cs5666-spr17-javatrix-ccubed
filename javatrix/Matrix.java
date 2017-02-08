@@ -18,14 +18,6 @@ public class Matrix
 	    this(matrixA, 0, 0);
     }
     /**
-     * [Matrix description].
-     * @param  matrixA             double[][] [description]
-     */
-    public Matrix(double[][] matrixA)
-    {
-        this(matrixA, 0, 0);
-    }
-    /**
      * Construct a matrix quickly without checking arguments.
      * @param  matrixA                  Two-dimensional array of doubles. 
      * @param  m                        Number of rows
