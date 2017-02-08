@@ -1,0 +1,11 @@
+language: java
+addons:
+    apt:
+        packages:
+        - make
+        - curl
+install: true
+script:
+- make clean
+- make test
+
