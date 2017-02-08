@@ -3,6 +3,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 import javatrix.Matrix;
+import java.lang.IllegalArgumentException;
 
 public class MatrixTest{
     //Matrix(double[][] A){}
@@ -69,9 +70,43 @@ public class MatrixTest{
         assertEquals(array2, m.getArray());
     }
     //Matrix(double[] vals, int m){}
-
-    //Matrix(int m, int n){}
-
+    
+    /**
+     * testMatrixConstructor3a -Tests the third matrix constructor with valid parameters as specified in issue #7.
+    **/
+    @Test
+    public void testMatrixConstructor3a() {
+        //initialize m (num rows).
+        int m = 5;
+        //initialize n (num cols).
+        int n = 6;
+        double[][] correctMatrix = {{0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0},
+            {0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0}};
+        Matrix matrix = new Matrix(m,n);
+        assertEquals(matrix.getArray(), correctMatrix);
+    }
+    /**
+     * testMatrixConstructor3b -Tests the third matrix constructor with illegal arguments as specified in issue #7.
+    **/
+    @Test(expected=IllegalArgumentException.class)
+    public void testMatrixConstructor3b() {
+        //intialize m (num rows).
+        int m = 0;
+        //intialize n (num cols).
+        int n = 5;
+        Matrix matrix = new Matrix(m,n);
+    }
+    /**
+     * testMatrixConstructor3c -Tests the third matrix constructor with illegal arguments as specified in issue #7.
+    **/
+    @Test(expected=IllegalArgumentException.class)
+    public void testMatrixConstructor3c() {
+        //intialize m (num rows).
+        int m = -3;
+        //intialize n (num cols).
+        int n = -5;
+        Matrix matrix = new Matrix(m,n);
+    }        
     //Matrix(int m, int n, double s){}
 
     //Matrix arrayLeftDivide(Matrix B){return null;}

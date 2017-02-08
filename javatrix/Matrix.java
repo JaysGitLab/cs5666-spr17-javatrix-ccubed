@@ -10,6 +10,14 @@ public class Matrix
     final double[][] a;
 
     /**
+     * Matrix -Constructs a matrix from the provided 2dArray.
+     * @param matrixA -The provided 2d array.
+     */
+    public Matrix(double[][] matrixA)
+    {
+	    this(matrixA, 0, 0);
+    }
+    /**
      * [Matrix description].
      * @param  matrixA             double[][] [description]
      */
@@ -47,16 +55,24 @@ public class Matrix
      */
     public Matrix(double[] vals, int m)
     {
-        this(new double[0][], 0, 0);
+	    this(new double[0][], 0, 0);
     }
     /**
-     * [Matrix description].
-     * @param  m             int [description]
-     * @param  n             int [description]
+     * Matrix -Constructor for objects of type Matrix.
+     * @param m -The number of desired rows for the matrix. 
+     * @param n -The number of desired columns for the matrix.
+     * @throws IllegalArgumentException -If m or n is 0 or negative.
      */
-    public Matrix(int m, int n)
+    public Matrix(int m, int n) throws IllegalArgumentException
     {
-        this(new double[0][], 0, 0);
+        if (m <= 0 || n <= 0) 
+        {
+            throw new IllegalArgumentException();
+        } 
+        else 
+        {
+            this.a = new double[m][n]; 
+        }
     }
     /**
      * [Matrix description].
@@ -166,7 +182,8 @@ public class Matrix
         return a;
     }
     /**
-     * @return    [description]
+     * getArrayCopy -TODO: methdod descriptor.
+     * @return null -TODO: return type descriptor.
      */
     public double[][] getArrayCopy()
     {
@@ -181,7 +198,8 @@ public class Matrix
         return 0;
     }
     /**
-     * @return [description]
+     * getColumnPackedCopy -TODO: method descriptor.
+     * @return null -TODO: return type descriptor.
      */
     public double[] getColumnPackedCopy()
     {
@@ -240,7 +258,8 @@ public class Matrix
         return 0;
     }
     /**
-     * @return description
+     * getRowPackedCopy -TODO: Method descriptor.
+     * @return -TODO: Return type descriptor.
      */
     public double[] getRowPackedCopy()
     {
