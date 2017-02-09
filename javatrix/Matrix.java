@@ -22,7 +22,7 @@ public class Matrix
             if(i > 0 && matrixA[i].length != colCt){
                 throw new IllegalArgumentException();
             }
-            colCt = matrixA.length;
+            colCt = matrixA[i].length;
             a[i] = new double[colCt];
             for(int j = 0; j < colCt; j++){
                 a[i][j] = matrixA[i][j];

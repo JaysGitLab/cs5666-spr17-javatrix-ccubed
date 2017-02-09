@@ -15,8 +15,7 @@ public class MatrixTest{
     public void testMatrixConstructor1a(){
         double[][] array = {
             {1,2,3},
-            {4,5,6},
-            {7,8,9}
+            {4,5,6}
         };
         Matrix m = new Matrix(array);
         double[][] array2 = m.getArray();
@@ -29,8 +28,7 @@ public class MatrixTest{
     public void testMatrixContructor1b(){
         double[][] array = {
             {1,2,3},
-            {4,5,6},
-            {7,8,9}
+            {4,5,6}
         };
         Matrix m = new Matrix(array);
         double[][] array2 = m.getArray();
@@ -44,8 +42,7 @@ public class MatrixTest{
     public void testMatrixConstructor1c(){
         double[][] array = {
             {1,2,3},
-            {4,5,6, 6.5},
-            {7,8,9}
+            {4,5,6,7}
         };
         Matrix m = new Matrix(array);
     }
@@ -57,8 +54,7 @@ public class MatrixTest{
     public void testMatrixConstructor1d(){
         double[][] array = {
             {1,2,3},
-            {4,5},
-            {7,8,9}
+            {4,5}
         };
         Matrix m = new Matrix(array);
     }
