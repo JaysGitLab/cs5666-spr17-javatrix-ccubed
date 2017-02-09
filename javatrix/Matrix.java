@@ -18,13 +18,16 @@ public class Matrix
         int rowCt = matrixA.length;
         int colCt = 0;
         a = new double[rowCt][];
-        for(int i = 0; i < rowCt; i++){
-            if(i > 0 && matrixA[i].length != colCt){
+        for (int i = 0; i < rowCt; i++)
+        {
+            if (i > 0 && matrixA[i].length != colCt)
+            {
                 throw new IllegalArgumentException();
             }
             colCt = matrixA[i].length;
             a[i] = new double[colCt];
-            for(int j = 0; j < colCt; j++){
+            for (int j = 0; j < colCt; j++)
+            {
                 a[i][j] = matrixA[i][j];
             }
         }
@@ -43,7 +46,8 @@ public class Matrix
         for (int i = 0; i < m; i++)
         {
             a[i] = new double[n];
-            if(matrixA.length > i){
+            if (matrixA.length > i)
+            {
                 double[] row = matrixA[i];
                 int colCt = row.length;
                 colCt = colCt < n ? colCt : n;
@@ -89,7 +93,7 @@ public class Matrix
      */
     public Matrix(int m, int n, double s) throws IllegalArgumentException
     {
-        this(m,n);
+        this(m, n);
         for (int i = 0; i < m; i++)
         {
             for (int k = 0; k < n; k++)

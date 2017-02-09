@@ -3,32 +3,37 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 import javatrix.Matrix;
-import java.lang.IllegalArgumentException;
 
-public class MatrixTest{
+public class MatrixTest
+{
     //Matrix(double[][] A){}
     /**
      * when constructor is passed an m x n matrix, 
      * getArray should return an array equal to it.
      */
     @Test
-    public void testMatrixConstructor1a(){
+    public void testMatrixConstructor1a()
+
+    {
         double[][] array = {
-            {1,2,3},
-            {4,5,6}
+            {1, 2, 3},
+            {4, 5, 6}
         };
         Matrix m = new Matrix(array);
         double[][] array2 = m.getArray();
         assertEquals(array, array2);
     }
     /**
-     *  Underlying array should not be same object as array past to constructor
+     *  Underlying array should not be
+     *  same object as array past to constructor.
      */
     @Test
-    public void testMatrixContructor1b(){
+    public void testMatrixContructor1b()
+
+    {
         double[][] array = {
-            {1,2,3},
-            {4,5,6}
+            {1, 2, 3},
+            {4, 5, 6}
         };
         Matrix m = new Matrix(array);
         double[][] array2 = m.getArray();
@@ -38,11 +43,12 @@ public class MatrixTest{
      * Constructor should throw java.lang.IllegalArgumentException if 
      * rows get longer. 
      */
-    @Test(expected=IllegalArgumentException.class)
-    public void testMatrixConstructor1c(){
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor1c()
+    {
         double[][] array = {
-            {1,2,3},
-            {4,5,6,7}
+            {1, 2, 3},
+            {4, 5, 6, 7}
         };
         Matrix m = new Matrix(array);
     }
@@ -50,11 +56,12 @@ public class MatrixTest{
      * Constructor should throw java.lang.IllegalArgumentException if 
      * rows get shorter.
      */
-    @Test(expected=IllegalArgumentException.class)
-    public void testMatrixConstructor1d(){
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor1d()
+    {
         double[][] array = {
-            {1,2,3},
-            {4,5}
+            {1, 2, 3},
+            {4, 5}
         };
         Matrix m = new Matrix(array);
     }
@@ -64,10 +71,11 @@ public class MatrixTest{
      * getArray should return an array equal to it.
      */
     @Test
-    public void baseCtorSameLength(){
+    public void baseCtorSameLength()
+    {
 	double[][] array = {
-		{1,2,3},
-		{4,5,6}
+            {1, 2, 3},
+            {4, 5, 6}
 	};
 	Matrix m = new Matrix(array, 2, 3);
 	double[][] array2 = m.getArray();
@@ -78,10 +86,11 @@ public class MatrixTest{
      *  Underlying array should not be same object as array past to constructor
      */
     @Test
-    public void baseCtorNotSameObj(){
+    public void baseCtorNotSameObj()
+    {
 	double[][] array = {
-		{1,2,3},
-		{4,5,6}
+    	    {1, 2, 3},
+    	    {4, 5, 6}
 	};
 	Matrix m = new Matrix(array, 2, 3);
 	double[][] array2 = m.getArray();
@@ -91,16 +100,17 @@ public class MatrixTest{
      *  constructor should make m x n  array even if some rows are longer
      */
     @Test
-    public void tooLong(){
+    public void tooLong()
+    {
         double[][] array = {
-            {1,2,3},
-            {4,5,6, 6.5}
+            {1, 2, 3},
+            {4, 5, 6, 6.5}
         };
         Matrix m = new Matrix(array, 2, 3);
 
         double[][] array2 = {
-            {1,2,3},
-            {4,5,6}
+            {1, 2, 3},
+            {4, 5, 6}
         };
         assertEquals(array2, m.getArray());
     }
@@ -108,16 +118,17 @@ public class MatrixTest{
      *  rows less than n long should be padded with 0 on right
      */
     @Test
-    public void tooShort(){
+    public void tooShort()
+    {
         double[][] array = {
-            {1,2,3},
-            {4,5}
+            {1, 2, 3},
+            {4, 5}
         };
         Matrix m = new Matrix(array, 2, 3);
         
         double[][] array2 = {
-            {1,2,3},
-            {4,5,0}
+            {1, 2, 3},
+            {4, 5, 0}
         };
         assertEquals(array2, m.getArray());
     }
@@ -125,56 +136,61 @@ public class MatrixTest{
      * Matrix should be m x n even if provided array is smaller
      */
     @Test
-    public void tooSmall(){
+    public void tooSmall()
+    {
         double[][] array = {
-            {1,2,3},
-            {4,5,6}
+            {1, 2, 3},
+            {4, 5, 6}
         };
-        Matrix m = new Matrix(array,3,4);
-        double[][] array2={
-            {1,2,3,0},
-            {4,5,6,0},
-            {0,0,0,0}
+        Matrix m = new Matrix(array, 3, 4);
+        double[][] array2 = {
+            {1, 2, 3, 0},
+            {4, 5, 6, 0},
+            {0, 0, 0, 0}
         };
         assertEquals(array2, m.getArray());
     }
     //Matrix(double[] vals, int m){}
     
     /**
-     * testMatrixConstructor3a -Tests the third matrix constructor with valid parameters as specified in issue #7.
+     * testMatrixConstructor3a -Tests the third matrix constructor
+     * with valid parameters as specified in issue #7.
     **/
     @Test
-    public void testMatrixConstructor3a() {
+    public void testMatrixConstructor3a()
+    {
         //initialize m (num rows).
         int m = 5;
         //initialize n (num cols).
         int n = 6;
-        double[][] correctMatrix = {{0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0},
-            {0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0,0.0,0.0}};
-        Matrix matrix = new Matrix(m,n);
+        double[][] correctMatrix = {{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}};
+        Matrix matrix = new Matrix(m, n);
         assertEquals(matrix.getArray(), correctMatrix);
     }
     /**
      * testMatrixConstructor3b -Tests the third matrix constructor with illegal arguments as specified in issue #7.
     **/
-    @Test(expected=IllegalArgumentException.class)
-    public void testMatrixConstructor3b() {
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor3b()
+    {
         //intialize m (num rows).
         int m = 0;
         //intialize n (num cols).
         int n = 5;
-        Matrix matrix = new Matrix(m,n);
+        Matrix matrix = new Matrix(m, n);
     }
     /**
      * testMatrixConstructor3c -Tests the third matrix constructor with illegal arguments as specified in issue #7.
     **/
-    @Test(expected=IllegalArgumentException.class)
-    public void testMatrixConstructor3c() {
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor3c()
+    {
         //intialize m (num rows).
         int m = -3;
         //intialize n (num cols).
         int n = -5;
-        Matrix matrix = new Matrix(m,n);
+        Matrix matrix = new Matrix(m, n);
     }        
     //Matrix(int m, int n, double s){}
     /**
@@ -183,6 +199,7 @@ public class MatrixTest{
     */
     @Test
     public void testCtorFillWithConst()
+
     {
         double fill = 3.14;
         int rows = 3;
@@ -203,8 +220,9 @@ public class MatrixTest{
     testCtorFillWithConst tests the Matrix constructor that fills a
     matrix of m by n with constant s.
     */
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testCtorFillWithConsta()
+
     {
         double fill = 3.14;
         int rows = 0;
@@ -215,8 +233,9 @@ public class MatrixTest{
     testCtorFillWithConst tests the Matrix constructor that fills a
     matrix of m by n with constant s.
     */
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testCtorFillWithConstb()
+
     {
         double fill = 3.14;
         int rows = 3;
