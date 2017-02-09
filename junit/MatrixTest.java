@@ -121,6 +121,23 @@ public class MatrixTest{
         };
         assertEquals(array2, m.getArray());
     }
+    /*
+     * Matrix should be m x n even if provided array is smaller
+     */
+    @Test
+    public void tooSmall(){
+        double[][] array = {
+            {1,2,3},
+            {4,5,6}
+        };
+        Matrix m = new Matrix(array,3,4);
+        double[][] array2={
+            {1,2,3,0},
+            {4,5,6,0},
+            {0,0,0,0}
+        };
+        assertEquals(array2, m.getArray());
+    }
     //Matrix(double[] vals, int m){}
     
     /**
