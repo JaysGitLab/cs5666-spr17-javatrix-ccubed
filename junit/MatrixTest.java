@@ -112,13 +112,14 @@ public class MatrixTest{
     testCtorFillWithConst tests the Matrix constructor that fills a
     matrix of m by n with constant s.
     */
+    @Test
     public void testCtorFillWithConst()
     {
         double fill = 3.14;
         int rows = 3;
         int cols = 2;
         Matrix matrixA = new Matrix(rows, cols, fill);
-        arrA = matrixA.getArray();
+        double[][] arrA = matrixA.getArray();
         assertEquals(arrA.length, rows);
         assertEquals(arrA[0].length, cols);
         for (int i = 0; i < arrA.length; i++)
