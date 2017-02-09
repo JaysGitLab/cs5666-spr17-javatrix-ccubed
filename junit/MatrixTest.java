@@ -59,63 +59,65 @@ public class MatrixTest{
         Matrix m = new Matrix(array);
     }
     //Matrix(double[][] A, int m, int n){}
-    // when constructor is passed an m x n matrix, 
-    // getArray should return an array equal to it.
+    /*
+     * when constructor is passed an m x n matrix, 
+     * getArray should return an array equal to it.
+     */
     @Test
     public void baseCtorSameLength(){
 	double[][] array = {
 		{1,2,3},
-		{4,5,6},
-		{7,8,9}
+		{4,5,6}
 	};
-	Matrix m = new Matrix(array, 3, 3);
+	Matrix m = new Matrix(array, 3, 2);
 	double[][] array2 = m.getArray();
         assertEquals(array, array2);
 
     }
-    // Underlying array should not be same object as array past to constructor
+    /*
+     *  Underlying array should not be same object as array past to constructor
+     */
     @Test
     public void baseCtorNotSameObj(){
 	double[][] array = {
 		{1,2,3},
-		{4,5,6},
-		{7,8,9}
+		{4,5,6}
 	};
-	Matrix m = new Matrix(array, 3, 3);
+	Matrix m = new Matrix(array, 3, 2);
 	double[][] array2 = m.getArray();
         assertNotSame(array, array2);
     }
-    // constructor should make m x n  array even if some rows are longer
+    /*
+     *  constructor should make m x n  array even if some rows are longer
+     */
     @Test
     public void tooLong(){
         double[][] array = {
             {1,2,3},
-            {4,5,6, 6.5},
-            {7,8,9}
+            {4,5,6, 6.5}
         };
-        Matrix m = new Matrix(array, 3, 3);
+        Matrix m = new Matrix(array, 3, 2);
 
         double[][] array2 = {
             {1,2,3},
-            {4,5,6},
-            {7,8,9}
+            {4,5,6}
         };
         assertEquals(array2, m.getArray());
     }
-    // rows less than n long should be padded with 0 on right
+    /*
+     *  rows less than n long should be padded with 0 on right
+     */
     @Test
     public void tooShort(){
         double[][] array = {
             {1,2,3},
-            {4,5,},
-            {7,8,9}
+            {4,5}
         };
-        Matrix m = new Matrix(array, 3, 3);
+        Matrix m = new Matrix(array, 3, 2);
         
         double[][] array2 = {
             {1,2,3},
-            {4,5,0},
-            {7,8,9}
+            {4,5,0}
         };
         assertEquals(array2, m.getArray());
     }
