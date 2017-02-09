@@ -130,6 +130,30 @@ public class MatrixTest{
             }
         }
     }
+    /**
+    testCtorFillWithConst tests the Matrix constructor that fills a
+    matrix of m by n with constant s.
+    */
+    @Test(expected=IllegalArgumentException.class)
+    public void testCtorFillWithConsta()
+    {
+        double fill = 3.14;
+        int rows = 0;
+        int cols = 1;
+        Matrix matrixA = new Matrix(rows, cols, fill);
+   }
+   /**
+    testCtorFillWithConst tests the Matrix constructor that fills a
+    matrix of m by n with constant s.
+    */
+    @Test(expected=IllegalArgumentException.class)
+    public void testCtorFillWithConstb()
+    {
+        double fill = 3.14;
+        int rows = 3;
+        int cols = -1;
+        Matrix matrixA = new Matrix(rows, cols, fill);
+   }
     //Matrix arrayLeftDivide(Matrix B){return null;}
 
     //Matrix arrayLeftDivideEquals(Matrix B){return null;}
