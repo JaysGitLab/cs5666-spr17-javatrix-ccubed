@@ -69,7 +69,7 @@ public class MatrixTest{
 		{1,2,3},
 		{4,5,6}
 	};
-	Matrix m = new Matrix(array, 3, 2);
+	Matrix m = new Matrix(array, 2, 3);
 	double[][] array2 = m.getArray();
         assertEquals(array, array2);
 
@@ -83,7 +83,7 @@ public class MatrixTest{
 		{1,2,3},
 		{4,5,6}
 	};
-	Matrix m = new Matrix(array, 3, 2);
+	Matrix m = new Matrix(array, 2, 3);
 	double[][] array2 = m.getArray();
         assertNotSame(array, array2);
     }
@@ -96,7 +96,7 @@ public class MatrixTest{
             {1,2,3},
             {4,5,6, 6.5}
         };
-        Matrix m = new Matrix(array, 3, 2);
+        Matrix m = new Matrix(array, 2, 3);
 
         double[][] array2 = {
             {1,2,3},
@@ -113,7 +113,7 @@ public class MatrixTest{
             {1,2,3},
             {4,5}
         };
-        Matrix m = new Matrix(array, 3, 2);
+        Matrix m = new Matrix(array, 2, 3);
         
         double[][] array2 = {
             {1,2,3},
