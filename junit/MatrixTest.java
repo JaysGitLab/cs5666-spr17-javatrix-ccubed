@@ -126,7 +126,7 @@ public class MatrixTest{
         {
             for (int k = 0; k < arrA[i].length; k++)
             {
-                assertEquals(arrA[i][k], fill);
+                assertEquals(arrA[i][k], fill, 0.0);
             }
         }
     }
