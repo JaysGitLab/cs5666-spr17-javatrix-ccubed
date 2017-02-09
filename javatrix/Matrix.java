@@ -40,17 +40,17 @@ public class Matrix
     public Matrix(double[][] matrixA, int m, int n)
     {
         a = new double[m][];
-        int rowCt = matrixA.length;
-        rowCt = rowCt < m ? rowCt : m;
-        for (int i = 0; i < rowCt; i++)
+        for (int i = 0; i < m; i++)
         {
-            double[] row = matrixA[i];
-            int colCt = row.length;
-            colCt = colCt < n ? colCt : n;
             a[i] = new double[n];
-            for (int j = 0; j < colCt; j++)
-            {
-                a[i][j] = matrixA[i][j];
+            if(matrixA.length > i){
+                double[] row = matrixA[i];
+                int colCt = row.length;
+                colCt = colCt < n ? colCt : n;
+                for (int j = 0; j < colCt; j++)
+                {
+                    a[i][j] = matrixA[i][j];
+                }
             }
         }
     }
