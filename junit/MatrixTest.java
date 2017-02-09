@@ -7,7 +7,61 @@ import java.lang.IllegalArgumentException;
 
 public class MatrixTest{
     //Matrix(double[][] A){}
-
+    /**
+     * when constructor is passed an m x n matrix, 
+     * getArray should return an array equal to it.
+     */
+    @Test
+    public void testMatrixConstructor1a(){
+        double[][] array = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+        Matrix m = new Matrix(array);
+        double[][] array2 = m.getArray();
+        assertEquals(array, array2);
+    }
+    /**
+     *  Underlying array should not be same object as array past to constructor
+     */
+    @Test
+    public void testMatrixContructor1b(){
+        double[][] array = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+        Matrix m = new Matrix(array);
+        double[][] array2 = m.getArray();
+        assertNotSame(array, array2);
+    }
+    /**
+     * Constructor should throw java.lang.IllegalArgumentException if 
+     * rows get longer. 
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void testMatrixConstructor1c(){
+        double[][] array = {
+            {1,2,3},
+            {4,5,6, 6.5},
+            {7,8,9}
+        };
+        Matrix m = new Matrix(array);
+    }
+    /**
+     * Constructor should throw java.lang.IllegalArgumentException if 
+     * rows get shorter.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void testMatrixConstructor1d(){
+        double[][] array = {
+            {1,2,3},
+            {4,5},
+            {7,8,9}
+        };
+        Matrix m = new Matrix(array);
+    }
     //Matrix(double[][] A, int m, int n){}
     // when constructor is passed an m x n matrix, 
     // getArray should return an array equal to it.
