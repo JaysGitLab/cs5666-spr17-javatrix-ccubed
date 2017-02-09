@@ -67,14 +67,22 @@ public class Matrix
         }
     }
     /**
-     * [Matrix description].
-     * @param  m             int    [description]
-     * @param  n             int    [description]
-     * @param  s             double [description]
+     * Constructs a Matrix of size m by n filled with the value s.
+     * @param  m             int    Number of rows in the matrix
+     * @param  n             int    Number of columns in the matrix
+     * @param  s             double The initial value of every matrix element
+     * @throws IllegalArgumentException -If m or n is 0 or negative.
      */
-    public Matrix(int m, int n, double s)
+    public Matrix(int m, int n, double s) throws IllegalArgumentException
     {
-        this(new double[0][], 0, 0);
+        this(m,n);
+        for (int i = 0; i < m; i++)
+        {
+            for (int k = 0; k < n; k++)
+            {
+                this.a[i][k] = s;
+            }
+        }
     }
     /**
      * [arrayLeftDivide description].
