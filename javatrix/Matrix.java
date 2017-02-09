@@ -15,8 +15,22 @@ public class Matrix
      */
     public Matrix(double[][] matrixA)
     {
-	    this(matrixA, 0, 0);
+        int rowCt = matrixA.length;
+        int colCt = 0;
+        a = new double[rowCt][];
+        for(int i = 0; i < rowCt; i++){
+            if(i > 0 && matrixA[i].length != colCt){
+                throw new IllegalArgumentException();
+            }
+            colCt = matrixA.length;
+            a[i] = new double[colCt];
+            for(int j = 0; j < colCt; j++){
+                a[i][j] = matrixA[i][j];
+            }
+        }
     }
+
+        
     /**
      * Construct a matrix quickly without checking arguments.
      * @param  matrixA                  Two-dimensional array of doubles. 
