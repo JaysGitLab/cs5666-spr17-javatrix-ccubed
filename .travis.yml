@@ -4,8 +4,9 @@ addons:
         packages:
         - make
         - curl
+        - checkstyle
 install: true
 script:
 - make clean
 - make test
-- checkstyle junit/MatrixTest.java
+- make style
