@@ -3,6 +3,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 import javatrix.Matrix;
+import java.util.Random;
 
 public class MatrixTest
 {
@@ -275,7 +276,7 @@ public class MatrixTest
         int m = rand.nextInt(10) + 0;
         int n = rand.nextInt(10) + 0;
         Matrix matrix = new Matrix(m, n); 
-        assertEquals(matrix.getArray()[0].length(), n);
+        assertEquals(matrix.getColumnDimension(), n);
         //TODO: What to do if matrix is jagged?
     }
     //int getColumnDimension(){return 0;}
