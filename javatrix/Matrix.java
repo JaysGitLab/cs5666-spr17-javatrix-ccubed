@@ -182,14 +182,22 @@ public class Matrix
         return null;
     }
     /**
-     * [get description].
-     * @param  i             int [description]
-     * @param  j             int [description]
+     * get -Returns the element at the specified index.
+     * @param i -The row of the matrix to access.
+     * @param j -The column of the matrix to access.
      * @return     [description]
      */
-    public double get(int i, int j)
+    public double get(int i, int j) throws IndexOutOfBoundsException
     {
-        return 0;
+        if (i < 0 || i >= a.length) {
+            throw new IndexOutOfBoundsException();
+        }
+        else if (j < 0 || j > a[i].length) {
+            throw new IndexOutOfBoundsException();
+        }
+        else {
+            return a[i][j];
+        }
     }
     /**
      * Access the internal two-dimensional array.
