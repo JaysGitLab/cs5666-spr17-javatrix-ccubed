@@ -3,6 +3,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 import javatrix.Matrix;
+import java.util.Random;
 
 public class MatrixTest
 {
@@ -242,6 +243,20 @@ public class MatrixTest
         int cols = -1;
         Matrix matrixA = new Matrix(rows, cols, fill);
    }
+
+   /**
+    * testGetRowDim -Tests the getRowDim getter method.
+    */
+   @Test
+   public void testGetRowDim() {
+       Random rand = new Random();
+       int numRows = rand.nextInt(10) + 0;
+       int numCols = rand.nextInt(10) + 0;
+       Matrix matrix = new Matrix(numRows, numCols);
+       assertEquals(numRows, matrix.getRowDimension());
+       //TODO: What about jagged matrices? 
+   }
+
     //Matrix arrayLeftDivide(Matrix B){return null;}
 
     //Matrix arrayLeftDivideEquals(Matrix B){return null;}
@@ -263,11 +278,8 @@ public class MatrixTest
     //double get(int i, int j){return 0;}
 
     //double[][] getArray(){return null;}
-     
 
     //double[][] getArrayCopy(){return null;}
-
-    //int getColumnDimension(){return 0;}
 
     //double[] getColumnPackedCopy(){return null;}
 
