@@ -8,4 +8,4 @@ install: true
 script:
 - make clean
 - make test
-- checkstyle junit/MatrixTest.java javatrix/Matrix.java
+- checkstyle junit/MatrixTest.java
