@@ -281,6 +281,20 @@ public class MatrixTest
 
     //double[][] getArrayCopy(){return null;}
 
+    /**
+     * testGetColDim -Tests the functionality of the method getColumnDimension.
+     */
+    @Test
+    public void testGetColDim() {
+        Random rand = new Random();
+        int m = rand.nextInt(10) + 0;
+        int n = rand.nextInt(10) + 0;
+        Matrix matrix = new Matrix(m, n); 
+        assertEquals(matrix.getColumnDimension(), n);
+        //TODO: What to do if matrix is jagged?
+    }
+    //int getColumnDimension(){return 0;}
+
     //double[] getColumnPackedCopy(){return null;}
 
     //Matrix getMatrix(int[] r, int[] c){return null;}%

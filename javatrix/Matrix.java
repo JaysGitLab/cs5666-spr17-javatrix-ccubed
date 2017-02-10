@@ -208,12 +208,13 @@ public class Matrix
         return null;
     }
     /**
-     * [getColumnDimension description].
+     * getColumnDimension -Returns the number of columns (n) in the matrix.
+     * @return numCols -The number of columns in the matrix.
      * @return [description]
      */
     public int getColumnDimension()
     {
-        return 0;
+        return a[0].length;
     }
     /**
      * getColumnPackedCopy -TODO: method descriptor.
