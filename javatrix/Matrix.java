@@ -192,7 +192,7 @@ public class Matrix
         if (i < 0 || i >= a.length) {
             throw new IndexOutOfBoundsException();
         }
-        else if (j < 0 || j > a[i].length) {
+        else if (j < 0 || j >= a[i].length) {
             throw new IndexOutOfBoundsException();
         }
         else {
