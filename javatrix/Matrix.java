@@ -132,7 +132,7 @@ public class Matrix
      */
     public Matrix arrayLeftDivide(Matrix matrixB)
     {
-        return null;
+        return byElement(this, matrixB, (a, b) -> a / b);
     }
     /**
      * [arrayLeftDivideEquals description].
@@ -150,14 +150,14 @@ public class Matrix
      */
     public Matrix arrayRightDivide(Matrix matrixB)
     {
-        return null;
+        return byElement(this, matrixB, (a, b) -> b / a);
     }
     /**
      * [arrayRightDivideEquaqals description].
      * @param matrixB             Matrix [description]
      * @return        [description]
      */
-    public Matrix arrayRightDivideEquaqals(Matrix matrixB)
+    public Matrix arrayRightDivideEquals(Matrix matrixB)
     {
         return null;
     }
@@ -168,7 +168,7 @@ public class Matrix
      */
     public Matrix arrayTimes(Matrix matrixB)
     {
-        return null;
+        return byElement(this, matrixB, (a, b) -> a * b);
     }
     /**
      * [arrayTimesEquals description].
@@ -337,7 +337,7 @@ public class Matrix
      */
     public Matrix minus(Matrix matrixB)
     {
-        return null;
+        return byElement(this, matrixB, (a, b) -> a - b);
     }
     /**
      * [minusEquals description].
@@ -379,7 +379,7 @@ public class Matrix
      */
     public Matrix plus(Matrix matrixB)
     {
-        return null;
+        return byElement(this, matrixB, (a, b) -> a + b);
     }
     /**
      * [plusEquals description].
@@ -510,7 +510,7 @@ public class Matrix
      */
     public Matrix times(Matrix matrixB)
     {
-        return null;
+        return byElement(this, matrixB, (a, b) -> a * b);
     }
     /**
      * [timesEquals description].
