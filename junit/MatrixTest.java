@@ -30,7 +30,6 @@ public class MatrixTest
      */
     @Test
     public void testMatrixContructor1b()
-
     {
         double[][] array = {
             {1, 2, 3},
@@ -74,14 +73,13 @@ public class MatrixTest
     @Test
     public void baseCtorSameLength()
     {
-	double[][] array = {
+    double[][] array = {
             {1, 2, 3},
             {4, 5, 6}
-	};
-	Matrix m = new Matrix(array, 2, 3);
-	double[][] array2 = m.getArray();
+    };
+    Matrix m = new Matrix(array, 2, 3);
+    double[][] array2 = m.getArray();
         assertEquals(array, array2);
-
     }
     /*
      *  Underlying array should not be same object as array past to constructor
@@ -89,12 +87,12 @@ public class MatrixTest
     @Test
     public void baseCtorNotSameObj()
     {
-	double[][] array = {
-    	    {1, 2, 3},
-    	    {4, 5, 6}
-	};
-	Matrix m = new Matrix(array, 2, 3);
-	double[][] array2 = m.getArray();
+    double[][] array = {
+            {1, 2, 3},
+            {4, 5, 6}
+    };
+    Matrix m = new Matrix(array, 2, 3);
+    double[][] array2 = m.getArray();
         assertNotSame(array, array2);
     }
     /*
@@ -152,13 +150,15 @@ public class MatrixTest
         assertEquals(array2, m.getArray());
     }
     //Matrix(double[] vals, int m){}
-    
+
+
+    //Matrix(int m, int n)
     /**
-     * testMatrixConstructor3a -Tests the third matrix constructor
+     * testMatrixConstructor4a -Tests the fourth matrix constructor
      * with valid parameters as specified in issue #7.
     **/
     @Test
-    public void testMatrixConstructor3a()
+    public void testMatrixConstructor4a()
     {
         //initialize m (num rows).
         int m = 5;
@@ -170,10 +170,10 @@ public class MatrixTest
         assertEquals(matrix.getArray(), correctMatrix);
     }
     /**
-     * testMatrixConstructor3b -Tests the third matrix constructor with illegal arguments as specified in issue #7.
+     * testMatrixConstructor4b -Tests the fourth matrix constructor with illegal arguments as specified in issue #7.
     **/
     @Test(expected = IllegalArgumentException.class)
-    public void testMatrixConstructor3b()
+    public void testMatrixConstructor4b()
     {
         //intialize m (num rows).
         int m = 0;
@@ -182,10 +182,10 @@ public class MatrixTest
         Matrix matrix = new Matrix(m, n);
     }
     /**
-     * testMatrixConstructor3c -Tests the third matrix constructor with illegal arguments as specified in issue #7.
+     * testMatrixConstructor4c -Tests the fourth matrix constructor with illegal arguments as specified in issue #7.
     **/
     @Test(expected = IllegalArgumentException.class)
-    public void testMatrixConstructor3c()
+    public void testMatrixConstructor4c()
     {
         //intialize m (num rows).
         int m = -3;
