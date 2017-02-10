@@ -59,13 +59,29 @@ public class Matrix
         }
     }
     /**
-     * [Matrix description].
-     * @param  vals          double[] [description]
-     * @param  m             int      [description]
+     * Construct a matrix from a one-dimensional packed array.
+     * @param  vals          One-dimensional array of doubles, packed by columns (ala Fortran).
+     * @param  m             Number of rows.
+     * @throws java.lang.IllegalArgumentException Array length must be a multiple of m.
      */
     public Matrix(double[] vals, int m)
     {
-	    this(new double[0][], 0, 0);
+        int length = vals.length;
+        if(length % m != 0) throw new
+            IllegalArgumentException("double[] vals Array length must be a multiple of int m");
+        int columnCount = length / m;
+        int valIndex = 0;
+        a = new double[m][];
+        for (int i = 0; i < m; i++)
+        {
+            double[] row = new double[columnCount];
+            a[i] = row;
+            for (int j = 0; j < columnCount; j++)
+            {
+                row[j] = vals[valIndex];
+                valIndex++;
+            }
+        }
     }
     /**
      * Matrix -Constructor for objects of type Matrix.
@@ -216,12 +232,13 @@ public class Matrix
         return null;
     }
     /**
-     * [getColumnDimension description].
+     * getColumnDimension -Returns the number of columns (n) in the matrix.
+     * @return numCols -The number of columns in the matrix.
      * @return [description]
      */
     public int getColumnDimension()
     {
-        return 0;
+        return a[0].length;
     }
     /**
      * getColumnPackedCopy -TODO: method descriptor.
@@ -276,12 +293,13 @@ public class Matrix
         return null;
     }
     /**
-     * [getRowDimension description].
-     * @return [description]
+     * getRowDimension -Returns the number of rows (m) in the matrix.
+     * @return numRows -The number of rows in the matrix.
      */
     public int getRowDimension()
     {
-        return 0;
+        int numRows = a.length;
+        return numRows;
     }
     /**
      * getRowPackedCopy -TODO: Method descriptor.

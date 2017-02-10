@@ -37,7 +37,6 @@ public class MatrixTest
      */
     @Test
     public void testMatrixContructor1b()
-
     {
         double[][] array = {
             {1, 2, 3},
@@ -160,13 +159,49 @@ public class MatrixTest
         assertEquals(array2, m.getArray());
     }
     //Matrix(double[] vals, int m){}
-    
     /**
-     * testMatrixConstructor3a -Tests the third matrix constructor
+     * Try to get right answer for easy case
+     */
+    @Test
+    public void testConstructor3a()
+    {
+        double[][] correctAnswer = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+        Matrix m = new Matrix(new double[]{1, 2, 3, 4, 5, 6}, 2);
+
+        assertEquals(correctAnswer, m.getArray());
+    }
+    /**
+     * Try to get right answer for easy case
+     */
+    @Test
+    public void testConstructor3b()
+    {
+        double[][] correctAnswer = {
+            {1, 2},
+            {3, 4},
+            {5, 6}
+        };
+        Matrix m = new Matrix(new double[]{1, 2, 3, 4, 5, 6}, 3);
+
+        assertEquals(correctAnswer, m.getArray());
+    }
+    /**
+     * Get error for array length not divisible by row count.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructor3c(){
+        Matrix m = new Matrix(new double[]{1, 2, 3, 4, 5, 6}, 4);
+    }
+    //Matrix(int m, int n)
+    /**
+     * testMatrixConstructor4a -Tests the fourth matrix constructor
      * with valid parameters as specified in issue #7.
     **/
     @Test
-    public void testMatrixConstructor3a()
+    public void testMatrixConstructor4a()
     {
         //initialize m (num rows).
         int m = 5;
@@ -187,7 +222,7 @@ public class MatrixTest
      *  with illegal arguments as specified in issue #7.
     **/
     @Test(expected = IllegalArgumentException.class)
-    public void testMatrixConstructor3b()
+    public void testMatrixConstructor4b()
     {
         //intialize m (num rows).
         int m = 0;
@@ -200,7 +235,7 @@ public class MatrixTest
      *  with illegal arguments as specified in issue #7.
     **/
     @Test(expected = IllegalArgumentException.class)
-    public void testMatrixConstructor3c()
+    public void testMatrixConstructor4c()
     {
         //intialize m (num rows).
         int m = -3;
@@ -256,6 +291,20 @@ public class MatrixTest
         int cols = -1;
         Matrix matrixA = new Matrix(rows, cols, fill);
     }
+
+    /**
+     * testGetRowDim -Tests the getRowDim getter method.
+     */
+    @Test
+    public void testGetRowDim() {
+        Random rand = new Random();
+        int numRows = rand.nextInt(10) + 1;
+        int numCols = rand.nextInt(10) + 1;
+        Matrix matrix = new Matrix(numRows, numCols);
+        assertEquals(numRows, matrix.getRowDimension());
+        //TODO: What about jagged matrices? 
+    }
+
     //Matrix arrayLeftDivide(Matrix B){return null;}
 
     //Matrix arrayLeftDivideEquals(Matrix B){return null;}
@@ -292,6 +341,7 @@ public class MatrixTest
         assertEquals(testMatrix[testIndex[0]][testIndex[1]], 
             matrix.get(testIndex[0], testIndex[1]), .1);
     }
+
     /**
      * testGetException -Tests the functionality of the get method
      *  in throwing an IndexOutOfBoundsException.
@@ -314,7 +364,6 @@ public class MatrixTest
     }
 
     //double[][] getArray(){return null;}
-     
 
     //double[][] getArrayCopy(){return null;}
 
