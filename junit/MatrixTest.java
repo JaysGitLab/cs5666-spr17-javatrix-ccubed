@@ -3,6 +3,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 import javatrix.Matrix;
+import java.util.Random;
 
 public class MatrixTest
 {
@@ -260,7 +261,22 @@ public class MatrixTest
 
     //Matrix copy(){return null;}
 
-    //double get(int i, int j){return 0;}
+    /**
+     * testGet -Tests the functionality of the get method
+     *  in retrieving the element at the specified index.
+     */
+    @Test
+    public void testGet(){
+        double[][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+        Matrix matrix = new Matrix(testMatrix);
+        int[] testIndex = new int[2];
+        Random rand = new Random();
+        //create the index 'i' for which to test equivalency
+        testIndex[0] = rand.nextInt(2) + 0;
+        //create the index 'j' for which to test equivalency
+        testIndex[1] = rand.nextInt(3) + 0; 
+        assertEquals(testMatrix[testIndex[0]][testIndex[1]], matrix.get(testIndex[0],testIndex[1]));
+    }
 
     //double[][] getArray(){return null;}
      
