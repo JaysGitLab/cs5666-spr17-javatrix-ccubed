@@ -15,8 +15,25 @@ public class Matrix
      */
     public Matrix(double[][] matrixA)
     {
-	    this(matrixA, 0, 0);
+        int rowCt = matrixA.length;
+        int colCt = 0;
+        a = new double[rowCt][];
+        for (int i = 0; i < rowCt; i++)
+        {
+            if (i > 0 && matrixA[i].length != colCt)
+            {
+                throw new IllegalArgumentException();
+            }
+            colCt = matrixA[i].length;
+            a[i] = new double[colCt];
+            for (int j = 0; j < colCt; j++)
+            {
+                a[i][j] = matrixA[i][j];
+            }
+        }
     }
+
+        
     /**
      * Construct a matrix quickly without checking arguments.
      * @param  matrixA                  Two-dimensional array of doubles. 
@@ -26,17 +43,18 @@ public class Matrix
     public Matrix(double[][] matrixA, int m, int n)
     {
         a = new double[m][];
-        int rowCt = matrixA.length;
-        rowCt = rowCt < m ? rowCt : m;
-        for (int i = 0; i < rowCt; i++)
+        for (int i = 0; i < m; i++)
         {
-            double[] row = matrixA[i];
-            int colCt = row.length;
-            colCt = colCt < n ? colCt : n;
             a[i] = new double[n];
-            for (int j = 0; j < colCt; j++)
+            if (matrixA.length > i)
             {
-                a[i][j] = matrixA[i][j];
+                double[] row = matrixA[i];
+                int colCt = row.length;
+                colCt = colCt < n ? colCt : n;
+                for (int j = 0; j < colCt; j++)
+                {
+                    a[i][j] = matrixA[i][j];
+                }
             }
         }
     }
@@ -75,7 +93,7 @@ public class Matrix
      */
     public Matrix(int m, int n, double s) throws IllegalArgumentException
     {
-        this(m,n);
+        this(m, n);
         for (int i = 0; i < m; i++)
         {
             for (int k = 0; k < n; k++)
