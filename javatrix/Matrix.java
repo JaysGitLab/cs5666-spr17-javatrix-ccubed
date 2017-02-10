@@ -1,5 +1,6 @@
 package javatrix;
 /**
+ * Matrix -Implementation of the matrix api in java. 
  * @author Chris Campell
  * @author Chris Waldon
  * @author Clint Hall
@@ -234,7 +235,6 @@ public class Matrix
     /**
      * getColumnDimension -Returns the number of columns (n) in the matrix.
      * @return numCols -The number of columns in the matrix.
-     * @return [description]
      */
     public int getColumnDimension()
     {
