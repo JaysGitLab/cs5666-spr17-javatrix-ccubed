@@ -275,7 +275,23 @@ public class MatrixTest
         testIndex[0] = rand.nextInt(2) + 0;
         //create the index 'j' for which to test equivalency
         testIndex[1] = rand.nextInt(3) + 0; 
-        assertEquals(testMatrix[testIndex[0]][testIndex[1]], matrix.get(testIndex[0],testIndex[1]));
+        assertEquals(testMatrix[testIndex[0]][testIndex[1]], matrix.get(testIndex[0],testIndex[1]), .1);
+    }
+    /**
+     * testGetException -Tests the functionality of the get method
+     *  in throwing an IndexOutOfBoundsException.
+     */
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetException() {
+        double[][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+        Matrix matrix = new Matrix(testMatrix);
+        int[] testIndex = new int[2];
+        Random rand = new Random();
+        //create the index 'i' for which to test equivalency
+        testIndex[0] = testMatrix.length;
+        //create the index 'j' for which to test equivalency
+        testIndex[1] = -1; 
+        matrix.get(testIndex[0],testIndex[1]);
     }
 
     //double[][] getArray(){return null;}
