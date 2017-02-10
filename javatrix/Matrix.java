@@ -452,6 +452,7 @@ public class Matrix
      */
     public void set(int i, int j, double s)
     {
+        a[i][j] = s;
     }
     /**
      * [setMatrix description].
@@ -543,5 +544,32 @@ public class Matrix
     public Matrix uminus()
     {
         return null;
+    }
+
+
+    //////////////////////////////////////////////////////
+    // helper methods
+    //////////////////////////////////////////////////////
+
+    @FunctionalInterface
+    public static interface Operator{
+        double apply(double a, double b);
+    }
+    public static Matrix byElement(Matrix matrixA, Matrix matrixB, Operator op){
+        int rowCt = matrixA.getRowDimension();
+        int colCt = matrixA.getColumnDimension();
+        if(matrixB.getRowDimension() != rowCt ||
+           matrixB.getColumnDimension() != colCt)
+        {
+            throw new IllegalArgumentException("Matrices must have same dimensions");
+        }
+        Matrix matrixC = new Matrix(rowCt, colCt);
+        for(int i = 0; i < rowCt; i++){
+            for (int j = 0; j < colCt; j++){
+                matrixC.set(i, j, op.apply(matrixA.get(i,j), matrixB.get(i,j)));
+            }
+        }
+        return matrixC;
+        
     }
 }
