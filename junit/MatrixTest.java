@@ -277,6 +277,20 @@ public class MatrixTest
         int cols = -1;
         Matrix matrixA = new Matrix(rows, cols, fill);
    }
+
+   /**
+    * testGetRowDim -Tests the getRowDim getter method.
+    */
+   @Test
+   public void testGetRowDim() {
+       Random rand = new Random();
+       int numRows = rand.nextInt(10) + 1;
+       int numCols = rand.nextInt(10) + 1;
+       Matrix matrix = new Matrix(numRows, numCols);
+       assertEquals(numRows, matrix.getRowDimension());
+       //TODO: What about jagged matrices? 
+   }
+
     //Matrix arrayLeftDivide(Matrix B){return null;}
 
     //Matrix arrayLeftDivideEquals(Matrix B){return null;}
@@ -298,21 +312,9 @@ public class MatrixTest
     //double get(int i, int j){return 0;}
 
     //double[][] getArray(){return null;}
-     
 
     //double[][] getArrayCopy(){return null;}
-    /**
-     * testGetColDim -Tests the functionality of the method getColumnDimension.
-     */
-    @Test
-    public void testGetColDim() {
-        Random rand = new Random();
-        int m = rand.nextInt(10) + 0;
-        int n = rand.nextInt(10) + 0;
-        Matrix matrix = new Matrix(m, n); 
-        assertEquals(matrix.getColumnDimension(), n);
-        //TODO: What to do if matrix is jagged?
-    }
+
     //int getColumnDimension(){return 0;}
 
     //double[] getColumnPackedCopy(){return null;}

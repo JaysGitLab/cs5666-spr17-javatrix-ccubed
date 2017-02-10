@@ -285,12 +285,13 @@ public class Matrix
         return null;
     }
     /**
-     * [getRowDimension description].
-     * @return [description]
+     * getRowDimension -Returns the number of rows (m) in the matrix.
+     * @return numRows -The number of rows in the matrix.
      */
     public int getRowDimension()
     {
-        return 0;
+        int numRows = a.length;
+        return numRows;
     }
     /**
      * getRowPackedCopy -TODO: Method descriptor.
