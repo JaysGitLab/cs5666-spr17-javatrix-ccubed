@@ -5,6 +5,14 @@ import org.junit.Test;
 import javatrix.Matrix;
 import java.util.Random;
 
+/**
+ * MatrixTest
+ * Junit tests for the Matrix class.
+ * @author Chris Campell
+ * @author Chris Waldon
+ * @author Clint Hall
+ * @version 2/9/2017
+ */
 public class MatrixTest
 {
     //Matrix(double[][] A){}
@@ -14,7 +22,6 @@ public class MatrixTest
      */
     @Test
     public void testMatrixConstructor1a()
-
     {
         double[][] array = {
             {1, 2, 3},
@@ -65,38 +72,40 @@ public class MatrixTest
         };
         Matrix m = new Matrix(array);
     }
-    //Matrix(double[][] A, int m, int n){}
-    /*
-     * when constructor is passed an m x n matrix, 
-     * getArray should return an array equal to it.
+    /**
+     * baseCtorSameLength -When constructor is passed an m x n matrix, 
+     *  getArray should return an array equal to it.
      */
     @Test
     public void baseCtorSameLength()
     {
-    double[][] array = {
+        double[][] array = 
+        {
             {1, 2, 3},
             {4, 5, 6}
-    };
-    Matrix m = new Matrix(array, 2, 3);
-    double[][] array2 = m.getArray();
+        };
+        Matrix m = new Matrix(array, 2, 3);
+        double[][] array2 = m.getArray();
         assertEquals(array, array2);
     }
-    /*
-     *  Underlying array should not be same object as array past to constructor
+    /**
+     * baseCtorNotSameObj -Underlying array should not be the
+     *  same object as array past to constructor.
      */
     @Test
     public void baseCtorNotSameObj()
     {
-    double[][] array = {
-            {1, 2, 3},
-            {4, 5, 6}
-    };
-    Matrix m = new Matrix(array, 2, 3);
-    double[][] array2 = m.getArray();
+        double[][] array = {
+    	    {1, 2, 3},
+    	    {4, 5, 6}
+        };
+        Matrix m = new Matrix(array, 2, 3);
+        double[][] array2 = m.getArray();
         assertNotSame(array, array2);
     }
-    /*
-     *  constructor should make m x n  array even if some rows are longer
+    /**
+     * tooLong -Constructor should make m x n array even 
+     *  if some rows are longer.
      */
     @Test
     public void tooLong()
@@ -113,8 +122,8 @@ public class MatrixTest
         };
         assertEquals(array2, m.getArray());
     }
-    /*
-     *  rows less than n long should be padded with 0 on right
+    /**
+     * tooShort -Rows less than n long should be padded with 0 on right.
      */
     @Test
     public void tooShort()
@@ -131,8 +140,8 @@ public class MatrixTest
         };
         assertEquals(array2, m.getArray());
     }
-    /*
-     * Matrix should be m x n even if provided array is smaller
+    /**
+     * tooSmall -Matrix should be m x n even if provided array is smaller.
      */
     @Test
     public void tooSmall()
@@ -198,13 +207,19 @@ public class MatrixTest
         int m = 5;
         //initialize n (num cols).
         int n = 6;
-        double[][] correctMatrix = {{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
-            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}};
+        double[][] correctMatrix = {
+            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 
+            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 
+            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 
+            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0}
+        };
         Matrix matrix = new Matrix(m, n);
         assertEquals(matrix.getArray(), correctMatrix);
     }
     /**
-     * testMatrixConstructor4b -Tests the fourth matrix constructor with illegal arguments as specified in issue #7.
+     * testMatrixConstructor3b -Tests the third matrix constructor,
+     *  with illegal arguments as specified in issue #7.
     **/
     @Test(expected = IllegalArgumentException.class)
     public void testMatrixConstructor4b()
@@ -216,7 +231,8 @@ public class MatrixTest
         Matrix matrix = new Matrix(m, n);
     }
     /**
-     * testMatrixConstructor4c -Tests the fourth matrix constructor with illegal arguments as specified in issue #7.
+     * testMatrixConstructor3c -Tests the third matrix constructor,
+     *  with illegal arguments as specified in issue #7.
     **/
     @Test(expected = IllegalArgumentException.class)
     public void testMatrixConstructor4c()
@@ -257,39 +273,37 @@ public class MatrixTest
     */
     @Test(expected = IllegalArgumentException.class)
     public void testCtorFillWithConsta()
-
     {
         double fill = 3.14;
         int rows = 0;
         int cols = 1;
         Matrix matrixA = new Matrix(rows, cols, fill);
-   }
-   /**
-    testCtorFillWithConst tests the Matrix constructor that fills a
-    matrix of m by n with constant s.
+    }
+    /**
+    *testCtorFillWithConst tests the Matrix constructor that fills a
+    *   matrix of m by n with constant s.
     */
     @Test(expected = IllegalArgumentException.class)
     public void testCtorFillWithConstb()
-
     {
         double fill = 3.14;
         int rows = 3;
         int cols = -1;
         Matrix matrixA = new Matrix(rows, cols, fill);
-   }
+    }
 
-   /**
-    * testGetRowDim -Tests the getRowDim getter method.
-    */
-   @Test
-   public void testGetRowDim() {
-       Random rand = new Random();
-       int numRows = rand.nextInt(10) + 1;
-       int numCols = rand.nextInt(10) + 1;
-       Matrix matrix = new Matrix(numRows, numCols);
-       assertEquals(numRows, matrix.getRowDimension());
-       //TODO: What about jagged matrices? 
-   }
+    /**
+     * testGetRowDim -Tests the getRowDim getter method.
+     */
+    @Test
+    public void testGetRowDim() {
+        Random rand = new Random();
+        int numRows = rand.nextInt(10) + 1;
+        int numCols = rand.nextInt(10) + 1;
+        Matrix matrix = new Matrix(numRows, numCols);
+        assertEquals(numRows, matrix.getRowDimension());
+        //TODO: What about jagged matrices? 
+    }
 
     //Matrix arrayLeftDivide(Matrix B){return null;}
 
@@ -309,7 +323,45 @@ public class MatrixTest
 
     //Matrix copy(){return null;}
 
-    //double get(int i, int j){return 0;}
+    /**
+     * testGet -Tests the functionality of the get method
+     *  in retrieving the element at the specified index.
+     */
+    @Test
+    public void testGet() 
+    {
+        double[][] testMatrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+        Matrix matrix = new Matrix(testMatrix);
+        int[] testIndex = new int[2];
+        Random rand = new Random();
+        //create the index 'i' for which to test equivalency
+        testIndex[0] = rand.nextInt(2);
+        //create the index 'j' for which to test equivalency
+        testIndex[1] = rand.nextInt(3); 
+        assertEquals(testMatrix[testIndex[0]][testIndex[1]], 
+            matrix.get(testIndex[0], testIndex[1]), .1);
+    }
+
+    /**
+     * testGetException -Tests the functionality of the get method
+     *  in throwing an IndexOutOfBoundsException.
+     */
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetException() 
+    {
+        double[][] testMatrix = {
+            {1, 2, 3, 4}, 
+            {5, 6, 7, 8}, 
+            {9, 10, 11, 12}
+        };
+        Matrix matrix = new Matrix(testMatrix);
+        int[] testIndex = new int[2];
+        //create the index 'i' for which to test equivalency
+        testIndex[0] = testMatrix.length;
+        //create the index 'j' for which to test equivalency
+        testIndex[1] = -1; 
+        matrix.get(testIndex[0], testIndex[1]);
+    }
 
     //double[][] getArray(){return null;}
 
@@ -353,7 +405,8 @@ public class MatrixTest
 
     //void print(java.io.PrintWriter output, int w, int d){}
 
-    //void print(java.io.PrintWriter output, java.text.NumberFormat format, int width){}
+    //void print(java.io.PrintWriter output, 
+    //  java.text.NumberFormat format, int width){}
 
     //static Matrix random(int m, int n){return null;}
 
