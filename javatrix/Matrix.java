@@ -61,15 +61,21 @@ public class Matrix
     }
     /**
      * Construct a matrix from a one-dimensional packed array.
-     * @param  vals          One-dimensional array of doubles, packed by columns (ala Fortran).
-     * @param  m             Number of rows.
-     * @throws java.lang.IllegalArgumentException Array length must be a multiple of m.
+     * @param  vals -One-dimensional array of doubles, 
+     *  packed by columns (ala Fortran).
+     * @param  m -Number of rows.
+     * @throws java.lang.IllegalArgumentException 
+     *  -Array length must be a multiple of m.
      */
-    public Matrix(double[] vals, int m)
+    public Matrix(double[] vals, int m) throws IllegalArgumentException
     {
         int length = vals.length;
-        if(length % m != 0) throw new
-            IllegalArgumentException("double[] vals Array length must be a multiple of int m");
+        if (length % m != 0) 
+        {
+            throw new IllegalArgumentException(
+                "double[] vals Array length must be a multiple of int m"
+            );
+        }
         int columnCount = length / m;
         int valIndex = 0;
         a = new double[m][];
@@ -203,16 +209,21 @@ public class Matrix
      * @param i -The row of the matrix to access.
      * @param j -The column of the matrix to access.
      * @return     [description]
+     * @throws IndexOutOfBoundsException -Throws exception
+     *  if i or j is out of bounds.
      */
     public double get(int i, int j) throws IndexOutOfBoundsException
     {
-        if (i < 0 || i >= a.length) {
+        if (i < 0 || i >= a.length) 
+        {
             throw new IndexOutOfBoundsException();
         }
-        else if (j < 0 || j >= a[i].length) {
+        else if (j < 0 || j >= a[i].length) 
+        {
             throw new IndexOutOfBoundsException();
         }
-        else {
+        else 
+        {
             return a[i][j];
         }
     }
