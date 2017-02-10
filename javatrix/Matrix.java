@@ -59,13 +59,29 @@ public class Matrix
         }
     }
     /**
-     * [Matrix description].
-     * @param  vals          double[] [description]
-     * @param  m             int      [description]
+     * Construct a matrix from a one-dimensional packed array.
+     * @param  vals          One-dimensional array of doubles, packed by columns (ala Fortran).
+     * @param  m             Number of rows.
+     * @throws java.lang.IllegalArgumentException Array length must be a multiple of m.
      */
     public Matrix(double[] vals, int m)
     {
-	    this(new double[0][], 0, 0);
+        int length = vals.length;
+        if(length % m != 0) throw new
+            IllegalArgumentException("double[] vals Array length must be a multiple of int m");
+        int columnCount = length / m;
+        int valIndex = 0;
+        a = new double[m][];
+        for (int i = 0; i < m; i++)
+        {
+            double[] row = new double[columnCount];
+            a[i] = row;
+            for (int j = 0; j < columnCount; j++)
+            {
+                row[j] = vals[valIndex];
+                valIndex++;
+            }
+        }
     }
     /**
      * Matrix -Constructor for objects of type Matrix.
