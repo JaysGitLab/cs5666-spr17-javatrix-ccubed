@@ -150,8 +150,42 @@ public class MatrixTest
         assertEquals(array2, m.getArray());
     }
     //Matrix(double[] vals, int m){}
+    /**
+     * Try to get right answer for easy case
+     */
+    @Test
+    public void testConstructor3a()
+    {
+        double[][] correctAnswer = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+        Matrix m = new Matrix(new double[]{1, 2, 3, 4, 5, 6}, 2);
 
+        assertEquals(correctAnswer, m.getArray());
+    }
+    /**
+     * Try to get right answer for easy case
+     */
+    @Test
+    public void testConstructor3b()
+    {
+        double[][] correctAnswer = {
+            {1, 2},
+            {3, 4},
+            {5, 6}
+        };
+        Matrix m = new Matrix(new double[]{1, 2, 3, 4, 5, 6}, 3);
 
+        assertEquals(correctAnswer, m.getArray());
+    }
+    /**
+     * Get error for array length not divisible by row count.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructor3c(){
+        Matrix m = new Matrix(new double[]{1, 2, 3, 4, 5, 6}, 4);
+    }
     //Matrix(int m, int n)
     /**
      * testMatrixConstructor4a -Tests the fourth matrix constructor
