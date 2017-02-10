@@ -250,8 +250,8 @@ public class MatrixTest
    @Test
    public void testGetRowDim() {
        Random rand = new Random();
-       int numRows = rand.nextInt(10) + 0;
-       int numCols = rand.nextInt(10) + 0;
+       int numRows = rand.nextInt(10) + 1;
+       int numCols = rand.nextInt(10) + 1;
        Matrix matrix = new Matrix(numRows, numCols);
        assertEquals(numRows, matrix.getRowDimension());
        //TODO: What about jagged matrices? 
