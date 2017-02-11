@@ -132,7 +132,15 @@ public class Matrix
      */
     public Matrix arrayLeftDivide(Matrix matrixB)
     {
-        return byElement(matrixB, false, (a, b) -> b / a);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return b / a;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
      * Element-by-element left division in place. A = A.\B 
@@ -141,7 +149,15 @@ public class Matrix
      */
     public Matrix arrayLeftDivideEquals(Matrix matrixB)
     {
-        return byElement(matrixB, true, (a, b) -> b / a);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return b / a;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * Element-by-element right division. C = A./B
@@ -150,7 +166,15 @@ public class Matrix
      */
     public Matrix arrayRightDivide(Matrix matrixB)
     {
-        return byElement(matrixB, false, (a, b) -> a / b);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a / b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
      * Element-by-element right division in place. A = A./B 
@@ -159,7 +183,16 @@ public class Matrix
      */
     public Matrix arrayRightDivideEquals(Matrix matrixB)
     {
-        return byElement(matrixB, true, (a, b) -> a / b);
+        Operator op = new Operator()
+        {
+            
+            @Override
+            public double apply(double a, double b)
+            {
+                return a / b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * Element-by-element multiplication. C = A.*B
@@ -168,7 +201,15 @@ public class Matrix
      */
     public Matrix arrayTimes(Matrix matrixB)
     {
-        return byElement(matrixB, false, (a, b) -> a * b);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a * b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
      * Element-by-element multiplication in place. A = A.*B
@@ -177,7 +218,16 @@ public class Matrix
      */
     public Matrix arrayTimesEquals(Matrix matrixB)
     {
-        return byElement(matrixB, true, (a, b) -> a * b);
+        Operator op = new Operator()
+        {
+            
+            @Override
+            public double apply(double a, double b)
+            {
+                return a * b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * [clone description].
@@ -337,7 +387,15 @@ public class Matrix
      */
     public Matrix minus(Matrix matrixB)
     {
-        return byElement(matrixB, false, (a, b) -> a - b);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a - b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
      * A = A - B.
@@ -346,7 +404,16 @@ public class Matrix
      */
     public Matrix minusEquals(Matrix matrixB)
     {
-        return byElement(matrixB, true, (a, b) -> a - b);
+        Operator op = new Operator()
+        {
+            
+            @Override
+            public double apply(double a, double b)
+            {
+                return a - b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * [norm1 description].
@@ -379,16 +446,32 @@ public class Matrix
      */
     public Matrix plus(Matrix matrixB)
     {
-        return byElement(matrixB, false, (a, b) -> a + b);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a + b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
-     * [plusEquals description].
+     * A = A + B.
      * @param matrixB          another matrix
      * @return                 A + B 
      */
     public Matrix plusEquals(Matrix matrixB)
     {
-        return byElement(matrixB, true, (a, b) -> a + b);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a + b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * [print description].
@@ -510,7 +593,15 @@ public class Matrix
      */
     public Matrix times(Matrix matrixB)
     {
-        return byElement(matrixB, false, (a, b) -> a * b);
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a * b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
      * [timesEquals description].
