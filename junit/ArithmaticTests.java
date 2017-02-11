@@ -10,21 +10,21 @@ public class ArithmaticTests{
     @Test
     public void byElementTest1(){
         double[][] a1 = {
-            {  1,   2,   3,   4}, 
-            {  5,   6,   7,   8}, 
-            {  9,  10,  11,  12}
+            {  1.0,   2.0,   3.0,   4.0}, 
+            {  5.0,   6.0,   7.0,   8.0}, 
+            {  9.0,  10.0,  11.0,  12.0}
         };
         Matrix m1 = new Matrix(a1);
         double[][] a2 = {
-            { -3,  -4,  -5,  -6}, 
-            { -7,  -8,  -9, -10}, 
-            {-11, -12, -13, -14}
+            { -3.0,  -4.0,  -5.0,  -6.0}, 
+            { -7.0,  -8.0,  -9.0, -10.0}, 
+            {-11.0, -12.0, -13.0, -14.0}
         };
         Matrix m2 = new Matrix(a2);
         double[][] answer = {
-            { -2, -2, -2, -2},
-            { -2, -2, -2, -2},
-            { -2, -2, -2, -2}
+            { -2.0, -2.0, -2.0, -2.0},
+            { -2.0, -2.0, -2.0, -2.0},
+            { -2.0, -2.0, -2.0, -2.0}
         };
         Matrix m3 = Matrix.byElement(m1, m2, (a, b) -> a + b);
         assertEquals(answer, m3.getArray());
@@ -36,15 +36,15 @@ public class ArithmaticTests{
     @Test(expected = IllegalArgumentException.class)
     public void byElementTest2(){
         double[][] a1 = {
-            {  1,   2,   3,   4}, 
-            {  5,   6,   7,   8}, 
-            {  9,  10,  11,  12}
+            {  1.0,   2.0,   3.0,   4.0}, 
+            {  5.0,   6.0,   7.0,   8.0}, 
+            {  9.0,  10.0,  11.0,  12.0}
         };
         Matrix m1 = new Matrix(a1);
         double[][] a2 = {
-            { -3,  -4,  -5}, 
-            { -7,  -8,  -9}, 
-            {-11, -12, -13}
+            { -3.0,  -4.0,  -5.0}, 
+            { -7.0,  -8.0,  -9.0}, 
+            {-11.0, -12.0, -13.0}
         };
         Matrix m2 = new Matrix(a2);
         Matrix m3 = Matrix.byElement(m1, m2, (a, b) -> a + b);
@@ -55,23 +55,23 @@ public class ArithmaticTests{
     @Test
     public void arrayLeftDivideTest1(){
         double[][] a1 = {
-            {21, 15},
-            {18, 30},
-            {27, 10}
+            {21.0, 15.0},
+            {18.0, 30.0},
+            {27.0, 10.0}
         };
         double[][] a2 = {
-            { 3, 5},
-            { 9, 6},
-            { 3, 2}
+            { 3.0, 5.0},
+            { 9.0, 6.0},
+            { 3.0, 2.0}
         };
         double[][] answer = {
-            { 7, 3},
-            { 2, 5},
-            { 9, 5}
+            {21.0 / 3.0, 15.0 / 5.0},
+            {18.0 / 9.0, 30.0 / 6.0},
+            {27.0 / 3.0, 10.0 / 2.0}
         };
         Matrix matrix1 = new Matrix(a1);
         Matrix matrix2 = new Matrix(a2);
-        Matrix matrix3 = matrix1.arrayLeftDivide(matrix2);
+        Matrix matrix3 = matrix2.arrayLeftDivide(matrix1);
         assertEquals(answer, matrix3.getArray());
     }
    /*
@@ -80,23 +80,101 @@ public class ArithmaticTests{
     @Test
     public void arrayRightDivideTest1(){
         double[][] a1 = {
-            {21, 15},
-            {18, 30},
-            {27, 10}
+            {21.0, 15.0},
+            {18.0, 30.0},
+            {27.0, 10.0}
         };
         double[][] a2 = {
-            { 3, 5},
-            { 9, 6},
-            { 3, 2}
+            { 3.0, 5.0},
+            { 9.0, 6.0},
+            { 3.0, 2.0}
         };
         double[][] answer = {
-            { 7, 3},
-            { 2, 5},
-            { 9, 5}
+            {21.0 / 3.0, 15.0 / 5.0},
+            {18.0 / 9.0, 30.0 / 6.0},
+            {27.0 / 3.0, 10.0 / 2.0}
         };
         Matrix matrix1 = new Matrix(a1);
         Matrix matrix2 = new Matrix(a2);
-        Matrix matrix3 = matrix2.arrayRightDivide(matrix1);
+        Matrix matrix3 = matrix1.arrayRightDivide(matrix2);
         assertEquals(answer, matrix3.getArray());
     }
+
+   /*
+    * test arrayTimes.
+    **/
+    @Test
+    public void arrayTimesTest1(){
+        double[][] a1 = {
+            {21.0, 15.0},
+            {18.0, 30.0},
+            {27.0, 10.0}
+        };
+        double[][] a2 = {
+            { 3.0, 5.0},
+            { 9.0, 6.0},
+            { 3.0, 2.0}
+        };
+        double[][] answer = {
+            {21.0 * 3.0, 15.0 * 5.0},
+            {18.0 * 9.0, 30.0 * 6.0},
+            {27.0 * 3.0, 10.0 * 2.0}
+        };
+        Matrix matrix1 = new Matrix(a1);
+        Matrix matrix2 = new Matrix(a2);
+        Matrix matrix3 = matrix1.arrayTimes(matrix2);
+        assertEquals(answer, matrix3.getArray());
+    }
+   /*
+    * test plus.
+    **/
+    @Test
+    public void plusTest1(){
+        double[][] a1 = {
+            {21.0, 15.0},
+            {18.0, 30.0},
+            {27.0, 10.0}
+        };
+        double[][] a2 = {
+            { 3.0, 5.0},
+            { 9.0, 6.0},
+            { 3.0, 2.0}
+        };
+        double[][] answer = {
+            {21.0 + 3.0, 15.0 + 5.0},
+            {18.0 + 9.0, 30.0 + 6.0},
+            {27.0 + 3.0, 10.0 + 2.0}
+        };
+        Matrix matrix1 = new Matrix(a1);
+        Matrix matrix2 = new Matrix(a2);
+        Matrix matrix3 = matrix1.plus(matrix2);
+        assertEquals(answer, matrix3.getArray());
+    }
+   /*
+    * test minus. 
+    **/
+    @Test
+    public void minusTest1(){
+        double[][] a1 = {
+            {21.0, 15.0},
+            {18.0, 30.0},
+            {27.0, 10.0}
+        };
+        double[][] a2 = {
+            { 3.0, 5.0},
+            { 9.0, 6.0},
+            { 3.0, 2.0}
+        };
+        double[][] answer = {
+            {21.0 - 3.0, 15.0 - 5.0},
+            {18.0 - 9.0, 30.0 - 6.0},
+            {27.0 - 3.0, 10.0 - 2.0}
+        };
+        Matrix matrix1 = new Matrix(a1);
+        Matrix matrix2 = new Matrix(a2);
+        Matrix matrix3 = matrix1.minus(matrix2);
+        assertEquals(answer, matrix3.getArray());
+    }
+
+
 }
