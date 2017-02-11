@@ -126,13 +126,13 @@ public class Matrix
         }
     }
     /**
-     * [arrayLeftDivide description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element left division. C = A.\B
+     * @param matrixB        another matrix
+     * @return               A.\B
      */
     public Matrix arrayLeftDivide(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> a / b);
+        return byElement(this, matrixB, (a, b) -> b / a);
     }
     /**
      * [arrayLeftDivideEquals description].
@@ -144,13 +144,13 @@ public class Matrix
         return null;
     }
     /**
-     * [arrayRightDivide description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element right division. C = A./B
+     * @param matrixB        another matrix
+     * @return               A./B
      */
     public Matrix arrayRightDivide(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> b / a);
+        return byElement(this, matrixB, (a, b) -> a / b);
     }
     /**
      * [arrayRightDivideEquaqals description].
@@ -162,9 +162,9 @@ public class Matrix
         return null;
     }
     /**
-     * [arrayTimes description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element multiplication. C = A.*B
+     * @param matrixB        another matrix
+     * @return               A.*B
      */
     public Matrix arrayTimes(Matrix matrixB)
     {
@@ -331,9 +331,9 @@ public class Matrix
         return null;
     }
     /**
-     * [minus description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * C = A - B;
+     * @param matrixB         another matrix
+     * @return                A - B
      */
     public Matrix minus(Matrix matrixB)
     {
@@ -373,9 +373,9 @@ public class Matrix
         return 0;
     }
     /**
-     * [plus description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * C = A + B
+     * @param matrixB          another matrix
+     * @return                 A + B
      */
     public Matrix plus(Matrix matrixB)
     {
