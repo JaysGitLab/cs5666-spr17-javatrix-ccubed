@@ -45,6 +45,7 @@ clean:
 	rm -f javatrix/Matrix.class
 	rm -f junit/MatrixTest.class
 	rm -f junit/ArithmaticTests.class
+	rm -f junit/InPlaceArithmaticTests.class
     
 test:  javatrix/Matrix.class junit/MatrixTest.class junit/ArithmaticTests.class junit/InPlaceArithmaticTests.class $(JUNIT_LOCAL) $(HAMCREST_LOCAL)
 	java -cp .:$(JUNIT_LOCAL):$(HAMCREST_LOCAL) org.junit.runner.JUnitCore junit.MatrixTest
