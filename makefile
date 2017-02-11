@@ -35,8 +35,9 @@ default:
 compile: javatrix/Matrix.class junit/MatrixTest.class junit/ArithmaticTests.java junit/InPlaceArithmaticTests.java
 	@echo "compiled"
 
-junit/*Test.class: $(JUNIT_LOCAL)
-
+junit/MatrixTest.class: $(JUNIT_LOCAL)
+junit/ArithmaticTest.class: $(JUNIT_LOCAL)
+junit/InPlaceArithmaticTest.class: $(JUNIT_LOCAL)
 
 style:
 	checkstyle -c $(STYLE_XML) junit/MatrixTest.java javatrix/Matrix.java
