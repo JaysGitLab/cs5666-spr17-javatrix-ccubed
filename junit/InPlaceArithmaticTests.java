@@ -3,12 +3,12 @@ import javatrix.Matrix;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class ArithmaticTests{
+public class InPlaceArithmaticTests{
     /**
-    * Test byElement(Matrix, Matrix, Operator).
+    * Test byElementInPlace(Matrix, Matrix, boolean, Operator).
     */
     @Test
-    public void byElementTest1(){
+    public void byElementInPlaceTest1(){
         double[][] a1 = {
             {  1.0,   2.0,   3.0,   4.0}, 
             {  5.0,   6.0,   7.0,   8.0}, 
@@ -26,15 +26,15 @@ public class ArithmaticTests{
             { -2.0, -2.0, -2.0, -2.0},
             { -2.0, -2.0, -2.0, -2.0}
         };
-        Matrix m3 = m1.byElement(m2, false, (a, b) -> a + b);
-        assertEquals(answer, m3.getArray());
+        m1.byElement(m2, true, (a, b) -> a + b);
+        assertEquals(answer, m1.getArray());
     }
 
     /**
-    * Test byElement(Matrix, Matrix, Operator). Different dimensions
+    * Test byElementInPlace(Matrix, Matrix, boolean, Operator). Different dimensions
     */
     @Test(expected = IllegalArgumentException.class)
-    public void byElementTest2(){
+    public void byElementInPlaceTest2(){
         double[][] a1 = {
             {  1.0,   2.0,   3.0,   4.0}, 
             {  5.0,   6.0,   7.0,   8.0}, 
@@ -47,13 +47,13 @@ public class ArithmaticTests{
             {-11.0, -12.0, -13.0}
         };
         Matrix m2 = new Matrix(a2);
-        Matrix m3 = m1.byElement(m2, false, (a, b) -> a + b);
+        m1.byElement(m2, true, (a, b) -> a + b);
     }
    /*
     * test arrayLeftDivide. No zero denominators
     **/
     @Test
-    public void arrayLeftDivideTest1(){
+    public void arrayLeftDivideEqualsTest1(){
         double[][] a1 = {
             {21.0, 15.0},
             {18.0, 30.0},
@@ -71,14 +71,14 @@ public class ArithmaticTests{
         };
         Matrix matrix1 = new Matrix(a1);
         Matrix matrix2 = new Matrix(a2);
-        Matrix matrix3 = matrix2.arrayLeftDivide(matrix1);
-        assertEquals(answer, matrix3.getArray());
+        matrix2.arrayLeftDivideEquals(matrix1);
+        assertEquals(answer, matrix2.getArray());
     }
    /*
     * test arrayRightDivide. No zero denominators
     **/
     @Test
-    public void arrayRightDivideTest1(){
+    public void arrayRightDivideEqualsTest1(){
         double[][] a1 = {
             {21.0, 15.0},
             {18.0, 30.0},
@@ -96,15 +96,15 @@ public class ArithmaticTests{
         };
         Matrix matrix1 = new Matrix(a1);
         Matrix matrix2 = new Matrix(a2);
-        Matrix matrix3 = matrix1.arrayRightDivide(matrix2);
-        assertEquals(answer, matrix3.getArray());
+        matrix1.arrayRightDivideEquals(matrix2);
+        assertEquals(answer, matrix1.getArray());
     }
 
    /*
     * test arrayTimes.
     **/
     @Test
-    public void arrayTimesTest1(){
+    public void arrayTimesEqualsTest1(){
         double[][] a1 = {
             {21.0, 15.0},
             {18.0, 30.0},
@@ -122,14 +122,14 @@ public class ArithmaticTests{
         };
         Matrix matrix1 = new Matrix(a1);
         Matrix matrix2 = new Matrix(a2);
-        Matrix matrix3 = matrix1.arrayTimes(matrix2);
-        assertEquals(answer, matrix3.getArray());
+        matrix1.arrayTimesEquals(matrix2);
+        assertEquals(answer, matrix1.getArray());
     }
    /*
     * test plus.
     **/
     @Test
-    public void plusTest1(){
+    public void plusEqualsTest1(){
         double[][] a1 = {
             {21.0, 15.0},
             {18.0, 30.0},
@@ -147,14 +147,14 @@ public class ArithmaticTests{
         };
         Matrix matrix1 = new Matrix(a1);
         Matrix matrix2 = new Matrix(a2);
-        Matrix matrix3 = matrix1.plus(matrix2);
-        assertEquals(answer, matrix3.getArray());
+        matrix1.plusEquals(matrix2);
+        assertEquals(answer, matrix1.getArray());
     }
    /*
     * test minus. 
     **/
     @Test
-    public void minusTest1(){
+    public void minusEqualsTest1(){
         double[][] a1 = {
             {21.0, 15.0},
             {18.0, 30.0},
@@ -172,8 +172,8 @@ public class ArithmaticTests{
         };
         Matrix matrix1 = new Matrix(a1);
         Matrix matrix2 = new Matrix(a2);
-        Matrix matrix3 = matrix1.minus(matrix2);
-        assertEquals(answer, matrix3.getArray());
+        matrix1.minusEquals(matrix2);
+        assertEquals(answer, matrix1.getArray());
     }
 
 

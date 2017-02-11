@@ -132,16 +132,16 @@ public class Matrix
      */
     public Matrix arrayLeftDivide(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> b / a);
+        return byElement(matrixB, false, (a, b) -> b / a);
     }
     /**
-     * [arrayLeftDivideEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element left division in place. A = A.\B 
+     * @param matrixB       another matrix
+     * @return              A.\B 
      */
     public Matrix arrayLeftDivideEquals(Matrix matrixB)
     {
-        return null;
+        return byElement(matrixB, true, (a, b) -> b/a);
     }
     /**
      * Element-by-element right division. C = A./B
@@ -150,16 +150,16 @@ public class Matrix
      */
     public Matrix arrayRightDivide(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> a / b);
+        return byElement(matrixB, false, (a, b) -> a / b);
     }
     /**
-     * [arrayRightDivideEquaqals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element right division in place. A = A./B 
+     * @param matrixB          another matrix
+     * @return                 A./B
      */
     public Matrix arrayRightDivideEquals(Matrix matrixB)
     {
-        return null;
+        return byElement(matrixB, true, (a, b) -> a / b);
     }
     /**
      * Element-by-element multiplication. C = A.*B
@@ -168,16 +168,16 @@ public class Matrix
      */
     public Matrix arrayTimes(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> a * b);
+        return byElement(matrixB, false, (a, b) -> a * b);
     }
     /**
      * [arrayTimesEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * @param matrixB          another matrix
+     * @return            
      */
     public Matrix arrayTimesEquals(Matrix matrixB)
     {
-        return null;
+        return byElement(matrixB, true, (a, b) -> a * b);
     }
     /**
      * [clone description].
@@ -190,7 +190,7 @@ public class Matrix
     /**
      * [constructWithCopy description].
      * @param  matrixA             double[][] [description]
-     * @return            [description]
+     * @return            
      */
     public static Matrix constructWithCopy(double[][] matrixA)
     {
@@ -208,7 +208,7 @@ public class Matrix
      * get -Returns the element at the specified index.
      * @param i -The row of the matrix to access.
      * @param j -The column of the matrix to access.
-     * @return     [description]
+     * @return            
      * @throws IndexOutOfBoundsException -Throws exception
      *  if i or j is out of bounds.
      */
@@ -263,7 +263,7 @@ public class Matrix
      * [getMatrix description].
      * @param  r             int[] [description]
      * @param  c             int[] [description]
-     * @return       [description]
+     * @return            
      */
     public Matrix getMatrix(int[] r, int[] c)
     {
@@ -274,7 +274,7 @@ public class Matrix
      * @param  r             int[] [description]
      * @param  j0            int   [description]
      * @param  j1            int   [description]
-     * @return       [description]
+     * @return            
      */
     public Matrix getMatrix(int[] r, int j0, int j1)
     {
@@ -285,7 +285,7 @@ public class Matrix
      * @param  i0            int   [description]
      * @param  i1            int   [description]
      * @param  c             int[] [description]
-     * @return       [description]
+     * @return            
      */
     public Matrix getMatrix(int i0, int i1, int[] c)
     {
@@ -297,7 +297,7 @@ public class Matrix
      * @param  i1            int [description]
      * @param  j0            int [description]
      * @param  j1            int [description]
-     * @return     [description]
+     * @return            
      */
     public Matrix getMatrix(int i0, int i1, int j0, int j1)
     {
@@ -324,7 +324,7 @@ public class Matrix
      * [identity description].
      * @param  m             int [description]
      * @param  n             int [description]
-     * @return     [description]
+     * @return            
      */
     public static Matrix identity(int m, int n)
     {
@@ -337,16 +337,16 @@ public class Matrix
      */
     public Matrix minus(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> a - b);
+        return byElement(matrixB, false, (a, b) -> a - b);
     }
     /**
-     * [minusEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * A = A - B
+     * @param matrixB          another matrix
+     * @return                 A - B
      */
     public Matrix minusEquals(Matrix matrixB)
     {
-        return null;
+        return byElement(matrixB, true, (a, b) -> a - b);
     }
     /**
      * [norm1 description].
@@ -379,16 +379,16 @@ public class Matrix
      */
     public Matrix plus(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> a + b);
+        return byElement(matrixB, false, (a, b) -> a + b);
     }
     /**
      * [plusEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * @param matrixB          another matrix
+     * @return                 A + B 
      */
     public Matrix plusEquals(Matrix matrixB)
     {
-        return null;
+        return byElement(matrixB, true, (a, b) -> a + b);
     }
     /**
      * [print description].
@@ -429,7 +429,7 @@ public class Matrix
      * [random description].
      * @param  m             int [description]
      * @param  n             int [description]
-     * @return     [description]
+     * @return            
      */
     public static Matrix random(int m, int n)
     {
@@ -438,7 +438,7 @@ public class Matrix
     /**
      * [read description].
      * @param  input         java.io.BufferedReader [description]
-     * @return                        [description]
+     * @return            
      */
     public static Matrix read(java.io.BufferedReader input)
     {
@@ -497,7 +497,7 @@ public class Matrix
     /**
      * [times description].
      * @param  s             double [description]
-     * @return        [description]
+     * @return            
      */
     public Matrix times(double s)
     {
@@ -505,17 +505,17 @@ public class Matrix
     }
     /**
      * [times description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * @param matrixB          another matrix
+     * @return            
      */
     public Matrix times(Matrix matrixB)
     {
-        return byElement(this, matrixB, (a, b) -> a * b);
+        return byElement(matrixB, false, (a, b) -> a * b);
     }
     /**
      * [timesEquals description].
      * @param  s             double [description]
-     * @return        [description]
+     * @return            
      */
     public Matrix timesEquals(double s)
     {
@@ -555,21 +555,21 @@ public class Matrix
     public static interface Operator{
         double apply(double a, double b);
     }
-    public static Matrix byElement(Matrix matrixA, Matrix matrixB, Operator op){
-        int rowCt = matrixA.getRowDimension();
-        int colCt = matrixA.getColumnDimension();
+    public Matrix byElement(Matrix matrixB, boolean inPlace, Operator op){
+        int rowCt = getRowDimension();
+        int colCt = getColumnDimension();
         if(matrixB.getRowDimension() != rowCt ||
            matrixB.getColumnDimension() != colCt)
         {
             throw new IllegalArgumentException("Matrices must have same dimensions");
         }
-        Matrix matrixC = new Matrix(rowCt, colCt);
+        Matrix dest = inPlace ? this : new Matrix(rowCt, colCt);
         for(int i = 0; i < rowCt; i++){
             for (int j = 0; j < colCt; j++){
-                matrixC.set(i, j, op.apply(matrixA.get(i,j), matrixB.get(i,j)));
+                dest.set(i, j, op.apply(this.get(i,j), matrixB.get(i,j)));
             }
         }
-        return matrixC;
+        return dest;
         
     }
 }

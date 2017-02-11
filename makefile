@@ -32,12 +32,11 @@ default:
 	@echo "usage: make target"
 	@echo "available targets: compile, test, clean"
 
-compile: javatrix/Matrix.class junit/MatrixTest.class junit/ArithmaticTests.java
+compile: javatrix/Matrix.class junit/MatrixTest.class junit/ArithmaticTests.java junit/InPlaceArithmaticTests.java
 	@echo "compiled"
 
-junit/MatrixTest.class: $(JUNIT_LOCAL)
+junit/*Test.class: $(JUNIT_LOCAL)
 
-junit/ArithmaticTests.class: $(JUNIT_LOCAL)
 
 style:
 	checkstyle -c $(STYLE_XML) junit/MatrixTest.java javatrix/Matrix.java
@@ -47,11 +46,11 @@ clean:
 	rm -f junit/MatrixTest.class
 	rm -f junit/ArithmaticTests.class
     
-test:  javatrix/Matrix.class junit/MatrixTest.class $(JUNIT_LOCAL) $(HAMCREST_LOCAL)
+test:  javatrix/Matrix.class junit/MatrixTest.class junit/ArithmaticTests.class junit/InPlaceArithmaticTests.class $(JUNIT_LOCAL) $(HAMCREST_LOCAL)
 	java -cp .:$(JUNIT_LOCAL):$(HAMCREST_LOCAL) org.junit.runner.JUnitCore junit.MatrixTest
-
-testMath:  javatrix/Matrix.class junit/ArithmaticTests.class $(JUNIT_LOCAL) $(HAMCREST_LOCAL)
 	java -cp .:$(JUNIT_LOCAL):$(HAMCREST_LOCAL) org.junit.runner.JUnitCore junit.ArithmaticTests
+	java -cp .:$(JUNIT_LOCAL):$(HAMCREST_LOCAL) org.junit.runner.JUnitCore junit.InPlaceArithmaticTests
+
 
 jars:
 	mkdir jars
