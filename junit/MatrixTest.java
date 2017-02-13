@@ -1,6 +1,6 @@
 package junit;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
 import org.junit.Test;
 import javatrix.Matrix;
 import java.util.Random;
@@ -32,7 +32,7 @@ public class MatrixTest
         assertEquals(array, array2);
     }
     /**
-     *  Underlying array should not be
+     *  Underlying array should be
      *  same object as array past to constructor.
      */
     @Test
@@ -44,7 +44,7 @@ public class MatrixTest
         };
         Matrix m = new Matrix(array);
         double[][] array2 = m.getArray();
-        assertNotSame(array, array2);
+        assertSame(array, array2);
     }
     /**
      * Constructor should throw java.lang.IllegalArgumentException if 
@@ -73,11 +73,29 @@ public class MatrixTest
         Matrix m = new Matrix(array);
     }
     /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 rows.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor1e()
+    {
+        Matrix m = new Matrix(new double[0][2]);
+    }
+    /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 columns.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor1f()
+    {
+        Matrix m = new Matrix(new double[5][0]);
+    }
+    /**
      * baseCtorSameLength -When constructor is passed an m x n matrix, 
      *  getArray should return an array equal to it.
      */
     @Test
-    public void baseCtorSameLength()
+    public void testConstructor2a()
     {
         double[][] array = 
         {
@@ -89,11 +107,11 @@ public class MatrixTest
         assertEquals(array, array2);
     }
     /**
-     * baseCtorNotSameObj -Underlying array should not be the
+     * baseCtorNotSameObj -Underlying array should be the
      *  same object as array past to constructor.
      */
     @Test
-    public void baseCtorNotSameObj()
+    public void testConstructor2b()
     {
         double[][] array = {
     	    {1, 2, 3},
@@ -101,14 +119,14 @@ public class MatrixTest
         };
         Matrix m = new Matrix(array, 2, 3);
         double[][] array2 = m.getArray();
-        assertNotSame(array, array2);
+        assertSame(array, array2);
     }
     /**
      * tooLong -Constructor should make m x n array even 
      *  if some rows are longer.
      */
     @Test
-    public void tooLong()
+    public void testConstructor2c()
     {
         double[][] array = {
             {1, 2, 3},
@@ -126,7 +144,7 @@ public class MatrixTest
      * tooShort -Rows less than n long should be padded with 0 on right.
      */
     @Test
-    public void tooShort()
+    public void testConstructor2d()
     {
         double[][] array = {
             {1, 2, 3},
@@ -144,7 +162,7 @@ public class MatrixTest
      * tooSmall -Matrix should be m x n even if provided array is smaller.
      */
     @Test
-    public void tooSmall()
+    public void testConstructor2e()
     {
         double[][] array = {
             {1, 2, 3},
@@ -157,6 +175,25 @@ public class MatrixTest
             {0, 0, 0, 0}
         };
         assertEquals(array2, m.getArray());
+    }
+
+    /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 rows.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor2f()
+    {
+        Matrix m = new Matrix(new double[3][2], 0, 5);
+    }
+    /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 columns.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor2g()
+    {
+        Matrix m = new Matrix(new double[3][2], 5, 0);
     }
     //Matrix(double[] vals, int m){}
     /**
@@ -193,6 +230,25 @@ public class MatrixTest
     public void testConstructor3c()
     {
         Matrix m = new Matrix(new double[]{1, 2, 3, 4, 5, 6}, 4);
+    }
+
+    /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 rows.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor3d()
+    {
+        Matrix m = new Matrix(new double[0], 5);
+    }
+    /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 columns.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor3e()
+    {
+        Matrix m = new Matrix(new double[5], 0);
     }
     //Matrix(int m, int n)
     /**
@@ -241,7 +297,26 @@ public class MatrixTest
         //intialize n (num cols).
         int n = -5;
         Matrix matrix = new Matrix(m, n);
-    }        
+    }
+
+    /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 rows.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor4d()
+    {
+        Matrix m = new Matrix(0, 2);
+    }
+    /**
+     * Constructor should throw IllegalArgumentException if asked to
+     * create an array with <=0 columns.
+     **/
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixConstructor4e()
+    {
+        Matrix m = new Matrix(2, 0);
+    }
     //Matrix(int m, int n, double s){}
     /**
     testCtorFillWithConst tests the Matrix constructor that fills a
@@ -249,7 +324,6 @@ public class MatrixTest
     */
     @Test
     public void testCtorFillWithConst()
-
     {
         double fill = 3.14;
         int rows = 3;
