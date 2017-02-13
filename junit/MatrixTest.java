@@ -1,6 +1,7 @@
 package junit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 import javatrix.Matrix;
 import java.util.Random;
@@ -107,7 +108,7 @@ public class MatrixTest
         assertEquals(array, array2);
     }
     /**
-     * baseCtorNotSameObj -Underlying array should be the
+     * baseCtorNotSameObj -Underlying array should not  be the
      *  same object as array past to constructor.
      */
     @Test
@@ -119,7 +120,7 @@ public class MatrixTest
         };
         Matrix m = new Matrix(array, 2, 3);
         double[][] array2 = m.getArray();
-        assertSame(array, array2);
+        assertNotSame(array, array2);
     }
     /**
      * tooLong -Constructor should make m x n array even 

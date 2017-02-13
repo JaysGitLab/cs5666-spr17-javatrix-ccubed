@@ -16,9 +16,16 @@ public class Matrix
      */
     public Matrix(double[][] matrixA)
     {
+        if (matrixA.length == 0)
+        {
+            throw new IllegalArgumentException("Matrix cannot have 0 rows.");
+        }
+        if (matrixA[0].length == 0)
+        {
+            throw new IllegalArgumentException("Matrix cannot have 0 columns.");
+        }
         int rowCt = matrixA.length;
         int colCt = 0;
-        a = new double[rowCt][];
         for (int i = 0; i < rowCt; i++)
         {
             if (i > 0 && matrixA[i].length != colCt)
@@ -26,12 +33,8 @@ public class Matrix
                 throw new IllegalArgumentException();
             }
             colCt = matrixA[i].length;
-            a[i] = new double[colCt];
-            for (int j = 0; j < colCt; j++)
-            {
-                a[i][j] = matrixA[i][j];
-            }
         }
+        this.a = matrixA;
     }
 
         
@@ -43,6 +46,11 @@ public class Matrix
      */
     public Matrix(double[][] matrixA, int m, int n)
     {
+        if (m <= 0 || n <= 0)
+        {
+            throw new IllegalArgumentException("matrix must have "
+                + "at lease one row and column");
+        }
         a = new double[m][];
         for (int i = 0; i < m; i++)
         {
@@ -70,6 +78,11 @@ public class Matrix
     public Matrix(double[] vals, int m) throws IllegalArgumentException
     {
         int length = vals.length;
+        if (length <= 0 || m == 0)
+        {
+            throw new IllegalArgumentException("matrix must have "
+                + "at lease one row and column");
+        }
         if (length % m != 0) 
         {
             throw new IllegalArgumentException(
