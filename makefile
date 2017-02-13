@@ -40,7 +40,8 @@ junit/ArithmaticTest.class: $(JUNIT_LOCAL)
 junit/InPlaceArithmaticTest.class: $(JUNIT_LOCAL)
 
 style:
-	checkstyle -c $(STYLE_XML) junit/MatrixTest.java javatrix/Matrix.java
+	checkstyle -c $(STYLE_XML) junit/MatrixTest.java javatrix/Matrix.java junit/ArithmaticTests.java junit InPlaceArithmaticTest.java
+	
 
 clean:
 	rm -f javatrix/Matrix.class
