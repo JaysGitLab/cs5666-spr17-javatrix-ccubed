@@ -126,58 +126,108 @@ public class Matrix
         }
     }
     /**
-     * [arrayLeftDivide description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element left division. C = A.\B
+     * @param matrixB        another matrix
+     * @return               A.\B
      */
     public Matrix arrayLeftDivide(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return b / a;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
-     * [arrayLeftDivideEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element left division in place. A = A.\B 
+     * @param matrixB       another matrix
+     * @return              A.\B 
      */
     public Matrix arrayLeftDivideEquals(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return b / a;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
-     * [arrayRightDivide description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element right division. C = A./B
+     * @param matrixB        another matrix
+     * @return               A./B
      */
     public Matrix arrayRightDivide(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a / b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
-     * [arrayRightDivideEquaqals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element right division in place. A = A./B 
+     * @param matrixB          another matrix
+     * @return                 A./B
      */
-    public Matrix arrayRightDivideEquaqals(Matrix matrixB)
+    public Matrix arrayRightDivideEquals(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            
+            @Override
+            public double apply(double a, double b)
+            {
+                return a / b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
-     * [arrayTimes description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element multiplication. C = A.*B
+     * @param matrixB        another matrix
+     * @return               A.*B
      */
     public Matrix arrayTimes(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a * b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
-     * [arrayTimesEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * Element-by-element multiplication in place. A = A.*B
+     * @param matrixB          another matrix
+     * @return                 A.*B
      */
     public Matrix arrayTimesEquals(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            
+            @Override
+            public double apply(double a, double b)
+            {
+                return a * b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * [clone description].
@@ -190,7 +240,7 @@ public class Matrix
     /**
      * [constructWithCopy description].
      * @param  matrixA             double[][] [description]
-     * @return            [description]
+     * @return                     [description]
      */
     public static Matrix constructWithCopy(double[][] matrixA)
     {
@@ -208,7 +258,7 @@ public class Matrix
      * get -Returns the element at the specified index.
      * @param i -The row of the matrix to access.
      * @param j -The column of the matrix to access.
-     * @return     [description]
+     * @return            [description]
      * @throws IndexOutOfBoundsException -Throws exception
      *  if i or j is out of bounds.
      */
@@ -263,7 +313,7 @@ public class Matrix
      * [getMatrix description].
      * @param  r             int[] [description]
      * @param  c             int[] [description]
-     * @return       [description]
+     * @return               [description]
      */
     public Matrix getMatrix(int[] r, int[] c)
     {
@@ -274,7 +324,7 @@ public class Matrix
      * @param  r             int[] [description]
      * @param  j0            int   [description]
      * @param  j1            int   [description]
-     * @return       [description]
+     * @return               [description]
      */
     public Matrix getMatrix(int[] r, int j0, int j1)
     {
@@ -285,7 +335,7 @@ public class Matrix
      * @param  i0            int   [description]
      * @param  i1            int   [description]
      * @param  c             int[] [description]
-     * @return       [description]
+     * @return               [description]
      */
     public Matrix getMatrix(int i0, int i1, int[] c)
     {
@@ -297,7 +347,7 @@ public class Matrix
      * @param  i1            int [description]
      * @param  j0            int [description]
      * @param  j1            int [description]
-     * @return     [description]
+     * @return               [description]
      */
     public Matrix getMatrix(int i0, int i1, int j0, int j1)
     {
@@ -324,29 +374,46 @@ public class Matrix
      * [identity description].
      * @param  m             int [description]
      * @param  n             int [description]
-     * @return     [description]
+     * @return               [description]
      */
     public static Matrix identity(int m, int n)
     {
         return null;
     }
     /**
-     * [minus description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * C = A - B.
+     * @param matrixB         another matrix
+     * @return                A - B
      */
     public Matrix minus(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a - b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
-     * [minusEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * A = A - B.
+     * @param matrixB          another matrix
+     * @return                 A - B
      */
     public Matrix minusEquals(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            
+            @Override
+            public double apply(double a, double b)
+            {
+                return a - b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * [norm1 description].
@@ -373,22 +440,38 @@ public class Matrix
         return 0;
     }
     /**
-     * [plus description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * C = A + B.
+     * @param matrixB          another matrix
+     * @return                 A + B
      */
     public Matrix plus(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a + b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
-     * [plusEquals description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * A = A + B.
+     * @param matrixB          another matrix
+     * @return                 A + B 
      */
     public Matrix plusEquals(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a + b;
+            }
+        };
+        return byElement(matrixB, true, op);
     }
     /**
      * [print description].
@@ -429,7 +512,7 @@ public class Matrix
      * [random description].
      * @param  m             int [description]
      * @param  n             int [description]
-     * @return     [description]
+     * @return               [description]
      */
     public static Matrix random(int m, int n)
     {
@@ -438,7 +521,7 @@ public class Matrix
     /**
      * [read description].
      * @param  input         java.io.BufferedReader [description]
-     * @return                        [description]
+     * @return               [description]
      */
     public static Matrix read(java.io.BufferedReader input)
     {
@@ -452,6 +535,7 @@ public class Matrix
      */
     public void set(int i, int j, double s)
     {
+        a[i][j] = s;
     }
     /**
      * [setMatrix description].
@@ -496,7 +580,7 @@ public class Matrix
     /**
      * [times description].
      * @param  s             double [description]
-     * @return        [description]
+     * @return               [description]
      */
     public Matrix times(double s)
     {
@@ -504,17 +588,25 @@ public class Matrix
     }
     /**
      * [times description].
-     * @param matrixB             Matrix [description]
-     * @return        [description]
+     * @param matrixB          another matrix
+     * @return               [description]
      */
     public Matrix times(Matrix matrixB)
     {
-        return null;
+        Operator op = new Operator()
+        {
+            @Override
+            public double apply(double a, double b)
+            {
+                return a * b;
+            }
+        };
+        return byElement(matrixB, false, op);
     }
     /**
      * [timesEquals description].
      * @param  s             double [description]
-     * @return        [description]
+     * @return               [description]
      */
     public Matrix timesEquals(double s)
     {
@@ -543,5 +635,56 @@ public class Matrix
     public Matrix uminus()
     {
         return null;
+    }
+
+
+    //////////////////////////////////////////////////////
+    // helper methods
+    //////////////////////////////////////////////////////
+    /**
+     * Functional interface for use with
+     * {@link #byElement(Matrix, boolean, Operator) byElement} method.
+     **/
+    @FunctionalInterface
+    public static interface Operator
+    {
+        /**
+         * Apply an operation to two doubles, and return a double.
+         * @param a              a double
+         * @param b              another double
+         * @return               the result of applying the operation to a and b
+         **/
+        double apply(double a, double b);
+    }
+    /**
+     * Apply an element by element operation to this and another matrix.
+     * @param matrixB       the other matrix
+     * @param inPlace       if true, then result of operation will
+     *                      be set in this matrix
+     * @param op            A lambda or instance implementing
+     *                      {@link Operator Operator} to specify the operation
+     * @return              The result of the operation. If inPlace = true, then
+     *                      will be this Matrix.
+     **/
+    public Matrix byElement(Matrix matrixB, boolean inPlace, Operator op)
+    {
+        int rowCt = getRowDimension();
+        int colCt = getColumnDimension();
+        if (matrixB.getRowDimension() != rowCt
+            || matrixB.getColumnDimension() != colCt)
+        {
+            throw new IllegalArgumentException("Matrices must "
+                                               + "have same dimensions");
+        }
+        Matrix dest = inPlace ? this : new Matrix(rowCt, colCt);
+        for (int i = 0; i < rowCt; i++)
+        {
+            for (int j = 0; j < colCt; j++)
+            {
+                dest.set(i, j, op.apply(this.get(i, j), matrixB.get(i, j)));
+            }
+        }
+        return dest;
+        
     }
 }
