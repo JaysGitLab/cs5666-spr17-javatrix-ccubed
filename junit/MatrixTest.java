@@ -431,6 +431,26 @@ public class MatrixTest
     //double trace(){return 0;}
 
     //Matrix transpose(){return null;}
+    /**
+     * test transpose on an example.
+     **/
+    @Test
+    public void transposeTest1()
+    {
+        double[][] a1 = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+        double[][] answer = {
+            {1, 4},
+            {2, 5},
+            {3, 6}
+        };
+        Matrix m1 = new Matrix(a1);
+        Matrix m2 = m1.transpose();
+        assertEquals(answer, m2.getArray());
+    }
+    
 
     //Matrix uminus(){return null;}
 }
