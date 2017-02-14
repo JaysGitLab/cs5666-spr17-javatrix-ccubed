@@ -419,7 +419,8 @@ public class MatrixTest
      * Test on an example.
     **/
     @Test
-    public void setMatrixTest(){
+    public void setMatrixTest()
+    {
         double[][] origArray = {
             {1,  2,  3,  4},
             {5,  6,  7,  8},
