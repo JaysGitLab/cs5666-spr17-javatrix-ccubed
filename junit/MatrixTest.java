@@ -415,7 +415,32 @@ public class MatrixTest
     //void set(int i, int j, double s){}
 
     //void setMatrix(int[] r, int[] c, Matrix X){}
-
+    /**
+     * Test on an example.
+    **/
+    @Test
+    public void setMatrixTest(){
+        double[][] origArray = {
+            {1,  2,  3,  4},
+            {5,  6,  7,  8},
+            {9, 10, 11, 12}
+        };
+        Matrix origMatrix = new Matrix(origArray);
+        double[][] replacerArray = {
+            {13, 14},
+            {15, 16}
+        };
+        Matrix replacerMatrix = new Matrix(replacerArray);
+        int[] replaceRows = {0, 2};
+        int[] replaceColumns = {1, 2};
+        double[][] answer = {
+            {1, 13, 14,  4},
+            {5,  6,  7,  8},
+            {9, 15, 16, 12}
+        };
+        origMatrix.setMatrix(replaceRows, replaceColumns, replacerMatrix);
+        assertEquals(answer, origMatrix.getArray());
+    }
     //void setMatrix(int[] r, int j0, int j1, Matrix X){}
 
     //void setMatrix(int i0, int i1, int[] c, Matrix X){}
