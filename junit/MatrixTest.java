@@ -417,7 +417,8 @@ public class MatrixTest
      *  matrices.
      */
     @Test
-    public void testDotProduct() {
+    public void testDotProduct() 
+    {
         double[][]  testMatrix = {
             {1, 2, 3, 4},
             {5, 6, 7, 8},
@@ -427,8 +428,10 @@ public class MatrixTest
         Matrix testMatrixB = new Matrix(testMatrix);
         double[][] correctAnswer = 
             new double[testMatrix.length][testMatrix[0].length];
-        for (int i = 0; i < testMatrix.length; i++) {
-            for (int j = 0; j < testMatrix[i].length; j++) {
+        for (int i = 0; i < testMatrix.length; i++) 
+        {
+            for (int j = 0; j < testMatrix[i].length; j++) 
+            {
                 correctAnswer[i][j] = testMatrix[i][j] * testMatrix[i][j];
             }
         }
