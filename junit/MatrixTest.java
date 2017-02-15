@@ -302,7 +302,6 @@ public class MatrixTest
         int numCols = rand.nextInt(10) + 1;
         Matrix matrix = new Matrix(numRows, numCols);
         assertEquals(numRows, matrix.getRowDimension());
-        //TODO: What about jagged matrices? 
     }
 
     //Matrix arrayLeftDivide(Matrix B){return null;}
@@ -361,6 +360,28 @@ public class MatrixTest
         //create the index 'j' for which to test equivalency
         testIndex[1] = -1; 
         matrix.get(testIndex[0], testIndex[1]);
+    }
+    /**
+     * testScalarMult -Test for the scalar times function.
+     */
+    @Test
+    public void testScalarMult() {
+        Random rand = new Random();
+        int multiplier = rand.nextInt(100);
+        double[][] testMatrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        double[][] corrMatrix = new double[testMatrix.length][testMatrix[0].length];
+        for (int i = 0; i < testMatrix.length; i++) {
+            for (int j = 0; j < testMatrix[i].length; j++) {
+                corrMatrix[i][j] = testMatrix[i][j] * multiplier;
+            }
+        }
+        Matrix myMatrix = new Matrix(testMatrix);
+        Matrix matrixResult = myMatrix.times(multiplier);
+        assertEquals(corrMatrix, matrixResult.getArray());
     }
 
     //double[][] getArray(){return null;}
