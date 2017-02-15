@@ -365,7 +365,8 @@ public class MatrixTest
      * testScalarMult -Test for the scalar times function.
      */
     @Test
-    public void testScalarMult() {
+    public void testScalarMult() 
+    {
         Random rand = new Random();
         int multiplier = rand.nextInt(100);
         double[][] testMatrix = {
@@ -373,9 +374,12 @@ public class MatrixTest
             {5, 6, 7, 8},
             {9, 10, 11, 12}
         };
-        double[][] corrMatrix = new double[testMatrix.length][testMatrix[0].length];
-        for (int i = 0; i < testMatrix.length; i++) {
-            for (int j = 0; j < testMatrix[i].length; j++) {
+        double[][] corrMatrix = new 
+            double[testMatrix.length][testMatrix[0].length];
+        for (int i = 0; i < testMatrix.length; i++) 
+        {
+            for (int j = 0; j < testMatrix[i].length; j++) 
+            {
                 corrMatrix[i][j] = testMatrix[i][j] * multiplier;
             }
         }
