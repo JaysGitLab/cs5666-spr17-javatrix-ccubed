@@ -621,12 +621,22 @@ public class Matrix
         return 0;
     }
     /**
-     * [transpose description].
-     * @return [description]
+     * Matrix transpose.
+     * @return A'
      */
     public Matrix transpose()
     {
-        return null;
+        int newRowDimension = getColumnDimension();
+        int newColDimension = getRowDimension();
+        double[][] a2 = new double[newRowDimension][newColDimension];
+        for (int i = 0; i < newRowDimension; i++)
+        {
+            for (int j = 0; j < newColDimension; j++)
+            {
+                a2[i][j] = a[j][i];
+            }
+        }
+        return new Matrix(a2);
     }
     /**
      * [uminus description].
