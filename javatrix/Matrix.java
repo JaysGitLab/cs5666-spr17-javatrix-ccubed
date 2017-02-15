@@ -585,8 +585,10 @@ public class Matrix
     public Matrix times(double s)
     {
         Matrix result = new Matrix(this.a);
-        for (int i = 0; i < this.a.length; i++) {
-            for (int j = 0; j < this.a[i].length; j++) {
+        for (int i = 0; i < this.a.length; i++) 
+        {
+            for (int j = 0; j < this.a[i].length; j++) 
+            {
                 result.getArray()[i][j] = result.getArray()[i][j] * s;
             }
         }
