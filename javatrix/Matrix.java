@@ -612,13 +612,19 @@ public class Matrix
         return byElement(matrixB, false, op);
     }
     /**
-     * [timesEquals description].
-     * @param  s             double [description]
-     * @return               [description]
+     * timesEquals -Multiplies the existing matrix by a scalar in place.
+     * @param s -The scalar by which to multiply the matrix.
+     * @return this -A reference to the existing matrix now multiplied.
      */
     public Matrix timesEquals(double s)
     {
-        return null;
+        for (int i = 0; i < this.a.length; i++) 
+        {
+            for (int j = 0; j < this.a[i].length; j++) {
+                this.a[i][j] = this.a[i][j] * s;
+            }
+        }
+        return this;
     }
     /**
      * [trace description].
