@@ -412,7 +412,29 @@ public class MatrixTest
         testMatrixA.timesEquals(multiplier);
         assertEquals(testMatrixA.getArray(), testMatrix);
     }
-
+    /**
+     * testDotProduct -Tests the dot product multiplication of
+     *  matrices.
+     */
+    @Test
+    public void testDotProduct() {
+        double[][]  testMatrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        Matrix testMatrixA = new Matrix(testMatrix);
+        Matrix testMatrixB = new Matrix(testMatrix);
+        double[][] correctAnswer = 
+            new double[testMatrix.length][testMatrix[0].length];
+        for (int i = 0; i < testMatrix.length; i++) {
+            for (int j = 0; j < testMatrix[i].length; j++) {
+                correctAnswer[i][j] = testMatrix[i][j] * testMatrix[i][j];
+            }
+        }
+        Matrix matrixResult = testMatrixA.times(testMatrixB);
+        assertEquals(matrixResult.getArray(), correctAnswer);
+    }
 
     //double[][] getArray(){return null;}
 
