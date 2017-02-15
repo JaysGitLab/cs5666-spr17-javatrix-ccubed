@@ -410,7 +410,7 @@ public class MatrixTest
             }
         }
         testMatrixA.timesEquals(multiplier);
-        assertEquals(testMatrixA.getArray(),testMatrix);
+        assertEquals(testMatrixA.getArray(), testMatrix);
     }
 
 

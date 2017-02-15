@@ -589,7 +589,7 @@ public class Matrix
         {
             for (int j = 0; j < this.a[i].length; j++) 
             {
-                result.getArray()[i][j] = result.getArray()[i][j] * s;
+                result.a[i][j] = result.a[i][j] * s;
             }
         }
         return result;
@@ -620,7 +620,8 @@ public class Matrix
     {
         for (int i = 0; i < this.a.length; i++) 
         {
-            for (int j = 0; j < this.a[i].length; j++) {
+            for (int j = 0; j < this.a[i].length; j++) 
+            {
                 this.a[i][j] = this.a[i][j] * s;
             }
         }
