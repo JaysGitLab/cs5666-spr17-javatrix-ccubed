@@ -556,15 +556,17 @@ public class Matrix
      * Set a submatrix.
      * @param r  Array of row indeces.
      * @param c  Array of column indeces.
-     * @param matrixX A matrix of size r.length by c.length from which replacement are taken.
+     * @param matrixX A matrix of size r.length by c.length
+     *     from which replacement are taken.
      */
     public void setMatrix(int[] r, int[] c, Matrix matrixX)
     {
         if (r.length != matrixX.getRowDimension()
             || c.length != matrixX.getColumnDimension())
         {
-            throw new IllegalArgumentException("For setMatrix(int[] r, int[] c, Matrix X), "
-                                               + "must have dimensions r.length by c.length.");
+            throw new IllegalArgumentException("For setMatrix(int[] r, "
+                + "int[] c, Matrix X), must have dimensions r.length by "
+                + "c.length.");
         }
         for (int i = 0; i < r.length; i++)
         {
