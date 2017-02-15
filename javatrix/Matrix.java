@@ -578,13 +578,19 @@ public class Matrix
     {
     }
     /**
-     * [times description].
-     * @param  s             double [description]
-     * @return               [description]
+     * times -Performs matrix-scalar multiplication. 
+     * @param s -The scalar to multipy the existing matrix by.
+     * @return result -The result of multiplying the matrix by the scalar 's'.
      */
     public Matrix times(double s)
     {
-        return null;
+        Matrix result = new Matrix(this.a);
+        for (int i = 0; i < this.a.length; i++) {
+            for (int j = 0; j < this.a[i].length; j++) {
+                result.getArray()[i][j] = result.getArray()[i][j] * s;
+            }
+        }
+        return result;
     }
     /**
      * [times description].
