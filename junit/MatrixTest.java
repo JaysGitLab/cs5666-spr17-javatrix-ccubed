@@ -387,6 +387,32 @@ public class MatrixTest
         Matrix matrixResult = myMatrix.times(multiplier);
         assertEquals(corrMatrix, matrixResult.getArray());
     }
+    /**
+     * testTimesEquals -Tests the arrayTimesEquals method,
+     *  element wise multiplication of a scalar.
+     */
+    @Test
+    public void testTimesEquals()
+    {
+        Random rand = new Random();
+        double multiplier = rand.nextDouble(); 
+        double[][] testMatrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        Matrix testMatrixA = new Matrix(testMatrix);
+        for (int i = 0; i < testMatrix.length; i++)
+        {
+            for (int j = 0; j < testMatrix[i].length; j++)
+            {
+                testMatrix[i][j] = testMatrix[i][j] * multiplier;
+            }
+        }
+        testMatrixA.timesEquals(multiplier);
+        assertEquals(testMatrixA.getArray(),testMatrix);
+    }
+
 
     //double[][] getArray(){return null;}
 
