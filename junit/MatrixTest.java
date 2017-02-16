@@ -488,7 +488,85 @@ public class MatrixTest
     //static Matrix read(java.io.BufferedReader input){return null;}
 
     //void set(int i, int j, double s){}
+    /**
+     * Test the set method for valid input.
+     */
+    @Test
+    public void setTesta()
+    {
+        double[][] origArray = {
+            {1,  2,  3,  4},
+            {5,  6,  7,  8},
+            {9, 10, 11, 12}
+        };
+        double testValue = 40.0;
+        Matrix m = new Matrix(origArray);
+        m.set(0, 0, testValue);
+        //assert no delta
+        assertEquals(testValue, m.get(0, 0), 0.0);
+    }
 
+    /**
+     * Test the set method for invalid column index input.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void setTestb()
+    {
+        double[][] origArray = {
+            {1,  2,  3,  4},
+            {5,  6,  7,  8},
+            {9, 10, 11, 12}
+        };
+        double testValue = 40.0;
+        Matrix m = new Matrix(origArray);
+	m.set(-1, 0, testValue);
+    }
+    /**
+     * Test the set method for invalid column index input.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void setTestc()
+    {
+        double[][] origArray = {
+            {1,  2,  3,  4},
+            {5,  6,  7,  8},
+            {9, 10, 11, 12}
+        };
+        double testValue = 40.0;
+        Matrix m = new Matrix(origArray);
+	m.set(5, 0, testValue);
+
+    }
+    /**
+     * Test the set method for invalid column index input.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void setTestd()
+    {
+        double[][] origArray = {
+            {1,  2,  3,  4},
+            {5,  6,  7,  8},
+            {9, 10, 11, 12}
+        };
+        double testValue = 40.0;
+        Matrix m = new Matrix(origArray);
+	m.set(0, -1, testValue);
+    }
+    /**
+     * Test the set method for invalid column index input.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void setTeste()
+    {
+        double[][] origArray = {
+            {1,  2,  3,  4},
+            {5,  6,  7,  8},
+            {9, 10, 11, 12}
+        };
+        double testValue = 40.0;
+        Matrix m = new Matrix(origArray);
+	m.set(0, 5, testValue);
+    }
     //void setMatrix(int[] r, int[] c, Matrix X){}
     /**
      * Test on an example.
