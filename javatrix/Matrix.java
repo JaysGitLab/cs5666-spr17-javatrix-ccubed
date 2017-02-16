@@ -543,13 +543,19 @@ public class Matrix
         return null;
     }
     /**
-     * [set description].
-     * @param i int    [description]
-     * @param j int    [description]
-     * @param s double [description]
+     * Sets the element at row i and column j to value s.
+     * @param i int    the row index of the element to change
+     * @param j int    the column index of the element to change
+     * @param s double the new value to insert at i, j
+     * @throws IllegalArgumentException if the specified row and column are
+     *     not valid indicies within the underlying array.
      */
-    public void set(int i, int j, double s)
+    public void set(int i, int j, double s) throws IllegalArgumentException
     {
+        if (i < 0 || i >= a.length || j < 0 || j >= a[0].length)
+        {
+            throw new IllegalArgumentException();
+        }
         a[i][j] = s;
     }
     /**
