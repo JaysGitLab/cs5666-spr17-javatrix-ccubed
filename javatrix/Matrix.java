@@ -13,10 +13,10 @@ public class Matrix
     /**
      * Matrix -Constructs a matrix from the provided 2dArray.
      * @param matrixA -The provided 2d array.
-     * @throws IllegalArgumentException -If either input matrix dimension is
+     * @throws Exception -If either input matrix dimension is
      * zero or if the input array is jagged.
      */
-    public Matrix(double[][] matrixA)
+    public Matrix(double[][] matrixA) throws Exception
     {
         if (matrixA.length == 0)
         {
