@@ -449,7 +449,7 @@ public class MatrixTest
         };
         int correctTrace = 15;
         Matrix testMatrix = new Matrix(test);
-        assertEquals(testMatrix.trace(), correctTrace);
+        assertEquals(testMatrix.trace(), correctTrace, .1);
     }
         
 

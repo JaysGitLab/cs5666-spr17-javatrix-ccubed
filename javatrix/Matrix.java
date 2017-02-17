@@ -649,12 +649,21 @@ public class Matrix
         return null;
     }
     /**
-     * [trace description].
-     * @return [description]
+     * trace -Returns the sum of the diagonal elements
+     *  in the given matrix. 
+     * @return trace -The sum of this matrice's diagonal.
      */
     public double trace()
     {
-        return 0;
+        double trace = 0.0; 
+        for (int i = 0; i < this.a.length; i++) {
+            for (int j = 0; j < this.a[i].length; j++) {
+                if (i == j) {
+                    trace += this.a[i][j];
+                }
+            }
+        }
+        return trace;
     }
     /**
      * Matrix transpose.
