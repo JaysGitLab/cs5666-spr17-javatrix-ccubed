@@ -414,24 +414,22 @@ public class MatrixTest
     @Test
     public void testMatrixMult() 
     {
-        double[][]  testMatrix = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12}
+        double[][]  matrixA = {
+            {1, 2},
+            {3, 4}
         };
-        Matrix testMatrixA = new Matrix(testMatrix);
-        Matrix testMatrixB = new Matrix(testMatrix);
-        double[][] correctAnswer = 
-            new double[testMatrix.length][testMatrix[0].length];
-        for (int i = 0; i < testMatrix.length; i++) 
-        {
-            for (int j = 0; j < testMatrix[i].length; j++) 
-            {
-                correctAnswer[i][j] = testMatrix[i][j] * testMatrix[i][j];
-            }
-        }
+        double[][] matrixB = {
+            {1, 2},
+            {3, 4}
+        };
+        double[][] correctMatrix = {
+            {7, 10},
+            {15, 22}
+        };
+        Matrix testMatrixA = new Matrix(matrixA);
+        Matrix testMatrixB = new Matrix(matrixB);
         Matrix matrixResult = testMatrixA.times(testMatrixB);
-        assertEquals(matrixResult.getArray(), correctAnswer);
+        assertEquals(matrixResult.getArray(), correctMatrix);
     }
     /**
      * testMatrixDimMismatch -Tests to make sure matrices without inner 
