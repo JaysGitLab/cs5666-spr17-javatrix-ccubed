@@ -447,13 +447,13 @@ public class MatrixTest
         int m = rand.nextInt(100);
         int n = rand.nextInt(100); 
         double[][] correctMatrix = new double[m][n];
-        for (int i = 0; i < identity.length; i++) 
+        for (int i = 0; i < correctMatrix.length; i++) 
         {
-            for (int j = 0; j < identity.length[0]; j++) 
+            for (int j = 0; j < correctMatrix[i].length; j++) 
             {
                 if (i == j) 
                 {
-                    identity[i][j] = 1;
+                    correctMatrix[i][j] = 1;
                 }
             }
         }

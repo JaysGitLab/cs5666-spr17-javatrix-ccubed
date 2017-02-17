@@ -405,16 +405,6 @@ public class Matrix
         return null;
     }
     /**
-     * [identity description].
-     * @param  m             int [description]
-     * @param  n             int [description]
-     * @return               [description]
-     */
-    public static Matrix identity(int m, int n)
-    {
-        return null;
-    }
-    /**
      * C = A - B.
      * @param matrixB         another matrix
      * @return                A - B
