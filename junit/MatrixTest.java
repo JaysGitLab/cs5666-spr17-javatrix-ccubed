@@ -437,6 +437,15 @@ public class MatrixTest
         testIndex[1] = -1; 
         matrix.get(testIndex[0], testIndex[1]);
     }
+    /**
+     * testRandom -Tests the generation of a random matrix
+     *  of the specified dimensions. 
+     */
+    @Test
+    public void testRandom() {
+        //TODO: How to seed random number gen across class instances?
+        Random rand = new Random();
+    }
 
     //double[][] getArray(){return null;}
 
