@@ -395,9 +395,66 @@ public class MatrixTest
     //protected java.lang.Object clone(){return null;}
 
     //static Matrix constructWithCopy(double[][] A){return null;}
-
+    /**
+     * Make sure data in Matrix is equal to data given to method.
+    **/
+    @Test
+    public void constructWithCopyTest1()
+    {
+        double[][] array = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        Matrix m = Matrix.constructWithCopy(array);
+        assertEquals(array, m.getArray());
+    }
+    
+    /**
+     * Make sure data in Matrix is not same object as array given to method.
+    **/
+    @Test
+    public void constructWithCopyTest2()
+    {
+        double[][] array = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        Matrix m = Matrix.constructWithCopy(array);
+        assertNotSame(array, m.getArray());
+    }
     //Matrix copy(){return null;}
-
+    /**
+     * Make sure data in matrix and copy is equal.
+    **/
+    @Test
+    public void copyTest1()
+    {
+        Matrix m1 = new Matrix(new double[][]{
+            {1, 2},
+            {3, 4},
+            {5, 6}
+        });
+        Matrix m2 = m1.copy();
+        assertEquals(m1.getArray(), m2.getArray());
+    }
+            
+    /**
+     * Make sure data in matrix and copy are not same object.
+    **/
+    @Test
+    public void copyTest2()
+    {
+        Matrix m1 = new Matrix(new double[][]{
+            {1, 2},
+            {3, 4},
+            {5, 6}
+        });
+        Matrix m2 = m1.copy();
+        assertNotSame(m1.getArray(), m2.getArray());
+    }
+            
     /**
      * testGet -Tests the functionality of the get method
      *  in retrieving the element at the specified index.
@@ -441,7 +498,37 @@ public class MatrixTest
     //double[][] getArray(){return null;}
 
     //double[][] getArrayCopy(){return null;}
+    /**
+     * Make sure copied array is equal to original array.
+    **/
+    @Test
+    public void getArrayCopyTest1()
+    {
+        double[][] seed = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8}
+        };
+        Matrix matrix = new Matrix(seed);
+        double[][] orig = matrix.getArray();
+        double[][] copy = matrix.getArrayCopy();
+        assertEquals(orig, copy);
+    }
 
+    /**
+     * Make sure copied array is not same object as original array.
+    **/
+    @Test
+    public void getArrayCopyTest2()
+    {
+        double[][] seed = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8}
+        };
+        Matrix matrix = new Matrix(seed);
+        double[][] orig = matrix.getArray();
+        double[][] copy = matrix.getArrayCopy();
+        assertNotSame(orig, copy);
+    }
     //int getColumnDimension(){return 0;}
 
     //double[] getColumnPackedCopy(){return null;}

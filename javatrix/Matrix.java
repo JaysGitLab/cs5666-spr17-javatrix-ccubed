@@ -253,21 +253,23 @@ public class Matrix
         return null;
     }
     /**
-     * [constructWithCopy description].
-     * @param  matrixA             double[][] [description]
-     * @return                     [description]
+     * Construct a matrix from a copy of a 2-D array.
+     * @param  matrixA      Two-dimensional array of doubles
+     * @return A matrix
+     * @throws IllegalArgumentException  All rows must have the same length;
      */
     public static Matrix constructWithCopy(double[][] matrixA)
+        throws IllegalArgumentException
     {
-        return null;
+        return new Matrix(copyArray(matrixA));
     }
     /**
-     * [copy description].
-     * @return [description]
+     * Make a deep copy of the matrix.
+     * @return a deep copy of the matrix.
      */
     public Matrix copy()
     {
-        return null;
+        return new Matrix(copyArray(a));
     }
     /**
      * get -Returns the element at the specified index.
@@ -301,12 +303,12 @@ public class Matrix
         return a;
     }
     /**
-     * getArrayCopy -TODO: methdod descriptor.
-     * @return null -TODO: return type descriptor.
+     * getArrayCopy Copy the internal two-dimensional array.
+     * @return Two-dimensional array copy of matrix elements.
      */
     public double[][] getArrayCopy()
     {
-        return null;
+        return copyArray(a);
     }
     /**
      * getColumnDimension -Returns the number of columns (n) in the matrix.
@@ -687,6 +689,25 @@ public class Matrix
     //////////////////////////////////////////////////////
     // helper methods
     //////////////////////////////////////////////////////
+    /**
+     * This is just an array copy convenience method.
+     * @param array       The array to be copied.
+     * @return            A copy of the array
+     **/
+    private static double[][] copyArray(double[][] array)
+    {
+        double[][] copy = new double[array.length][array[0].length];
+        for (int i = 0; i < array.length; i++)
+        {
+            double[] row = array[i];
+            for (int j = 0; j < row.length; j++)
+            {
+                copy[i][j] = array[i][j];
+            }
+        }
+        return copy;
+    }
+
     /**
      * Functional interface for use with
      * {@link #byElement(Matrix, boolean, Operator) byElement} method.
