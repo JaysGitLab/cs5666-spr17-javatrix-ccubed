@@ -437,6 +437,29 @@ public class MatrixTest
         testIndex[1] = -1; 
         matrix.get(testIndex[0], testIndex[1]);
     }
+    /**
+     * testIdentity -Tests the creation of the identity matrix.
+     */
+    @Test
+    public void testIdentity() 
+    {
+        Random rand = new Random();
+        int m = rand.nextInt(100);
+        int n = rand.nextInt(100); 
+        double[][] correctMatrix = new double[m][n];
+        for (int i = 0; i < identity.length; i++) 
+        {
+            for (int j = 0; j < identity.length[0]; j++) 
+            {
+                if (i == j) 
+                {
+                    identity[i][j] = 1;
+                }
+            }
+        }
+        Matrix testMatrix = Matrix.identity(m, n);
+        assertEquals(testMatrix.getArray(), correctMatrix);
+    }
 
     //double[][] getArray(){return null;}
 
