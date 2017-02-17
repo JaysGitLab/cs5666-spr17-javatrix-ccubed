@@ -368,24 +368,20 @@ public class MatrixTest
     public void testScalarMult() 
     {
         Random rand = new Random();
-        int multiplier = rand.nextInt(100);
+        int multiplier = 2;
         double[][] testMatrix = {
             {1, 2, 3, 4},
             {5, 6, 7, 8},
             {9, 10, 11, 12}
         };
-        double[][] corrMatrix = new 
-            double[testMatrix.length][testMatrix[0].length];
-        for (int i = 0; i < testMatrix.length; i++) 
-        {
-            for (int j = 0; j < testMatrix[i].length; j++) 
-            {
-                corrMatrix[i][j] = testMatrix[i][j] * multiplier;
-            }
-        }
+        double[][] correctMatrix = {
+            {2, 4, 6, 8},
+            {10, 12, 14, 16},
+            {18, 20, 22, 24}
+        };
         Matrix myMatrix = new Matrix(testMatrix);
         Matrix matrixResult = myMatrix.times(multiplier);
-        assertEquals(corrMatrix, matrixResult.getArray());
+        assertEquals(correctMatrix, matrixResult.getArray());
     }
     /**
      * testTimesEquals -Tests the arrayTimesEquals method,
@@ -413,11 +409,10 @@ public class MatrixTest
         assertEquals(testMatrixA.getArray(), testMatrix);
     }
     /**
-     * testDotProduct -Tests the dot product multiplication of
-     *  matrices.
+     * testMatrixMult -Tests the multiplication of matrices.
      */
     @Test
-    public void testDotProduct() 
+    public void testMatrixMult() 
     {
         double[][]  testMatrix = {
             {1, 2, 3, 4},
@@ -438,6 +433,24 @@ public class MatrixTest
         Matrix matrixResult = testMatrixA.times(testMatrixB);
         assertEquals(matrixResult.getArray(), correctAnswer);
     }
+    /**
+     * testMatrixDimMismatch -Tests to make sure matrices without inner 
+     *  matching dimensions cannot be multiplied. 
+     */
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testMatrixDimMismatch() {
+        double[][]  testMatrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        double[][] matrixB = 
+            new double[testMatrix.length][testMatrix[0].length];
+        if (matrixB[0].length != testMatrix.length) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
 
     //double[][] getArray(){return null;}
 

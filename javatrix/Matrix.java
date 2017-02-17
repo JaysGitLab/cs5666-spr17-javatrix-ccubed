@@ -595,12 +595,15 @@ public class Matrix
         return result;
     }
     /**
-     * [times description].
+     * times -Multiplies this.getArray by the provided matrix.
      * @param matrixB          another matrix
      * @return               [description]
      */
-    public Matrix times(Matrix matrixB)
+    public Matrix times(Matrix matrixB) throws IndexOutOfBoundsException
     {
+        if (this.a[0].length != matrixB.getArray().length) {
+            throw new IndexOutOfBoundsException();
+        }
         Operator op = new Operator()
         {
             @Override
