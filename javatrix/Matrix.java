@@ -147,11 +147,15 @@ public class Matrix
      * @param n -The number of columns in the identity matrix.
      * @return identityMatrix -The (m x n) identity matrix. 
     **/
-    public static Matrix identity(int m, int n) {
+    public static Matrix identity(int m, int n) 
+    {
         double[][] identity = new double[m][n];
-        for (int i = 0; i < identity.length; i++) {
-            for (int j = 0; j < identity[i].length; j++) {
-                if (i == j) {
+        for (int i = 0; i < identity.length; i++) 
+        {
+            for (int j = 0; j < identity[i].length; j++) 
+            {
+                if (i == j) 
+                {
                     identity[i][j] = 1;
                 }
             }
