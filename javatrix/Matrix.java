@@ -595,27 +595,48 @@ public class Matrix
         return result;
     }
     /**
-     * times -Multiplies this.getArray by the provided matrix.
+     * times Multiplies this.getArray by the provided matrix.
      * @param matrixB          another matrix
-     * @throws IndexOutOfBoundsException -In the case of an inner
+     * @throws IndexOutOfBoundsException In the case of an inner
      *  dimensionality mismatch. 
-     * @return               [description]
+     * @return               The product of this and matrixB.
      */
-    public Matrix times(Matrix matrixB) throws IndexOutOfBoundsException
+    public Matrix times(Matrix matrixB) throws IllegalArgumentException
     {
-        if (this.a[0].length != matrixB.getArray().length) 
+        if (getColumnDimension() != matrixB.getRowDimension())
         {
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException(
+                "Inner dimensions must match for matrix multiplication"
+            );
         }
-        Operator op = new Operator()
+        double[][] answerArray =
+                new double[getRowDimension()][matrixB.getColumnDimension()];
+        for (int r = 0; r < answerArray.length; r++)
         {
-            @Override
-            public double apply(double a, double b)
+            for (int c = 0; c < answerArray[0].length; c++)
             {
-                return a * b;
+                answerArray[r][c] = productCell(this, matrixB, r, c);
             }
-        };
-        return byElement(matrixB, false, op);
+        }
+        return new Matrix(answerArray);
+    }
+    /**
+     * Returns the value of matrixA times matrixB at (r, c).
+     * @param matrixA The first matrix in the product.
+     * @param matrixB The second matrix in the product.
+     * @param r the row index.
+     * @param c the column index.
+     * @returns the value of matrixA times matrixB at (r,c).
+    **/
+    private double productCell(Matrix matrixA, Matrix matrixB, int r, int c)
+    {
+        int innerDim = matrixA.getColumnDimension();
+        double sum = 0;
+        for (int i = 0; i < innerDim; i++)
+        {
+            sum += matrixA.get(r, i) * matrixB.get(i, c);
+        }
+        return sum;
     }
     /**
      * timesEquals -Multiplies the existing matrix by a scalar in place.

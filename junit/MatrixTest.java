@@ -409,48 +409,69 @@ public class MatrixTest
         assertEquals(testMatrixA.getArray(), testMatrix);
     }
     /**
-     * testMatrixMult -Tests the multiplication of matrices.
+     * testMatrixMult -Tests the multiplication of matrices by 3x2, 2x3 example.
      */
     @Test
-    public void testMatrixMult() 
+    public void matrixTimesTest1() 
     {
-        double[][]  testMatrix = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12}
+        double[][] arrayA = {
+            {6, 5},
+            {5, 8},
+            {6, 9}
         };
-        Matrix testMatrixA = new Matrix(testMatrix);
-        Matrix testMatrixB = new Matrix(testMatrix);
-        double[][] correctAnswer = 
-            new double[testMatrix.length][testMatrix[0].length];
-        for (int i = 0; i < testMatrix.length; i++) 
-        {
-            for (int j = 0; j < testMatrix[i].length; j++) 
-            {
-                correctAnswer[i][j] = testMatrix[i][j] * testMatrix[i][j];
-            }
-        }
-        Matrix matrixResult = testMatrixA.times(testMatrixB);
-        assertEquals(matrixResult.getArray(), correctAnswer);
+        Matrix matrixA = new Matrix(arrayA);
+        double[][] arrayB = {
+            {8, 8, 1},
+            {3, 7, 4}
+        };
+        Matrix matrixB = new Matrix(arrayB);
+        double[][] answerArray = {
+            {6 * 8 + 5 * 3, 6 * 8 + 5 * 7, 6 * 1 + 5 * 4},
+            {5 * 8 + 8 * 3, 5 * 8 + 8 * 7, 5 * 1 + 8 * 4},
+            {6 * 8 + 9 * 3, 6 * 8 + 9 * 7, 6 * 1 + 9 * 4}
+        };
+        Matrix answerMatrix = matrixA.times(matrixB);
+        assertEquals(answerArray, answerMatrix.getArray());
     }
     /**
-     * testMatrixDimMismatch -Tests to make sure matrices without inner 
+     * Test the multiplication of matrices by a 2x2, 2x1 example.
+    **/
+    @Test
+    public void matrixTimesTest2()
+    {
+        double[][] arrayA = {
+            {6, 5},
+            {4, 8}
+        };
+        Matrix matrixA = new Matrix(arrayA);
+        double[][] arrayB = {
+            {8},
+            {3}
+        };
+        Matrix matrixB = new Matrix(arrayB);
+        double[][] answerArray = {
+            {6 * 8 + 5 * 3},
+            {4 * 8 + 8 * 3}
+        };
+        Matrix answerMatrix = matrixA.times(matrixB);
+        assertEquals(answerArray, answerMatrix.getArray());
+    }
+    
+    /** testMatrixDimMismatch -Tests to make sure matrices without inner 
      *  matching dimensions cannot be multiplied. 
      */
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testMatrixDimMismatch() 
     {
-        double[][]  testMatrix = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12}
-        };
-        double[][] matrixB = 
-            new double[testMatrix.length][testMatrix[0].length];
-        if (matrixB[0].length != testMatrix.length) 
-        {
-            throw new IndexOutOfBoundsException();
-        }
+        Matrix matrixA = new Matrix(new double[][]{
+            {1, 2, 3},
+            {4, 5, 6}
+        });
+        Matrix matrixB = new Matrix(new double[][]{
+            {6, 5, 4},
+            {3, 2, 1}
+        });
+        matrixA.times(matrixB);
     }
 
 
