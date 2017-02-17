@@ -434,10 +434,32 @@ public class MatrixTest
         assertEquals(answerArray, answerMatrix.getArray());
     }
     /**
+     * Test the multiplication of matrices by a 2x2, 2x2 example.
+    **/
+    @Test
+    public void matrixTimesTest2(){
+        double[][]  matrixA = {
+            {1, 2},
+            {3, 4}
+        };
+        double[][] matrixB = {
+            {1, 2},
+            {3, 4}
+        };
+        double[][] correctMatrix = {
+            {7, 10},
+            {15, 22}
+        };
+        Matrix testMatrixA = new Matrix(matrixA);
+        Matrix testMatrixB = new Matrix(matrixB);
+        Matrix matrixResult = testMatrixA.times(testMatrixB);
+        assertEquals(matrixResult.getArray(), correctMatrix);
+    }
+    /**
      * Test the multiplication of matrices by a 2x2, 2x1 example.
     **/
     @Test
-    public void matrixTimesTest2()
+    public void matrixTimesTest3()
     {
         double[][] arrayA = {
             {6, 5},
