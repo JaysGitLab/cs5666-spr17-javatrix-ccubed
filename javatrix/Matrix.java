@@ -1,4 +1,5 @@
 package javatrix;
+import java.util.Random;
 /**
  * Matrix -Implementation of the matrix api in java. 
  * @author Chris Campell
@@ -540,7 +541,7 @@ public class Matrix
                 matrix[i][j] = rand.nextDouble(); 
             }
         }
-        return matrix;
+        return new Matrix(matrix);
     }
     /**
      * [read description].
