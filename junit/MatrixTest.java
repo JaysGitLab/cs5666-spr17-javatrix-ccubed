@@ -442,7 +442,8 @@ public class MatrixTest
      *  of the specified dimensions. 
      */
     @Test
-    public void testRandom() {
+    public void testRandom() 
+    {
         //TODO: How to seed random number gen across class instances?
         Random rand = new Random();
     }

@@ -536,8 +536,10 @@ public class Matrix
     {
         Random rand = new Random();
         double[][] matrix = new double[m][n];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
+        for (int i = 0; i < matrix.length; i++) 
+        {
+            for (int j = 0; j < matrix[i].length; j++) 
+            {
                 matrix[i][j] = rand.nextDouble(); 
             }
         }
