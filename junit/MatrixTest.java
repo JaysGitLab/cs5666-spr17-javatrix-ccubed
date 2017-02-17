@@ -441,7 +441,8 @@ public class MatrixTest
      * testMinusEquals -Tests the matrix subtraction operation A - B.
      */
     @Test
-    public void testMinusEquals() {
+    public void testMinusEquals() 
+    {
         double[][] matrixA = {
             {2, 4},
             {6, 8},
@@ -467,7 +468,8 @@ public class MatrixTest
      * testMinusEquals2 -Test the matrix subtraction operation B - A. 
      */
     @Test
-    public void testMinusEquals2() {
+    public void testMinusEquals2() 
+    {
         double[][] matrixA = {
             {2, 4},
             {6, 8},
