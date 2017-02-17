@@ -441,7 +441,8 @@ public class MatrixTest
      * testTrace -Tests the functionality of the trace method.
      */
     @Test
-    public void testTrace() {
+    public void testTrace() 
+    {
         double[][] test = {
             {1, 2, 3},
             {4, 5, 6},

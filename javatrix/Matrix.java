@@ -656,9 +656,12 @@ public class Matrix
     public double trace()
     {
         double trace = 0.0; 
-        for (int i = 0; i < this.a.length; i++) {
-            for (int j = 0; j < this.a[i].length; j++) {
-                if (i == j) {
+        for (int i = 0; i < this.a.length; i++) 
+        {
+            for (int j = 0; j < this.a[i].length; j++) 
+            {
+                if (i == j) 
+                {
                     trace += this.a[i][j];
                 }
             }
