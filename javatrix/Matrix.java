@@ -597,11 +597,14 @@ public class Matrix
     /**
      * times -Multiplies this.getArray by the provided matrix.
      * @param matrixB          another matrix
+     * @throws IndexOutOfBoundsException -In the case of an inner
+     *  dimensionality mismatch. 
      * @return               [description]
      */
     public Matrix times(Matrix matrixB) throws IndexOutOfBoundsException
     {
-        if (this.a[0].length != matrixB.getArray().length) {
+        if (this.a[0].length != matrixB.getArray().length) 
+        {
             throw new IndexOutOfBoundsException();
         }
         Operator op = new Operator()

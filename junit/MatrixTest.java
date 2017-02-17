@@ -438,7 +438,8 @@ public class MatrixTest
      *  matching dimensions cannot be multiplied. 
      */
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testMatrixDimMismatch() {
+    public void testMatrixDimMismatch() 
+    {
         double[][]  testMatrix = {
             {1, 2, 3, 4},
             {5, 6, 7, 8},
@@ -446,7 +447,8 @@ public class MatrixTest
         };
         double[][] matrixB = 
             new double[testMatrix.length][testMatrix[0].length];
-        if (matrixB[0].length != testMatrix.length) {
+        if (matrixB[0].length != testMatrix.length) 
+        {
             throw new IndexOutOfBoundsException();
         }
     }
