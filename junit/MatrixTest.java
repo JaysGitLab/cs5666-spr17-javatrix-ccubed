@@ -437,7 +437,8 @@ public class MatrixTest
      * Test the multiplication of matrices by a 2x2, 2x2 example.
     **/
     @Test
-    public void matrixTimesTest2(){
+    public void matrixTimesTest2()
+    {
         double[][]  matrixA = {
             {1, 2},
             {3, 4}

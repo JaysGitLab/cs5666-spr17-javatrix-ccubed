@@ -597,7 +597,7 @@ public class Matrix
     /**
      * times Multiplies this.getArray by the provided matrix.
      * @param matrixB          another matrix
-     * @throws IndexOutOfBoundsException In the case of an inner
+     * @throws IllegalArgumentException In the case of an inner
      *  dimensionality mismatch. 
      * @return               The product of this and matrixB.
      */
@@ -626,7 +626,7 @@ public class Matrix
      * @param matrixB The second matrix in the product.
      * @param r the row index.
      * @param c the column index.
-     * @returns the value of matrixA times matrixB at (r,c).
+     * @return the value of matrixA times matrixB at (r,c).
     **/
     private double productCell(Matrix matrixA, Matrix matrixB, int r, int c)
     {
