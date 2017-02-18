@@ -437,61 +437,6 @@ public class MatrixTest
         testIndex[1] = -1; 
         matrix.get(testIndex[0], testIndex[1]);
     }
-    /**
-     * testMinusEquals -Tests the matrix subtraction operation A - B.
-     */
-    @Test
-    public void testMinusEquals() 
-    {
-        double[][] matrixA = {
-            {2, 4},
-            {6, 8},
-            {10, 12}
-        };
-        double[][] matrixB = {
-            {1, 2},
-            {3, 4},
-            {5, 6}
-        };
-        //correct matrix for A - B
-        double[][] correctMatrix = {
-            {1, 2},
-            {3, 4}, 
-            {5, 6}
-        };
-        Matrix testMatrixA = new Matrix(matrixA);
-        Matrix testMatrixB = new Matrix(matrixB);
-        testMatrixA = testMatrixA.minusEquals(testMatrixB);
-        assertEquals(testMatrixA.getArray(), correctMatrix);
-    }
-    /**
-     * testMinusEquals2 -Test the matrix subtraction operation B - A. 
-     */
-    @Test
-    public void testMinusEquals2() 
-    {
-        double[][] matrixA = {
-            {2, 4},
-            {6, 8},
-            {10, 12}
-        };
-        double[][] matrixB = {
-            {1, 2},
-            {3, 4},
-            {5, 6}
-        };
-        //correct matrix for B - A
-        double[][] correctMatrix = {
-            {-1, -2},
-            {-3, -4}, 
-            {-5, -6}
-        };
-        Matrix testMatrixA = new Matrix(matrixA);
-        Matrix testMatrixB = new Matrix(matrixB);
-        testMatrixB = testMatrixB.minusEquals(testMatrixA);
-        assertEquals(testMatrixB.getArray(), correctMatrix);
-    }
-
     //double[][] getArray(){return null;}
 
     //double[][] getArrayCopy(){return null;}
