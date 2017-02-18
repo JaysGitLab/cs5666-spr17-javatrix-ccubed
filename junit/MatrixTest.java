@@ -397,16 +397,14 @@ public class MatrixTest
             {5, 6, 7, 8},
             {9, 10, 11, 12}
         };
+        double[][] testMatrixResult = {
+            {1 * multiplier, 2 * multiplier, 3 * multiplier, 4 * multiplier},
+            {5 * multiplier, 6 * multiplier, 7 * multiplier, 8 * multiplier},
+            {9 * multiplier, 10 * multiplier, 11 * multiplier, 12 * multiplier}
+        };
         Matrix testMatrixA = new Matrix(testMatrix);
-        for (int i = 0; i < testMatrix.length; i++)
-        {
-            for (int j = 0; j < testMatrix[i].length; j++)
-            {
-                testMatrix[i][j] = testMatrix[i][j] * multiplier;
-            }
-        }
         testMatrixA.timesEquals(multiplier);
-        assertEquals(testMatrixA.getArray(), testMatrix);
+        assertEquals(testMatrixA.getArray(), testMatrixResult);
     }
     /**
      * testMatrixMult -Tests the multiplication of matrices by 3x2, 2x3 example.
