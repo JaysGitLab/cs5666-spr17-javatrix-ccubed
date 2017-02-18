@@ -142,6 +142,29 @@ public class Matrix
         }
     }
     /**
+     * identity -Constructs an identity matrix with the specified
+     *  dimensions.
+     * @param m -The number of rows in the identity matrix.
+     * @param n -The number of columns in the identity matrix.
+     * @return identityMatrix -The (m x n) identity matrix. 
+    **/
+    public static Matrix identity(int m, int n) 
+    {
+        double[][] identity = new double[m][n];
+        for (int i = 0; i < identity.length; i++) 
+        {
+            for (int j = 0; j < identity[i].length; j++) 
+            {
+                if (i == j) 
+                {
+                    identity[i][j] = 1;
+                }
+            }
+        }
+        Matrix identityMatrix = new Matrix(identity);
+        return identityMatrix;
+    }
+    /**
      * Element-by-element left division. C = A.\B
      * @param matrixB        another matrix
      * @return               A.\B
@@ -385,16 +408,6 @@ public class Matrix
      * @return -TODO: Return type descriptor.
      */
     public double[] getRowPackedCopy()
-    {
-        return null;
-    }
-    /**
-     * [identity description].
-     * @param  m             int [description]
-     * @param  n             int [description]
-     * @return               [description]
-     */
-    public static Matrix identity(int m, int n)
     {
         return null;
     }
