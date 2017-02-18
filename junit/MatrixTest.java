@@ -1,5 +1,6 @@
 package junit;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
@@ -494,6 +495,35 @@ public class MatrixTest
         testIndex[1] = -1; 
         matrix.get(testIndex[0], testIndex[1]);
     }
+
+    /**
+     * testRandom -Tests the generation of a random matrix
+     *  of the specified dimensions. 
+     */
+    @Test
+    public void testRandom() 
+    {
+        int rows = 20;
+        int cols = 30;
+        Matrix m = new Matrix(rows, cols);
+	assertEquals(m.getArray().length, rows);
+	assertEquals(m.getArray()[0].length, cols);
+    }
+
+    /**
+     * testRandom -Tests the generation of a random matrix
+     *  of the specified dimensions. 
+     */
+    @Test
+    public void testRandomb() 
+    {
+        int rows = 20;
+        int cols = 30;
+        Matrix m = new Matrix(rows, cols);
+        Matrix n = new Matrix(rows, cols);
+	assertNotEquals(m.getArray(), n.getArray());
+    }
+
     /**
      * testTrace -Tests the functionality of the trace method.
      */
@@ -509,7 +539,6 @@ public class MatrixTest
         Matrix testMatrix = new Matrix(test);
         assertEquals(testMatrix.trace(), correctTrace, .1);
     }
-        
 
     //double[][] getArray(){return null;}
 

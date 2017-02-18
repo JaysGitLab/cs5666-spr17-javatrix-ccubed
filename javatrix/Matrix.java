@@ -1,4 +1,5 @@
 package javatrix;
+import java.util.Random;
 /**
  * Matrix -Implementation of the matrix api in java. 
  * @author Chris Campell
@@ -526,14 +527,25 @@ public class Matrix
     {
     }
     /**
-     * [random description].
-     * @param  m             int [description]
-     * @param  n             int [description]
-     * @return               [description]
+     * random -Returns a matrix of size (m x n) with random
+     *  double values for elements.
+     * @param m -The number of rows in the matrix.
+     * @param n -The number of columns in the matrix.
+     * @return matrix -The matrix of size (m x n) populated
+     *  with random values.
      */
     public static Matrix random(int m, int n)
     {
-        return null;
+        Random rand = new Random();
+        double[][] matrix = new double[m][n];
+        for (int i = 0; i < matrix.length; i++) 
+        {
+            for (int j = 0; j < matrix[i].length; j++) 
+            {
+                matrix[i][j] = rand.nextDouble(); 
+            }
+        }
+        return new Matrix(matrix);
     }
     /**
      * [read description].
