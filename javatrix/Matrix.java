@@ -628,39 +628,81 @@ public class Matrix
     {
     }
     /**
-     * [times description].
-     * @param  s             double [description]
-     * @return               [description]
+     * times -Performs matrix-scalar multiplication. 
+     * @param s -The scalar to multipy the existing matrix by.
+     * @return result -The result of multiplying the matrix by the scalar 's'.
      */
     public Matrix times(double s)
     {
-        return null;
-    }
-    /**
-     * [times description].
-     * @param matrixB          another matrix
-     * @return               [description]
-     */
-    public Matrix times(Matrix matrixB)
-    {
-        Operator op = new Operator()
+        Matrix result = new Matrix(this.a);
+        for (int i = 0; i < this.a.length; i++) 
         {
-            @Override
-            public double apply(double a, double b)
+            for (int j = 0; j < this.a[i].length; j++) 
             {
-                return a * b;
+                result.a[i][j] = result.a[i][j] * s;
             }
-        };
-        return byElement(matrixB, false, op);
+        }
+        return result;
     }
     /**
-     * [timesEquals description].
-     * @param  s             double [description]
-     * @return               [description]
+     * times Multiplies this.getArray by the provided matrix.
+     * @param matrixB          another matrix
+     * @throws IllegalArgumentException In the case of an inner
+     *  dimensionality mismatch. 
+     * @return               The product of this and matrixB.
+     */
+    public Matrix times(Matrix matrixB) throws IllegalArgumentException
+    {
+        if (getColumnDimension() != matrixB.getRowDimension())
+        {
+            throw new IllegalArgumentException(
+                "Inner dimensions must match for matrix multiplication"
+            );
+        }
+        double[][] answerArray =
+                new double[getRowDimension()][matrixB.getColumnDimension()];
+        for (int r = 0; r < answerArray.length; r++)
+        {
+            for (int c = 0; c < answerArray[0].length; c++)
+            {
+                answerArray[r][c] = productCell(this, matrixB, r, c);
+            }
+        }
+        return new Matrix(answerArray);
+    }
+    /**
+     * Returns the value of matrixA times matrixB at (r, c).
+     * @param matrixA The first matrix in the product.
+     * @param matrixB The second matrix in the product.
+     * @param r the row index.
+     * @param c the column index.
+     * @return the value of matrixA times matrixB at (r,c).
+    **/
+    private double productCell(Matrix matrixA, Matrix matrixB, int r, int c)
+    {
+        int innerDim = matrixA.getColumnDimension();
+        double sum = 0;
+        for (int i = 0; i < innerDim; i++)
+        {
+            sum += matrixA.get(r, i) * matrixB.get(i, c);
+        }
+        return sum;
+    }
+    /**
+     * timesEquals -Multiplies the existing matrix by a scalar in place.
+     * @param s -The scalar by which to multiply the matrix.
+     * @return this -A reference to the existing matrix now multiplied.
      */
     public Matrix timesEquals(double s)
     {
-        return null;
+        for (int i = 0; i < this.a.length; i++) 
+        {
+            for (int j = 0; j < this.a[i].length; j++) 
+            {
+                this.a[i][j] = this.a[i][j] * s;
+            }
+        }
+        return this;
     }
     /**
      * trace -Returns the sum of the diagonal elements

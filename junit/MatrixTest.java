@@ -378,7 +378,6 @@ public class MatrixTest
         int numCols = rand.nextInt(10) + 1;
         Matrix matrix = new Matrix(numRows, numCols);
         assertEquals(numRows, matrix.getRowDimension());
-        //TODO: What about jagged matrices? 
     }
 
     //Matrix arrayLeftDivide(Matrix B){return null;}
@@ -495,6 +494,140 @@ public class MatrixTest
         testIndex[1] = -1; 
         matrix.get(testIndex[0], testIndex[1]);
     }
+    /**
+     * testScalarMult -Test for the scalar times function.
+     */
+    @Test
+    public void testScalarMult() 
+    {
+        Random rand = new Random();
+        int multiplier = 2;
+        double[][] testMatrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        double[][] correctMatrix = {
+            {2, 4, 6, 8},
+            {10, 12, 14, 16},
+            {18, 20, 22, 24}
+        };
+        Matrix myMatrix = new Matrix(testMatrix);
+        Matrix matrixResult = myMatrix.times(multiplier);
+        assertEquals(correctMatrix, matrixResult.getArray());
+    }
+    /**
+     * testTimesEquals -Tests the arrayTimesEquals method,
+     *  element wise multiplication of a scalar.
+     */
+    @Test
+    public void testTimesEquals()
+    {
+        Random rand = new Random();
+        double multiplier = rand.nextDouble(); 
+        double[][] testMatrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12}
+        };
+        double[][] testMatrixResult = {
+            {1 * multiplier, 2 * multiplier, 3 * multiplier, 4 * multiplier},
+            {5 * multiplier, 6 * multiplier, 7 * multiplier, 8 * multiplier},
+            {9 * multiplier, 10 * multiplier, 11 * multiplier, 12 * multiplier}
+        };
+        Matrix testMatrixA = new Matrix(testMatrix);
+        testMatrixA.timesEquals(multiplier);
+        assertEquals(testMatrixA.getArray(), testMatrixResult);
+    }
+    /**
+     * testMatrixMult -Tests the multiplication of matrices by 3x2, 2x3 example.
+     */
+    @Test
+    public void matrixTimesTest1() 
+    {
+        double[][] arrayA = {
+            {6, 5},
+            {5, 8},
+            {6, 9}
+        };
+        Matrix matrixA = new Matrix(arrayA);
+        double[][] arrayB = {
+            {8, 8, 1},
+            {3, 7, 4}
+        };
+        Matrix matrixB = new Matrix(arrayB);
+        double[][] answerArray = {
+            {6 * 8 + 5 * 3, 6 * 8 + 5 * 7, 6 * 1 + 5 * 4},
+            {5 * 8 + 8 * 3, 5 * 8 + 8 * 7, 5 * 1 + 8 * 4},
+            {6 * 8 + 9 * 3, 6 * 8 + 9 * 7, 6 * 1 + 9 * 4}
+        };
+        Matrix answerMatrix = matrixA.times(matrixB);
+        assertEquals(answerArray, answerMatrix.getArray());
+    }
+    /**
+     * Test the multiplication of matrices by a 2x2, 2x2 example.
+    **/
+    @Test
+    public void matrixTimesTest2()
+    {
+        double[][]  matrixA = {
+            {1, 2},
+            {3, 4}
+        };
+        double[][] matrixB = {
+            {1, 2},
+            {3, 4}
+        };
+        double[][] correctMatrix = {
+            {7, 10},
+            {15, 22}
+        };
+        Matrix testMatrixA = new Matrix(matrixA);
+        Matrix testMatrixB = new Matrix(matrixB);
+        Matrix matrixResult = testMatrixA.times(testMatrixB);
+        assertEquals(matrixResult.getArray(), correctMatrix);
+    }
+    /**
+     * Test the multiplication of matrices by a 2x2, 2x1 example.
+    **/
+    @Test
+    public void matrixTimesTest3()
+    {
+        double[][] arrayA = {
+            {6, 5},
+            {4, 8}
+        };
+        Matrix matrixA = new Matrix(arrayA);
+        double[][] arrayB = {
+            {8},
+            {3}
+        };
+        Matrix matrixB = new Matrix(arrayB);
+        double[][] answerArray = {
+            {6 * 8 + 5 * 3},
+            {4 * 8 + 8 * 3}
+        };
+        Matrix answerMatrix = matrixA.times(matrixB);
+        assertEquals(answerArray, answerMatrix.getArray());
+    }
+    
+    /** testMatrixDimMismatch -Tests to make sure matrices without inner 
+     *  matching dimensions cannot be multiplied. 
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixDimMismatch() 
+    {
+        Matrix matrixA = new Matrix(new double[][]{
+            {1, 2, 3},
+            {4, 5, 6}
+        });
+        Matrix matrixB = new Matrix(new double[][]{
+            {6, 5, 4},
+            {3, 2, 1}
+        });
+        matrixA.times(matrixB);
+    }
+
 
     /**
      * testRandom -Tests the generation of a random matrix
