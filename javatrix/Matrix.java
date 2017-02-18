@@ -1,4 +1,5 @@
 package javatrix;
+import java.util.Random;
 /**
  * Matrix -Implementation of the matrix api in java. 
  * @author Chris Campell
@@ -253,21 +254,23 @@ public class Matrix
         return null;
     }
     /**
-     * [constructWithCopy description].
-     * @param  matrixA             double[][] [description]
-     * @return                     [description]
+     * Construct a matrix from a copy of a 2-D array.
+     * @param  matrixA      Two-dimensional array of doubles
+     * @return A matrix
+     * @throws IllegalArgumentException  All rows must have the same length;
      */
     public static Matrix constructWithCopy(double[][] matrixA)
+        throws IllegalArgumentException
     {
-        return null;
+        return new Matrix(copyArray(matrixA));
     }
     /**
-     * [copy description].
-     * @return [description]
+     * Make a deep copy of the matrix.
+     * @return a deep copy of the matrix.
      */
     public Matrix copy()
     {
-        return null;
+        return new Matrix(copyArray(a));
     }
     /**
      * get -Returns the element at the specified index.
@@ -301,12 +304,12 @@ public class Matrix
         return a;
     }
     /**
-     * getArrayCopy -TODO: methdod descriptor.
-     * @return null -TODO: return type descriptor.
+     * getArrayCopy Copy the internal two-dimensional array.
+     * @return Two-dimensional array copy of matrix elements.
      */
     public double[][] getArrayCopy()
     {
-        return null;
+        return copyArray(a);
     }
     /**
      * getColumnDimension -Returns the number of columns (n) in the matrix.
@@ -524,14 +527,25 @@ public class Matrix
     {
     }
     /**
-     * [random description].
-     * @param  m             int [description]
-     * @param  n             int [description]
-     * @return               [description]
+     * random -Returns a matrix of size (m x n) with random
+     *  double values for elements.
+     * @param m -The number of rows in the matrix.
+     * @param n -The number of columns in the matrix.
+     * @return matrix -The matrix of size (m x n) populated
+     *  with random values.
      */
     public static Matrix random(int m, int n)
     {
-        return null;
+        Random rand = new Random();
+        double[][] matrix = new double[m][n];
+        for (int i = 0; i < matrix.length; i++) 
+        {
+            for (int j = 0; j < matrix[i].length; j++) 
+            {
+                matrix[i][j] = rand.nextDouble(); 
+            }
+        }
+        return new Matrix(matrix);
     }
     /**
      * [read description].
@@ -649,12 +663,24 @@ public class Matrix
         return null;
     }
     /**
-     * [trace description].
-     * @return [description]
+     * trace -Returns the sum of the diagonal elements
+     *  in the given matrix. 
+     * @return trace -The sum of this matrice's diagonal.
      */
     public double trace()
     {
-        return 0;
+        double trace = 0.0; 
+        for (int i = 0; i < this.a.length; i++) 
+        {
+            for (int j = 0; j < this.a[i].length; j++) 
+            {
+                if (i == j) 
+                {
+                    trace += this.a[i][j];
+                }
+            }
+        }
+        return trace;
     }
     /**
      * Matrix transpose.
@@ -687,6 +713,25 @@ public class Matrix
     //////////////////////////////////////////////////////
     // helper methods
     //////////////////////////////////////////////////////
+    /**
+     * This is just an array copy convenience method.
+     * @param array       The array to be copied.
+     * @return            A copy of the array
+     **/
+    private static double[][] copyArray(double[][] array)
+    {
+        double[][] copy = new double[array.length][array[0].length];
+        for (int i = 0; i < array.length; i++)
+        {
+            double[] row = array[i];
+            for (int j = 0; j < row.length; j++)
+            {
+                copy[i][j] = array[i][j];
+            }
+        }
+        return copy;
+    }
+
     /**
      * Functional interface for use with
      * {@link #byElement(Matrix, boolean, Operator) byElement} method.
